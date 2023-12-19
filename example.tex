@@ -1,3 +1,18 @@
+% Copyright (C) 2014-2020 by Thomas Auzinger <thomas@auzinger.name>
+\pdfminorversion=7
+% Define convenience functions to use the author name and the thesis title in the PDF document properties.
+\newcommand{\authorname}{surname forname} % The author name without titles.
+\newcommand{\thesistitle}{Title of the Thesis} % The title of the thesis. The English version should be used, if it exists.
+\newcommand{\translatedtitle}{Titel der Arbeit} % Translated title of the thesis.
+
+\begin{filecontents}{\jobname.xmpdata}
+    \Title{\thesistitle}
+    \Author{\authorname}
+    \Language{en-US}
+    \Keywords{a\sep list\sep of\sep keywords\sep[de]Eine\sep[de]Liste\sep[de]von\sep[de]Stichwörtern}
+    \Publisher{Technische Universität Wien}
+\end{filecontents}
+
 \documentclass[draft,final]{vutinfth} % Remove option 'final' to obtain debug information.
 
 % Load packages to allow in- and output of non-ASCII characters.
@@ -20,20 +35,29 @@
 \usepackage{todonotes} % Provides tooltip-like todo notes.
 \usepackage{hyperref}  % Enables cross linking in the electronic document version. This package has to be included second to last.
 \usepackage[acronym,toc]{glossaries} % Enables the generation of glossaries and lists fo acronyms. This package has to be included last.
-
-% Define convenience functions to use the author name and the thesis title in the PDF document properties.
-\newcommand{\authorname}{Daniel Jonas Otto} % The author name without titles.
-\newcommand{\thesistitle}{VR for Energy Transition: Advancing Environmental Awareness in Austria} % The title of the thesis. The English version should be used, if it exists.
-\renewcommand*\familydefault{\sfdefault}
-
+\usepackage[a-2u,pdf17]{pdfx}
+\input{glyphtounicode.tex}    %Part of modern distribution
+\input{glyphtounicode-cmr.tex}     %Additionnal glyph: You must grab it from pdfx package
+\pdfgentounicode=1
+\pdfinterwordspaceon
+\pdfomitcharset 1
+\usepackage{colorprofiles}
+\usepackage{cmap}
+\ifdefined\pdffontattr% \ifdefined is part of the e-TeX extension, which is part of any modern LaTeX compiler.
+  \immediate\pdfobj stream file {umsa.cmap}
+  {\usefont{U}{msa}{m}{n}\pdffontattr\font{/ToUnicode \the\pdflastobj\space 0 R}}
+  \immediate\pdfobj stream file {umsb.cmap}
+  {\usefont{U}{msb}{m}{n}\pdffontattr\font{/ToUnicode \the\pdflastobj\space 0 R}}
+\fi
 % Set PDF document properties
 \hypersetup{
     pdfpagelayout   = TwoPageRight,           % How the document is shown in PDF viewers (optional).
-    linkbordercolor = {Melon},                % The color of the borders of boxes around crosslinks (optional).
-    pdfauthor       = {\authorname},          % The author's name in the document properties (optional).
-    pdftitle        = {\thesistitle},         % The document's title in the document properties (optional).
-    pdfsubject      = {Subject},              % The document's subject in the document properties (optional).
-    pdfkeywords     = {a, list, of, keywords} % The document's keywords in the document properties (optional).
+    % linkbordercolor = {Melon},                % The color of the borders of boxes around crosslinks (optional).
+    colorlinks,
+    linkcolor={black}, % auch keine grellen Rahmen im View
+    citecolor={black},
+    urlcolor={black},
+    bookmarksnumbered
 }
 
 \setpnumwidth{2.5em}        % Avoid overfull hboxes in the table of contents (see memoir manual).
@@ -49,24 +73,58 @@
 % Set persons with 4 arguments:
 %  {title before name}{name}{title after name}{gender}
 %  where both titles are optional (i.e. can be given as empty brackets {}).
-\setauthor{}{\authorname}{}{male}
-\setadvisor{Pretitle}{Katharina Krösl}{Posttitle}{female}
+\setauthor{Pretitle}{\authorname}{Posttitle}{female}
+\setadvisor{Pretitle}{Forename Surname}{Posttitle}{male}
 
 % For bachelor and master theses:
-% \setfirstassistant{Pretitle}{Forename Surname}{Posttitle}{male}
-% \setsecondassistant{Pretitle}{Forename Surname}{Posttitle}{male}
-% \setthirdassistant{Pretitle}{Forename Surname}{Posttitle}{male}
+\setfirstassistant{Pretitle}{Forename Surname}{Posttitle}{male}
+\setsecondassistant{Pretitle}{Forename Surname}{Posttitle}{male}
+\setthirdassistant{Pretitle}{Forename Surname}{Posttitle}{male}
 
-\setregnumber{11811332}
-\setdate{10}{11}{2023} % Set date with 3 arguments: {day}{month}{year}.
-\settitle{\thesistitle}{Virtuelle Realität als Katalysator für die Energiewende}
-\setsubtitle{Optional Subtitle of the Thesis}{Eine wissenschaftliche Untersuchung des Potenzials von VR-Technologien in der Umweltbildung und -kommunikation}
+% For dissertations:
+\setfirstreviewer{Pretitle}{Forename Surname}{Posttitle}{male}
+\setsecondreviewer{Pretitle}{Forename Surname}{Posttitle}{male}
+
+% For dissertations at the PhD School and optionally for dissertations:
+\setsecondadvisor{Pretitle}{Forename Surname}{Posttitle}{male} % Comment to remove.
+
+% Required data.
+\setregnumber{0123456}
+\setdate{01}{01}{2001} % Set date with 3 arguments: {day}{month}{year}.
+\settitle{\thesistitle}{\translatedtitle} % Sets English and German version of the title (both can be English or German). If your title contains commas, enclose it with additional curvy brackets (i.e., {{your title}}) or define it as a macro as done with \thesistitle.
+\setsubtitle{Optional Subtitle of the Thesis}{Optionaler Untertitel der Arbeit} % Sets English and German version of the subtitle (both can be English or German).
+
+% Select the thesis type: bachelor / master / doctor / phd-school.
+% Bachelor:
 \setthesis{bachelor}
-\setcurriculum{Software and Information Engineering}{Software und Information Engineering}
+%
+% Master:
+%\setthesis{master}
+%\setmasterdegree{dipl.} % dipl. / rer.nat. / rer.soc.oec. / master
+%
+% Doctor:
+%\setthesis{doctor}
+%\setdoctordegree{rer.soc.oec.}% rer.nat. / techn. / rer.soc.oec.
+%
+% Doctor at the PhD School
+%\setthesis{phd-school} % Deactivate non-English title pages (see below)
+
+% For bachelor and master:
+\setcurriculum{Media Informatics and Visual Computing}{Medieninformatik und Visual Computing} % Sets the English and German name of the curriculum.
+
+% For dissertations at the PhD School:
+\setfirstreviewerdata{Affiliation, Country}
+\setsecondreviewerdata{Affiliation, Country}
+
 
 \begin{document}
-\frontmatter
-\addtitlepage{naustrian}
+
+\frontmatter % Switches to roman numbering.
+% The structure of the thesis has to conform to the guidelines at
+%  https://informatics.tuwien.ac.at/study-services
+
+\addtitlepage{naustrian} % German title page (not for dissertations at the PhD School).
+\addtitlepage{english} % English title page.
 \addstatementpage
 
 \begin{danksagung*}
@@ -82,68 +140,26 @@
 \end{kurzfassung}
 
 \begin{abstract}
-This thesis presents the development of a Virtual Reality (VR) application aimed at facilitating the energy transition in Austria. It addresses the widespread perception of the energy transition as overly complex and unachievable, a view that has often led to political inaction and public uncertainty. Through the use of VR technology, this research seeks to demonstrate the necessity and feasibility of transitioning towards renewable energy sources, countering the prevailing skepticism and inertia.
-
-The core of this study lies in creating an immersive VR experience that elucidates the concepts and advantages of the energy transition in an engaging and understandable manner. The application is designed to simplify complex environmental principles, making them accessible and relatable to users. By doing so, it aims to inspire a sense of urgency and possibility regarding the adoption of sustainable energy practices.
-
-This work is grounded in the belief that technological innovation, particularly in the realm of VR, can play a crucial role in environmental advocacy. The goal is to empower individuals with knowledge and perspective, contributing to a more proactive and optimistic approach to environmental challenges in Austria.
-
-The findings and developments from this thesis are expected to offer new pathways in environmental education and communication, highlighting how VR can be a potent tool in promoting understanding and action in the face of environmental challenges. This research aims to stand as a testament to the power of technology in driving societal change, especially in contexts where political leadership may be lacking.
+\todo{Enter your text here.}
 \end{abstract}
 
-\selectlanguage{naustrian}
+% Select the language of the thesis, e.g., english or naustrian.
+\selectlanguage{english}
+
+% Add a table of contents (toc).
 \tableofcontents % Starred version, i.e., \tableofcontents*, removes the self-entry.
+
+% Switch to arabic numbering and start the enumeration of chapters in the table of content.
 \mainmatter
 
-\chapter{Einleitung}
-Diese Bachelorarbeit widmet sich der Entwicklung einer innovativen Virtual-Reality-Anwendung, die das Ziel verfolgt, die Energiewende in Österreich voranzubringen. In einem Kontext, in dem die öffentliche Meinung und die Medienberichterstattung in Österreich häufig eine gewisse Skepsis gegenüber der Energiewende und ihren Herausforderungen aufzeigen, strebt diese Arbeit an, durch den Einsatz von VR-Technologie eine positive Veränderung zu bewirken.
+\chapter{Introduction}
+\todo{Enter your text here.}
 
-In Österreich, wo die Energiewende oft in der öffentlichen Debatte und in den Nachrichten als komplexes und kontroverses Thema dargestellt wird, besteht ein dringender Bedarf, die Vorteile und die Machbarkeit eines solchen Übergangs klarer zu kommunizieren. Durch die Schaffung einer VR-Anwendung, die die Prinzipien und Vorteile der Energiewende auf eine interaktive und immersive Weise vermittelt, zielt diese Arbeit darauf ab, die öffentliche Meinung positiv zu beeinflussen und ein tieferes Verständnis für die Notwendigkeit und die Vorteile der Energiewende zu fördern.
-
-Die Arbeit beabsichtigt, die Rolle von VR als ein mächtiges Werkzeug in der Bildungs- und Kommunikationsstrategie zu erkunden, um ein breiteres Bewusstsein und eine stärkere Unterstützung für die Energiewende in der österreichischen Bevölkerung zu schaffen. Indem sie die neuesten Entwicklungen in der VR-Technologie mit den aktuellen Diskussionen über Umweltfragen in Österreich verbindet, strebt diese Bachelorarbeit an, einen wissenschaftlich fundierten Beitrag zu leisten, der sowohl die technologischen Möglichkeiten als auch die gesellschaftlichen Herausforderungen der Energiewende beleuchtet.
-
-\chapter{Verwandte Arbeiten}
-
-\section{Virtual Reality in der Bildung}
-
-Ein zentraler Aspekt in der Diskussion über den Einsatz von Virtual Reality (VR) im Bildungsbereich wird in dem Artikel "Virtual Reality in Education: A Tool for Learning in the Experience Age" von Radić-Weissenfeld, Gutl und Marenzi (2019) aufgegriffen. Dieses Paper, veröffentlicht im International Journal of Advanced Corporate Learning, bietet einen tiefgreifenden Einblick in die vielfältigen Anwendungsmöglichkeiten und das Potenzial von VR als Bildungswerkzeug in der heutigen Ära der Erfahrung und Interaktivität.
-
-Die Autoren erörtern, wie VR-Technologien das Lernen revolutionieren können, indem sie immersive und interaktive Umgebungen schaffen, die es Lernenden ermöglichen, komplexe Konzepte und Systeme auf eine Weise zu erleben, die durch traditionelle Lehrmethoden nicht möglich ist. Dieser Ansatz, der darauf abzielt, abstrakte Theorien durch direkte Erfahrung greifbar zu machen, ist besonders relevant für das grundlegende Verständnis der Energiewende und erneuerbarer Energietechnologien.
-
-Im Kontext meiner Arbeit, die darauf abzielt, durch VR das Verständnis für die Funktionsweise erneuerbarer Energiesysteme zu verbessern, liefert der Artikel von Radić-Weissenfeld et al. wichtige Erkenntnisse. Die in dem Artikel beschriebenen Prinzipien der Immersion und Interaktivität sind grundlegende Säulen für die Entwicklung unserer VR-Anwendung. Insbesondere die Betonung auf die "Erfahrungsorientierung" im Lernprozess ist für unser Projekt von Bedeutung, da es darum geht, den Nutzenden ein tiefes Verständnis für die Dynamik und die Auswirkungen verschiedener Photovoltaik-Konfigurationen zu vermitteln.
-
-Radić-Weissenfeld et al. unterstreichen auch die Bedeutung der Nutzerzentrierung in VR-Lernumgebungen. Dieser Aspekt ist entscheidend, um sicherzustellen, dass unsere VR-Anwendung nicht nur informativ, sondern auch benutzerfreundlich und engagierend ist. Durch die Anwendung dieser Prinzipien können wir eine Lernerfahrung schaffen, die nicht nur lehrreich, sondern auch motivierend und inspirierend für die Nutzer ist.
-
-Abschließend stellt der Artikel von Radić-Weissenfeld et al. eine wichtige Grundlage für unser Vorhaben dar, indem er aufzeigt, wie VR-Technologie effektiv in Bildungskontexten eingesetzt werden kann. Die daraus gewonnenen Erkenntnisse fließen direkt in die Gestaltung unserer VR-Anwendung ein, mit dem Ziel, ein intuitives und effektives Lernerlebnis rund um das Thema Energiewende zu schaffen.
-
-\section{Effektivität von VR-basiertem Unterricht}
-
-Ein weiterer zentraler Bestandteil meiner Literaturübersicht ist das Paper "Effectiveness of virtual reality-based instruction on students' learning outcomes in K-12 and higher education". Dieses Paper bietet eine umfassende Meta-Analyse, die die Wirksamkeit von VR-basierten Lehrmethoden in verschiedenen Bildungskontexten untersucht. Die Autoren analysieren eine Vielzahl von Studien, um zu verstehen, wie und unter welchen Bedingungen VR den Lernerfolg beeinflussen kann.
-
-Die wichtigsten Erkenntnisse aus dieser Studie sind:
-\begin{itemize}
-    \item \textbf{Lernergebnisse}
-    Die Art der Lernergebnisse, ob es sich um Wissens- oder Fähigkeitserwerb handelt, beeinflusst die Wirksamkeit von VR-basiertem Unterricht. Insbesondere zeigte sich, dass VR-Anwendungen effektiver sind, wenn es um den Erwerb von deklarativem Wissen geht, weniger jedoch bei prozeduralen Fähigkeiten.
-    
-    \item \textbf{Kombination von Lehrmethoden}
-    Die Ergebnisse deuten darauf hin, dass eine Kombination aus VR und anderen Lehrmethoden besonders effektiv ist. Dies betont die Bedeutung eines integrierten Ansatzes, bei dem VR als Ergänzung zu traditionellen Lehrmethoden eingesetzt wird. Wenn die Applikation im Zuge von Workshops an Schulen verwendet wird, kann dieser Vorteil genutzt werden.
-    
-    \item \textbf{Feedback und Lernaufgaben}\
-    Die Art des Feedbacks und die Natur der Lernaufgaben spielen eine wesentliche Rolle bei der Bestimmung der Effektivität von VR in der Bildung. Detaillierte Erklärungen sind bei deklarativen Aufgaben wirksamer, während bei prozeduralen Aufgaben konkrete Rückmeldungen zur richtigen Antwort effektiver sind.
-    
-    \item \textbf{Methodologische Strenge}
-    Die Qualität der Studiendesigns beeinflusst ebenfalls die festgestellten Lernergebnisse. Höhere methodologische Strenge führte zu stärkeren Hinweisen auf die Wirksamkeit von VR.
-\end{itemize}
-
-Für meine Arbeit bietet dieses Paper wertvolle Einblicke in die effektive Gestaltung von VR-basierten Bildungsumgebungen. Es unterstreicht die Notwendigkeit, VR-Anwendungen sorgfältig zu gestalten, um sicherzustellen, dass sie die Lernziele unterstützen und ergänzen. Besonders relevant ist die Erkenntnis, dass eine Kombination aus VR und anderen Lehrmethoden sowie die Anpassung des Feedbacks an die Art der Lernaufgabe entscheidend für den Erfolg von VR in der Bildung sind. Diese Erkenntnisse werden in der Entwicklung unserer VR-Anwendung zur Förderung des Verständnisses für erneuerbare Energiesysteme berücksichtigt, um ein gutes Lernerlebnis zu gewährleisten.
-
-
-* VR-Anwendungen für erneuerbare Energien: Arbeiten, die sich mit dem Einsatz von VR in der Umweltbildung und -bewusstsein befassen.
-
-* Designprinzipien für VR: Forschungen, die sich mit User Experience (UX) und User Interface (UI) in VR-Umgebungen beschäftigen.
+\chapter{Additional Chapter}
+\todo{Enter your text here.}
 
 % Remove following line for the final thesis.
-% \input{intro.tex} % A short introduction to LaTeX.
+\input{intro.tex} % A short introduction to LaTeX.
 
 \backmatter
 

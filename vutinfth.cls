@@ -5,10 +5,10 @@
 %% The original source files were:
 %%
 %% vutinfth.dtx  (with options: `class')
-%% 
+%%
 %% This is a generated file.
 %% Copyright (C) 2014-2020 by Thomas Auzinger <thomas@auzinger.name>
-%% 
+%%
 %% This work may be distributed and/or modified under the
 %% conditions of the LaTeX Project Public License, either version 1.3
 %% of this license or (at your option) any later version.
@@ -16,15 +16,15 @@
 %%   http://www.latex-project.org/lppl.txt
 %% and version 1.3 or later is part of all distributions of LaTeX
 %% version 2005/12/01 or later.
-%% 
+%%
 %% This work has the LPPL maintenance status `maintained'.
-%% 
+%%
 %% The Current Maintainer of this work is Thomas Auzinger.
-%% 
+%%
 %% This work consists of the files vutinfth.dtx and vutinfth.ins
 %% and the derived file vutinfth.cls.
 %% This work also consists of the file intro.tex.
-%% 
+%%
 %% vutinfth.dtx
 %% Copyright (C) 2014-2020 by Thomas Auzinger <thomas@auzinger.name>
 \NeedsTeXFormat{LaTeX2e}[1999/12/01]
@@ -49,7 +49,7 @@
   \PassOptionsToClass{\CurrentOption}{memoir}%
 }%
 \ProcessOptions\relax
-\LoadClass[a4paper,11pt]{memoir}%
+\LoadClass[a4paper,12pt]{memoir}%
 \chapterstyle{veelo}%
 \RequirePackage[scaled]{helvet}%
 \RequirePackage{lmodern}%
@@ -61,6 +61,7 @@
 \RequirePackage{calc}%
 \RequirePackage{etoolbox}%
 \RequirePackage{graphicx}%
+
 \graphicspath{{graphics/}}%
 \newcommand{\@namexdef}[1]{\expandafter\xdef\csname#1\endcsname}%
 \newcommand{\ifestrequal}[4]{%
@@ -70,13 +71,17 @@
     \expandafter\expandafter\expandafter\ifstrequal
       \expandafter\vutinfth@tempa\vutinfth@tempb{#3}{#4}%
   \endgroup
-}%
+}
+
+\renewcommand*\familydefault{\sfdefault}
+
 \newcommand{\vutinfth@HUGE}{\fontsize{30}{34}\selectfont}%
 \newcommand{\vutinfth@huge}{\fontsize{20}{23}\selectfont}%
 \newcommand{\vutinfth@LARGE}{\fontsize{17}{22}\selectfont}%
 \newcommand{\vutinfth@Large}{\fontsize{14}{18}\selectfont}%
 \newcommand{\vutinfth@large}{\fontsize{12}{14.5}\selectfont}%
 \newcommand{\vutinfth@normalsize}{\fontsize{11}{13.6}\selectfont}%
+
 \newenvironment{SFFont}[1]{%
   \begingroup
     \sffamily
@@ -408,10 +413,10 @@
   naustrian=Matrikelnummer]{Registrationnumber}%
 \CreatePolylingual[
   english=to the Faculty of Informatics,
-  naustrian=an der Fakult\"at f\"ur Informatik]{faculty}%
+  naustrian=an der Fakultät für Informatik]{faculty}%
 \CreatePolylingual[
   english=at the TU Wien,
-  naustrian=der Technischen Universit\"at Wien]{university}%
+  naustrian=der Technischen Universität Wien]{university}%
 \CreatePolylingual[
   english=Assistance,
   naustrian=Mitwirkung]{Assistance}%
@@ -433,10 +438,10 @@
     of the work - including tables, maps and figures - which belong
     to other works or to the internet, literally or extracted, by
     referencing the source as borrowed.},
-  naustrian={Hiermit erkl\"are ich, dass ich diese Arbeit
-    selbst\"andig verfasst habe, dass ich die verwendeten Quellen
-    und Hilfsmittel vollst\"andig angegeben habe und dass ich die
-    Stellen der Arbeit -- einschlie{\ss}lich Tabellen, Karten und
+  naustrian={Hiermit erkläre ich, dass ich diese Arbeit
+    selbständig verfasst habe, dass ich die verwendeten Quellen
+    und Hilfsmittel vollständig angegeben habe und dass ich die
+    Stellen der Arbeit -- einschließlich Tabellen, Karten und
     Abbildungen --, die anderen Werken oder dem Internet im Wortlaut
     oder dem Sinn nach entnommen sind, auf jeden Fall unter Angabe
     der Quelle als Entlehnung kenntlich gemacht habe.}]{Statement}%
@@ -722,8 +727,8 @@
   \setlength{\parindent}{0pt}%
   \setlength{\baselineskip}{13.6pt}%
   \setlength{\parskip}{0pt plus 1pt}%
-  \begin{SFFont}{phv}%
-    \sffamily
+  % \begin{SFFont}{phv}%
+    % \sffamily
     {\centering
       \vspace*{1.2cm}\par
       \begin{minipage}[t][5cm][b]{\textwidth}%
@@ -777,7 +782,7 @@
     \ReviewerBlock\par
     \SignatureBlock\par
     \vspace*{1cm}%
-  \end{SFFont}%
+  % \end{SFFont}%
   \pagestyle{empty}%
   \cleardoublepage
   \vutinfth@restorelayout
@@ -788,15 +793,15 @@
   \setlength{\parindent}{0pt}%
   \setlength{\baselineskip}{13.6pt}%
   \setlength{\parskip}{0pt plus 1pt}%
-  \begin{SFFont}{phv}%
-    \sffamily
+  % \begin{SFFont}{phv}%
+  %   \sffamily
       \chapter*{\vutinfth@polylingual@StatementChapter}%
       \vutinfth@person@author@fullname\par
       \vspace{1.2cm}%
       {\normalfont\vutinfth@polylingual@Statement}\par
       \vspace{1.2cm}%
       \SignatureFields[y]{\vutinfth@person@author@name}{}%
-  \end{SFFont}%
+  % \end{SFFont}%
   \cleardoublepage
   \vutinfth@restorelayout
 }%
@@ -872,5 +877,3 @@
 \addto\mainmatter{\pagestyle{Ruled}}%
 \addto\backmatter{\pagestyle{vutinfth@pagestyle@default}}%
 \endinput
-%%
-%% End of file `vutinfth.cls'.
