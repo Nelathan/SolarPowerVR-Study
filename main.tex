@@ -12,21 +12,19 @@
 \usepackage{booktabs}   % Improves the typesettings of tables.
 \usepackage{subcaption} % Allows the use of subfigures and enables their referencing.
 \usepackage[ruled,linesnumbered,algochapter]{algorithm2e} % Enables the writing of pseudo code.
-\usepackage[usenames,dvipsnames,table]{xcolor} % Allows the definition and use of colors. This package has to be included before tikz.
+\usepackage[dvipsnames,table]{xcolor} % Allows the definition and use of colors. This package has to be included before tikz.
 \usepackage{nag}       % Issues warnings when best practices in writing LaTeX documents are violated.
 \usepackage{todonotes} % Provides tooltip-like todo notes.
 \usepackage{fontspec} % Determines font encoding of the output. Font packages have to be included before this line.
-% \usepackage{setspace}
 \usepackage{hyperref}  % Enables cross linking in the electronic document version. This package has to be included second to last.
 \usepackage[acronym,toc]{glossaries} % Enables the generation of glossaries and lists fo acronyms. This package has to be included last.
 
-
-
+\uselanguage{ngerman}
 \bibstyle{plain}
 \bibdata{main}
 \setmainfont{Source Serif 4}
 \setsansfont{Source Sans 3}
-\setmonofont[Color={0019D4}]{Fira Code}
+\setmonofont{Fira Code}
 % Define convenience functions to use the author name and the thesis title in the PDF document properties.
 \newcommand{\authorname}{Daniel Jonas Otto} % The author name without titles.
 \newcommand{\thesistitle}{Virtuelle Realität als Katalysator für die Energiewende} % The title of the thesis. The English version should be used, if it exists.
@@ -45,12 +43,10 @@
 \setsecnumdepth{subsection} % Enumerate subsections.
 \nonzeroparskip             % Create space between paragraphs (optional).
 \setlength{\parindent}{0pt} % Remove paragraph identation (optional).
-\newgeometry{top=2.5cm, bottom=2.5cm, inner=2.5cm, outer=2.5cm}
-% \checkandfixthelayout       % Tell memoir to implement the above.
-% set lineheight to 1.5 times 12pt (= 18pt)
-% \setstretch{1.5} doesnt work
-% \renewcommand{\baselinestretch}{1.5}\normalsize
+\newgeometry{top=2cm, bottom=3cm}
 \OnehalfSpacing
+\sloppy
+\setlength{\headheight}{36pt}
 
 \makeindex      % Use an optional index.
 % \makeglossaries % Use an optional glossary.
@@ -69,7 +65,7 @@
 
 \setregnumber{11811332}
 \setdate{10}{11}{2023} % Set date with 3 arguments: {day}{month}{year}.
-\settitle{\thesistitle}{Virtuelle Realität als Katalysator für die Energiewende}
+\settitle{\thesistitle}{Virtuelle Realität als Katalysator\\für die Energiewende}
 % \setsubtitle{Optional Subtitle of the Thesis}{Eine wissenschaftliche Untersuchung des Potenzials von VR-Technologien in der Umweltbildung und -kommunikation}
 \setthesis{bachelor}
 \setcurriculum{Software and Information Engineering}{Software und Information Engineering}
@@ -77,23 +73,23 @@
 
 \begin{document}
 \frontmatter
-\addtitlepage{naustrian}
+\addtitlepage{ngerman}
 \addstatementpage
 
 \begin{danksagung*}
-\todo{Ihr Text hier.}
+Danke an alle, die mich bei der Erstellung dieser Arbeit unterstützt haben. Besonders möchte ich meiner Partnerin Astrid Gaderbauer für ihre Unterstützung und ihr Verständnis während der gesamten Dauer dieser Arbeit danken. Ich möchte auch Helwin Prohaska für seine wertvollen Ratschläge und seine Unterstützung bei der Entwicklung der VR-Anwendung danken. Darüber hinaus möchte ich mich bei meinen Großeltern für ihre finanzielle Unterstützung und Ermutigung bedanken. Schließlich möchte ich mich bei meiner Betreuerin Katharina Krösl für ihre Anleitung und ihr Feedback während der gesamten Arbeit bedanken.
 \end{danksagung*}
 
-\begin{acknowledgements*}
-\todo{Enter your text here.}
-\end{acknowledgements*}
+% \begin{acknowledgements*}
+% \todo{Enter your text here.}
+% \end{acknowledgements*}
 
-\begin{kurzfassung}
-\todo{Ihr Text hier.}
-\the\baselineskip
-% print fontsize
-\the\fontdimen6\font
-\end{kurzfassung}
+% \begin{kurzfassung}
+% \todo{Ihr Text hier.}
+% \the\baselineskip
+% % print fontsize
+% \the\fontdimen6\font
+% \end{kurzfassung}
 
 \begin{abstract}
 This thesis presents the development of a Virtual Reality (VR) application aimed at facilitating the energy transition in Austria. It addresses the widespread perception of the energy transition as overly complex and unachievable, a view that has often led to political inaction and public uncertainty. Through the use of VR technology, this research seeks to demonstrate the necessity and feasibility of transitioning towards renewable energy sources, countering the prevailing skepticism and inertia.
@@ -105,12 +101,12 @@ This work is grounded in the belief that technological innovation, particularly 
 The findings and developments from this thesis are expected to offer new pathways in environmental education and communication, highlighting how VR can be a potent tool in promoting understanding and action in the face of environmental challenges. This research aims to stand as a testament to the power of technology in driving societal change, especially in contexts where political leadership may be lacking.
 \end{abstract}
 
-\selectlanguage{naustrian}
+\selectlanguage{ngerman}
 \tableofcontents % Starred version, i.e., \tableofcontents*, removes the self-entry.
 \mainmatter
 
 \chapter{Einleitung}
-Diese Bachelorarbeit widmet sich der Entwicklung einer innovativen Virtual-Reality-Anwendung, die das Ziel verfolgt, die Energiewende in Österreich voranzubringen. In einem Kontext, in dem die öffentliche Meinung und die Medienberichterstattung in Österreich häufig eine gewisse Skepsis gegenüber der Energiewende und ihren Herausforderungen aufzeigen, strebt diese Arbeit an, durch den Einsatz von VR-Technologie eine positive Veränderung zu bewirken.
+Diese Bachelorarbeit widmet sich der Entwicklung einer innovativen Virtual-Reality-Anwendung, die das Ziel verfolgt, die Energiewende in Österreich voranzubringen. In einem Kontext, in dem die öffentliche Meinung und die Medienberichterstattung in Österreich häufig eine gewisse Skepsis gegenüber der Energiewende und ihren Herausforderungen aufzeigen, strebt diese Arbeit an, durch den Einsatz von VR"=Technologie eine positive Veränderung zu bewirken.
 
 In Österreich, wo die Energiewende oft in der öffentlichen Debatte und in den Nachrichten als komplexes und kontroverses Thema dargestellt wird, besteht ein dringender Bedarf, die Vorteile und die Machbarkeit eines solchen Übergangs klarer zu kommunizieren. Durch die Schaffung einer VR-Anwendung, die die Prinzipien und Vorteile der Energiewende auf eine interaktive und immersive Weise vermittelt, zielt diese Arbeit darauf ab, die öffentliche Meinung positiv zu beeinflussen und ein tieferes Verständnis für die Notwendigkeit und die Vorteile der Energiewende zu fördern.
 
@@ -145,9 +141,9 @@ Haupterkenntnisse des Papers sind:
     \item Die methodologische Strenge der Studiendesigns beeinflusst die festgestellten Lernergebnisse, wobei höhere methodologische Strenge zu stärkeren Belegen für die Wirksamkeit von VR führt.
 \end{itemize}
 
-Für meine Arbeit bietet dieses Paper wertvolle Einblicke in die effektive Gestaltung von VR-basierten Bildungsumgebungen. Es unterstreicht die Notwendigkeit, VR-Anwendungen sorgfältig zu gestalten, um sicherzustellen, dass sie die Lernziele unterstützen und ergänzen. Besonders relevant ist die Erkenntnis, dass eine Kombination aus VR und anderen Lehrmethoden sowie die Anpassung des Feedbacks an die Art der Lernaufgabe entscheidend für den Erfolg von VR in der Bildung sind. Diese Erkenntnisse sollen in der Entwicklung unserer VR-Anwendung berücksichtigt werden, um ein optimales und effektives Lernerlebnis zu gewährleisten.
+Für meine Arbeit bietet dieses Paper wertvolle Einblicke in die effektive Gestaltung von VR-basierten Bildungsumgebungen. Es unterstreicht die Notwendigkeit, VR"=Anwendungen sorgfältig zu gestalten, um sicherzustellen, dass sie die Lernziele unterstützen und ergänzen. Besonders relevant ist die Erkenntnis, dass eine Kombination aus VR und anderen Lehrmethoden sowie die Anpassung des Feedbacks an die Art der Lernaufgabe entscheidend für den Erfolg von VR in der Bildung sind. Diese Erkenntnisse sollen in der Entwicklung unserer VR-Anwendung berücksichtigt werden, um ein optimales und effektives Lernerlebnis zu gewährleisten.
 
-Die in diesem Paper hervorgehobene Effektivität der Kombination von VR mit traditionellen Lehrmethoden findet bereits in unserem Projekt Anwendung. Unsere VR-Anwendung wird in Schulworkshops eingesetzt, um ergänzend zum Frontalunterricht die eher abstrakten Inhalte greifbar und nachvollziehbar zu machen. Diese methodische Verbindung hilft, die Aufmerksamkeit der Jugendlichen zurückzugewinnen und vertieft das Verständnis für die komplexen Themen der Energiewende. Hervorzuheben ist dabei auch der potenzielle Einfluss auf die Wissensretention, der durch die interaktive und immersive Natur von VR verstärkt wird.
+Die in diesem Paper hervorgehobene Effektivität der Kombination von VR mit traditionellen Lehrmethoden findet bereits in unserem Projekt Anwendung. Unsere VR"=Anwendung wird in Schulworkshops eingesetzt, um ergänzend zum Frontalunterricht die eher abstrakten Inhalte greifbar und nachvollziehbar zu machen. Diese methodische Verbindung hilft, die Aufmerksamkeit der Jugendlichen zurückzugewinnen und vertieft das Verständnis für die komplexen Themen der Energiewende. Hervorzuheben ist dabei auch der potenzielle Einfluss auf die Wissensretention, der durch die interaktive und immersive Natur von VR verstärkt wird.
 
 Basierend auf den Erkenntnissen aus dem genannten Paper sowie früheren Forschungen können wir unsere VR-Anwendung durch die Integration folgender Elemente weiterentwickeln:
 
@@ -159,7 +155,7 @@ Basierend auf den Erkenntnissen aus dem genannten Paper sowie früheren Forschun
 
     \item Entwicklung zusätzlicher interaktiver Module, die spezifische Aspekte der Energiewende thematisieren. Diese könnten beispielsweise Simulationen umfassen, die die Auswirkungen verschiedener Energiesysteme unter ausgewählten Umweltbedingungen darstellen.
 
-    \item Berücksichtigung unterschiedlicher Lernstile durch die Bereitstellung verschiedener Interaktionsmöglichkeiten innerhalb der VR-Umgebung. Dies könnte durch die Optionen für exploratives und strukturiertes Lernen ermöglicht werden.
+    \item Durch Bereitstellen von verschiedenen Interaktionsmöglichkeiten innerhalb der VR-Umgebung können unterschiedliche Lernstile berücksichtigt werden. Das kann durch Optionen für exploratives und strukturiertes Lernen ermöglicht werden.
 
     \item Sicherstellung, dass die VR-Anwendung nahtlos in die vor- und nachgelagerten Inhalte der Workshops integriert ist, um ein kohärentes Lernerlebnis zu schaffen. Dies könnte durch die Bereitstellung von Begleitmaterialien und durch die Abstimmung und Vorbereitung der Inhalte mit den Lehrkräften erreicht werden.
 
@@ -188,12 +184,12 @@ Forschungen, die sich mit User Experience (UX) und User Interface (UI) in VR-Umg
 \listoffigures % Starred version, i.e., \listoffigures*, removes the toc entry.
 
 % Use an optional list of tables.
-\cleardoublepage % Start list of tables on the next empty right hand page.
-\listoftables % Starred version, i.e., \listoftables*, removes the toc entry.
+% \cleardoublepage % Start list of tables on the next empty right hand page.
+% \listoftables % Starred version, i.e., \listoftables*, removes the toc entry.
 
 % Use an optional list of alogrithms.
-\listofalgorithms
-\addcontentsline{toc}{chapter}{List of Algorithms}
+% \listofalgorithms
+% \addcontentsline{toc}{chapter}{List of Algorithms}
 
 % Add an index.
 \printindex
@@ -203,6 +199,7 @@ Forschungen, die sich mit User Experience (UX) und User Interface (UI) in VR-Umg
 
 % Add a bibliography.
 \bibliographystyle{alpha}
+% \bibliographystyle{plain}
 \bibliography{main}
 
 \end{document}
