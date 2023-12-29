@@ -51,10 +51,10 @@
 \ProcessOptions\relax
 \LoadClass[a4paper,12pt]{memoir}%
 \chapterstyle{veelo}%
-\RequirePackage[scaled]{helvet}%
-\RequirePackage{lmodern}%
-\RequirePackage{courier}%
-\RequirePackage[T1]{fontenc}%
+% \RequirePackage[scaled]{helvet}%
+% \RequirePackage{lmodern}%
+% \RequirePackage{courier}%
+% \RequirePackage[T1]{fontenc}%
 \RequirePackage[english,naustrian]{babel}%
 \RequirePackage[nodayofweek]{datetime}%
 \RequirePackage{geometry}%
@@ -74,13 +74,14 @@
 }
 
 \renewcommand*\familydefault{\sfdefault}
+\setlength{\headheight}{36pt}
 
-\newcommand{\vutinfth@HUGE}{\fontsize{30}{34}\selectfont}%
-\newcommand{\vutinfth@huge}{\fontsize{20}{23}\selectfont}%
-\newcommand{\vutinfth@LARGE}{\fontsize{17}{22}\selectfont}%
-\newcommand{\vutinfth@Large}{\fontsize{14}{18}\selectfont}%
-\newcommand{\vutinfth@large}{\fontsize{12}{14.5}\selectfont}%
-\newcommand{\vutinfth@normalsize}{\fontsize{11}{13.6}\selectfont}%
+\newcommand{\vutinfth@title}{\fontsize{24}{28}\selectfont}%
+\newcommand{\vutinfth@subtitle}{\fontsize{18}{22}\selectfont}%
+\newcommand{\vutinfth@one}{\fontsize{16}{20}\selectfont}%
+\newcommand{\vutinfth@two}{\fontsize{14}{18}\selectfont}%
+\newcommand{\vutinfth@three}{\fontsize{12}{14}\selectfont}%
+\newcommand{\vutinfth@base}{\fontsize{12}{18}\selectfont}%
 
 \newenvironment{SFFont}[1]{%
   \begingroup
@@ -552,8 +553,8 @@
 \newcommand{\vutinfth@footer@titlepage}{%
   \centering
   \begin{minipage}{\textwidth}%
-    \centering\vutinfth@normalsize\sffamily
-    Technische Universit\"{a}t Wien\\
+    \centering\vutinfth@base\sffamily
+    Technische Universität Wien\\
     A-1040 Wien \vutinfth@squarebullet\space
     Karlsplatz 13 \vutinfth@squarebullet\space
     Tel. +43-1-58801-0 \vutinfth@squarebullet\space
@@ -580,7 +581,7 @@
 \newcommand{\AdvisorBlock}{%
   \ifundergraduate{%
     \begin{minipage}[t][2.5cm][t]{\textwidth}%
-      \vutinfth@normalsize
+      \vutinfth@base
       \begin{tabular}{@{}l@{ }l}%
         \vutinfth@polylingual@Advisor: &
         \vutinfth@person@advisor@fullname\\
@@ -611,7 +612,7 @@
   }%
   \ifgraduate{%
     \begin{minipage}[t][1.6cm][t]{\textwidth}%
-      \vutinfth@normalsize
+      \vutinfth@base
       \vutinfth@polylingual@Advisor:
       \vutinfth@person@advisor@fullname
       \ifdef{\vutinfth@person@secondadvisor@def}{%
@@ -626,7 +627,7 @@
 \newsetlength{\vutinfth@signature@width}{51mm}%
 \newsetlength{\vutinfth@placedate@width}{50mm}%
 \newcommand{\SignatureFields}[3][n]{%
-  {\vutinfth@normalsize
+  {\vutinfth@base
     \ifstrequal{#1}{y}{%
       \begin{minipage}[b][\vutinfth@signature@height]{%
           \vutinfth@placedate@width
@@ -669,7 +670,7 @@
 \newcommand{\ReviewerBlock}{%
   \ifgraduate{%
     \ifdoctor{%
-      {\vutinfth@normalsize
+      {\vutinfth@base
         \vutinfth@polylingual@Reviewed\\
         \SignatureFields[h]{%
           \vutinfth@person@firstreviewer@name
@@ -679,7 +680,7 @@
       }%
     }%
     \ifphd{%
-      {\vutinfth@normalsize
+      {\vutinfth@base
         \vutinfth@polylingual@Reviewers\\
         \vutinfth@person@firstreviewer@name.
         \vutinfth@data@firstreviewerdata.\\
@@ -691,7 +692,7 @@
 }%
 \newcommand{\SignatureBlock}{%
   \ifundergraduate{%
-    {\vutinfth@normalsize
+    {\vutinfth@base
       \SignatureFields[y]{%
         \vutinfth@person@author@name
       }{%
@@ -700,7 +701,7 @@
     }%
   }%
   \ifgraduate{%
-    {\vutinfth@normalsize
+    {\vutinfth@base
       \ifdoctor{%
         \SignatureFields[y]{}{%
           \vutinfth@person@author@name
@@ -723,85 +724,81 @@
     headsep=\vutinfth@header@separator,
     head=\vutinfth@header@height
   }%
+  \linespread{1.2}\selectfont
   \vutinfth@savelayout
   \setlength{\parindent}{0pt}%
-  \setlength{\baselineskip}{13.6pt}%
-  \setlength{\parskip}{0pt plus 1pt}%
-  % \begin{SFFont}{phv}%
-    % \sffamily
-    {\centering
-      \vspace*{1.2cm}\par
-      \begin{minipage}[t][5cm][b]{\textwidth}%
-        \centering
-        \vutinfth@HUGE{\bfseries\vutinfth@polylingual@Title}\\
-        \bigskip
-        \vutinfth@huge{\bfseries
-          \ifdef{\vutinfth@polylingual@Subtitle}{%
-            \vutinfth@polylingual@Subtitle}{%
-          }%
-        }%
-      \end{minipage}\par
-      \vutinfth@bigskip\vutinfth@bigskip
-      {\vutinfth@LARGE\vutinfth@polylingual@thesisname}\par
-      \vutinfth@bigskip
-      {\vutinfth@large\vutinfth@polylingual@submission}\par
-      \vutinfth@bigskip
-      \ifundergraduate{%
-        {\vutinfth@LARGE{\bfseries\vutinfth@polylingual@degreename}}\par
-        \vutinfth@bigskip
-        {\vutinfth@large\vutinfth@polylingual@in}\par
-        \vutinfth@bigskip
-        {\vutinfth@Large{\bfseries\vutinfth@polylingual@Curriculum}}\par
-      }%
-      \ifgraduate{%
-        {\vutinfth@LARGE{\bfseries\vutinfth@polylingual@degreename}}\par
-        \ifphd{%
-          \vutinfth@bigskip
-          {\vutinfth@large\vutinfth@polylingual@within}\par
-          \vutinfth@bigskip
-          {\vutinfth@LARGE{\bfseries\vutinfth@polylingual@School}}\par
+  \setlength{\parskip}{0pt plus 1pt}
+  {\centering
+    \vspace*{\fill}\par
+    \begin{minipage}[t][5cm][b]{\textwidth}%
+      \centering
+      \vutinfth@title{\bfseries\vutinfth@polylingual@Title}\\
+      \bigskip
+      \vutinfth@subtitle{\bfseries
+        \ifdef{\vutinfth@polylingual@Subtitle}{%
+          \vutinfth@polylingual@Subtitle}{%
         }%
       }%
-      \vutinfth@bigskip
-      {\vutinfth@large\vutinfth@polylingual@by}\par
-      \vutinfth@bigskip
-      {\vutinfth@Large{\bfseries\vutinfth@person@author@fullname}}\par
-      \smallskip
-      {\vutinfth@large\vutinfth@polylingual@Registrationnumber\
-      \vutinfth@data@regnumber}\par
-    }%
-    \vutinfth@bigskip\vutinfth@bigskip
-    \ifgraduate{\ifphd{\vspace*{-8mm}}}%
-    \begin{minipage}[b][1.6cm][c]{\textwidth}%
-      \vutinfth@normalsize%
-      \vutinfth@polylingual@faculty\par
-      \vutinfth@polylingual@university
     \end{minipage}\par
-    \AdvisorBlock\par
-    \vfill
-    \ReviewerBlock\par
-    \SignatureBlock\par
-    \vspace*{1cm}%
-  % \end{SFFont}%
+    \vutinfth@bigskip\vutinfth@bigskip
+    {\vutinfth@one\vutinfth@polylingual@thesisname}\par
+    \vutinfth@bigskip
+    {\vutinfth@three\vutinfth@polylingual@submission}\par
+    \vutinfth@bigskip
+    \ifundergraduate{%
+      {\vutinfth@one{\bfseries\vutinfth@polylingual@degreename}}\par
+      \vutinfth@bigskip
+      {\vutinfth@three\vutinfth@polylingual@in}\par
+      \vutinfth@bigskip
+      {\vutinfth@two{\bfseries\vutinfth@polylingual@Curriculum}}\par
+    }%
+    \ifgraduate{%
+      {\vutinfth@one{\bfseries\vutinfth@polylingual@degreename}}\par
+      \ifphd{%
+        \vutinfth@bigskip
+        {\vutinfth@three\vutinfth@polylingual@within}\par
+        \vutinfth@bigskip
+        {\vutinfth@one{\bfseries\vutinfth@polylingual@School}}\par
+      }%
+    }%
+    \vutinfth@bigskip
+    {\vutinfth@three\vutinfth@polylingual@by}\par
+    \vutinfth@bigskip
+    {\vutinfth@two{\bfseries\vutinfth@person@author@fullname}}\par
+    \smallskip
+    {\vutinfth@three\vutinfth@polylingual@Registrationnumber\
+    \vutinfth@data@regnumber}\par
+  }%
+  \vutinfth@bigskip\vutinfth@bigskip
+  % \ifgraduate{\ifphd{\vspace*{-8mm}}}%
+  \begin{minipage}[b][1.6cm][c]{\textwidth}%
+    \vutinfth@base%
+    \vutinfth@polylingual@faculty\par
+    \vutinfth@polylingual@university
+  \end{minipage}\par
+  \AdvisorBlock\par
+  \vfill
+  \ReviewerBlock\par
+  \SignatureBlock\par
+  \vspace*{\fill}%
   \pagestyle{empty}%
   \cleardoublepage
   \vutinfth@restorelayout
   \restoregeometry
 }%
+
 \newcommand{\AddStatementPage}{
   \vutinfth@savelayout
+  \linespread{1.5}\selectfont
   \setlength{\parindent}{0pt}%
-  \setlength{\baselineskip}{13.6pt}%
+  % \setlength{\baselineskip}{13.6pt}%
   \setlength{\parskip}{0pt plus 1pt}%
-  % \begin{SFFont}{phv}%
-  %   \sffamily
-      \chapter*{\vutinfth@polylingual@StatementChapter}%
-      \vutinfth@person@author@fullname\par
-      \vspace{1.2cm}%
-      {\normalfont\vutinfth@polylingual@Statement}\par
-      \vspace{1.2cm}%
-      \SignatureFields[y]{\vutinfth@person@author@name}{}%
-  % \end{SFFont}%
+  \chapter*{\vutinfth@polylingual@StatementChapter}%
+  \vutinfth@person@author@fullname\par
+  \vspace{1.2cm}%
+  {\normalfont\vutinfth@polylingual@Statement}\par
+  \vspace{1.2cm}%
+  \SignatureFields[y]{\vutinfth@person@author@name}{}%
   \cleardoublepage
   \vutinfth@restorelayout
 }%

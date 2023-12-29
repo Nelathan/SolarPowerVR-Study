@@ -1,7 +1,8 @@
-\documentclass[draft,final]{vutinfth} % Remove option 'final' to obtain debug information.
-% \documentclass[draft]{vutinfth} % Remove option 'final' to obtain debug information.
+% \documentclass[draft,final]{vutinfth} % Remove option 'final' to obtain debug information.
+\documentclass[draft]{vutinfth} % Remove option 'final' to obtain debug information.
 
 % Extended LaTeX functionality is enables by including packages with \usepackage{...}.
+
 \usepackage{amsmath}    % Extended typesetting of mathematical expression.
 \usepackage{amssymb}    % Provides a multitude of mathematical symbols.
 \usepackage{mathtools}  % Further extensions of mathematical typesetting.
@@ -14,9 +15,15 @@
 \usepackage[usenames,dvipsnames,table]{xcolor} % Allows the definition and use of colors. This package has to be included before tikz.
 \usepackage{nag}       % Issues warnings when best practices in writing LaTeX documents are violated.
 \usepackage{todonotes} % Provides tooltip-like todo notes.
+\usepackage{fontspec} % Determines font encoding of the output. Font packages have to be included before this line.
+% \usepackage{setspace}
 \usepackage{hyperref}  % Enables cross linking in the electronic document version. This package has to be included second to last.
 \usepackage[acronym,toc]{glossaries} % Enables the generation of glossaries and lists fo acronyms. This package has to be included last.
-\usepackage{fontspec} % Determines font encoding of the output. Font packages have to be included before this line.
+
+
+
+\bibstyle{plain}
+\bibdata{main}
 \setmainfont{Source Serif 4}
 \setsansfont{Source Sans 3}
 \setmonofont[Color={0019D4}]{Fira Code}
@@ -27,7 +34,7 @@
 % Set PDF document properties
 \hypersetup{
     pdfpagelayout   = TwoPageRight,           % How the document is shown in PDF viewers (optional).
-    linkbordercolor = {Blue},                % The color of the borders of boxes around crosslinks (optional).
+    linkbordercolor = {Blue},                 % The color of the borders of boxes around crosslinks (optional).
     pdfauthor       = {\authorname},          % The author's name in the document properties (optional).
     pdftitle        = {\thesistitle},         % The document's title in the document properties (optional).
     pdfsubject      = {Subject},              % The document's subject in the document properties (optional).
@@ -36,12 +43,17 @@
 
 \setpnumwidth{2.5em}        % Avoid overfull hboxes in the table of contents (see memoir manual).
 \setsecnumdepth{subsection} % Enumerate subsections.
-
 \nonzeroparskip             % Create space between paragraphs (optional).
 \setlength{\parindent}{0pt} % Remove paragraph identation (optional).
+\newgeometry{top=2.5cm, bottom=2.5cm, inner=2.5cm, outer=2.5cm}
+% \checkandfixthelayout       % Tell memoir to implement the above.
+% set lineheight to 1.5 times 12pt (= 18pt)
+% \setstretch{1.5} doesnt work
+% \renewcommand{\baselinestretch}{1.5}\normalsize
+\OnehalfSpacing
 
 \makeindex      % Use an optional index.
-\makeglossaries % Use an optional glossary.
+% \makeglossaries % Use an optional glossary.
 %\glstocfalse   % Remove the glossaries from the table of contents.
 
 % Set persons with 4 arguments:
@@ -58,14 +70,13 @@
 \setregnumber{11811332}
 \setdate{10}{11}{2023} % Set date with 3 arguments: {day}{month}{year}.
 \settitle{\thesistitle}{Virtuelle Realität als Katalysator für die Energiewende}
-\setsubtitle{Optional Subtitle of the Thesis}{Eine wissenschaftliche Untersuchung des Potenzials von VR-Technologien in der Umweltbildung und -kommunikation}
+% \setsubtitle{Optional Subtitle of the Thesis}{Eine wissenschaftliche Untersuchung des Potenzials von VR-Technologien in der Umweltbildung und -kommunikation}
 \setthesis{bachelor}
 \setcurriculum{Software and Information Engineering}{Software und Information Engineering}
 
+
 \begin{document}
 \frontmatter
-
-\linespread{1.5}\selectfont
 \addtitlepage{naustrian}
 \addstatementpage
 
@@ -79,6 +90,9 @@
 
 \begin{kurzfassung}
 \todo{Ihr Text hier.}
+\the\baselineskip
+% print fontsize
+\the\fontdimen6\font
 \end{kurzfassung}
 
 \begin{abstract}
@@ -106,7 +120,7 @@ Die Arbeit beabsichtigt, die Rolle von VR als ein mächtiges Werkzeug in der Bil
 
 \section{Virtual Reality in der Bildung}
 
-Ein zentraler Aspekt in der Diskussion über den Einsatz von Virtual Reality (VR) im Bildungsbereich wird in dem Artikel "Virtual Reality in Education: A Tool for Learning in the Experience Age" von Radić-Weissenfeld, Gutl und Marenzi (2019) aufgegriffen. Dieses Paper, veröffentlicht im International Journal of Advanced Corporate Learning, bietet einen tiefgreifenden Einblick in die vielfältigen Anwendungsmöglichkeiten und das Potenzial von VR als Bildungswerkzeug in der heutigen Ära der Erfahrung und Interaktivität.
+Ein zentraler Aspekt in der Diskussion über den Einsatz von Virtual Reality (VR) im Bildungsbereich wird in dem Artikel "Virtual Reality in Education: A Tool for Learning in the Experience Age" von Radić-Weissenfeld, Gutl und Marenzi (2019) aufgegriffen \cite{hu2017virtual}. Dieses Paper, veröffentlicht im International Journal of Advanced Corporate Learning, bietet einen tiefgreifenden Einblick in die vielfältigen Anwendungsmöglichkeiten und das Potenzial von VR als Bildungswerkzeug in der heutigen Ära der Erfahrung und Interaktivität.
 
 Die Autoren erörtern, wie VR-Technologien das Lernen revolutionieren können, indem sie immersive und interaktive Umgebungen schaffen, die es Lernenden ermöglichen, komplexe Konzepte und Systeme auf eine Weise zu erleben, die durch traditionelle Lehrmethoden nicht möglich ist. Dieser Ansatz, der darauf abzielt, abstrakte Theorien durch direkte Erfahrung greifbar zu machen, ist besonders relevant für das grundlegende Verständnis der Energiewende und erneuerbarer Energietechnologien.
 
