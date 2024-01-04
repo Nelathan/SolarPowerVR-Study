@@ -43,10 +43,12 @@
 \setsecnumdepth{subsection} % Enumerate subsections.
 \nonzeroparskip             % Create space between paragraphs (optional).
 \setlength{\parindent}{0pt} % Remove paragraph identation (optional).
-\newgeometry{top=2cm, bottom=3cm}
+\newgeometry{top=2.5cm, bottom=2.5cm}
 \OnehalfSpacing
-\sloppy
-\setlength{\headheight}{36pt}
+% \sloppy
+\hyphenpenalty=800
+\tolerance=2000
+\emergencystretch=3em
 
 \makeindex      % Use an optional index.
 % \makeglossaries % Use an optional glossary.
@@ -77,7 +79,7 @@
 \addstatementpage
 
 \begin{danksagung*}
-Danke an alle, die mich bei der Erstellung dieser Arbeit unterstützt haben. Besonders möchte ich meiner Partnerin Astrid Gaderbauer für ihre Unterstützung und ihr Verständnis während der gesamten Dauer dieser Arbeit danken. Ich möchte auch Helwin Prohaska für seine wertvollen Ratschläge und seine Unterstützung bei der Entwicklung der VR-Anwendung danken. Darüber hinaus möchte ich mich bei meinen Großeltern für ihre finanzielle Unterstützung und Ermutigung bedanken. Schließlich möchte ich mich bei meiner Betreuerin Katharina Krösl für ihre Anleitung und ihr Feedback während der gesamten Arbeit bedanken.
+Danke an alle, die mich bei der Erstellung dieser Arbeit unterstützt haben. Besonders möchte ich meiner Partnerin Astrid Gaderbauer für ihre Unterstützung und ihr Verständnis während der gesamten Dauer dieser Arbeit danken. Ich möchte auch Helwin Prohaska für seine wertvollen Ratschläge und seine Unterstützung bei der Entwicklung der VR"=Anwendung danken. Darüber hinaus möchte ich mich bei meinen Großeltern für ihre finanzielle Unterstützung und Ermutigung bedanken. Schließlich möchte ich mich bei meiner Betreuerin Katharina Krösl für ihre Anleitung und ihr Feedback während der gesamten Arbeit bedanken.
 \end{danksagung*}
 
 % \begin{acknowledgements*}
@@ -106,77 +108,111 @@ The findings and developments from this thesis are expected to offer new pathway
 \mainmatter
 
 \chapter{Einleitung}
-Diese Bachelorarbeit widmet sich der Entwicklung einer innovativen Virtual-Reality-Anwendung, die das Ziel verfolgt, die Energiewende in Österreich voranzubringen. In einem Kontext, in dem die öffentliche Meinung und die Medienberichterstattung in Österreich häufig eine gewisse Skepsis gegenüber der Energiewende und ihren Herausforderungen aufzeigen, strebt diese Arbeit an, durch den Einsatz von VR"=Technologie eine positive Veränderung zu bewirken.
+Diese Bachelorarbeit widmet sich der Entwicklung einer innovativen Virtual"=Reality"=Anwendung, die das Ziel verfolgt, die Energiewende in Österreich voranzubringen. In einem Kontext, in dem die öffentliche Meinung und die Medienberichterstattung in Österreich häufig eine gewisse Skepsis gegenüber der Energiewende und ihren Herausforderungen aufzeigen, strebt diese Arbeit an, durch den Einsatz von VR"=Technologie eine positive Veränderung zu bewirken.
 
-In Österreich, wo die Energiewende oft in der öffentlichen Debatte und in den Nachrichten als komplexes und kontroverses Thema dargestellt wird, besteht ein dringender Bedarf, die Vorteile und die Machbarkeit eines solchen Übergangs klarer zu kommunizieren. Durch die Schaffung einer VR-Anwendung, die die Prinzipien und Vorteile der Energiewende auf eine interaktive und immersive Weise vermittelt, zielt diese Arbeit darauf ab, die öffentliche Meinung positiv zu beeinflussen und ein tieferes Verständnis für die Notwendigkeit und die Vorteile der Energiewende zu fördern.
+In Österreich wird die Energiewende oft in der öffentlichen Debatte und den Nachrichten als komplex und umstritten wahrgenommen. Die Notwendigkeit, die Vorteile und Machbarkeit dieses Übergangs klarer zu kommunizieren, ist dringend. Diese Bachelorarbeit zielt darauf ab, durch die Schaffung einer VR"=Anwendung, die die Prinzipien und Vorteile der Energiewende auf interaktive und immersive Weise vermittelt, die öffentliche Meinung positiv zu beeinflussen und ein tieferes Verständnis für ihre Bedeutung zu fördern.
 
-Die Arbeit beabsichtigt, die Rolle von VR als ein mächtiges Werkzeug in der Bildungs- und Kommunikationsstrategie zu erkunden, um ein breiteres Bewusstsein und eine stärkere Unterstützung für die Energiewende in der österreichischen Bevölkerung zu schaffen. Indem sie die neuesten Entwicklungen in der VR-Technologie mit den aktuellen Diskussionen über Umweltfragen in Österreich verbindet, strebt diese Bachelorarbeit an, einen wissenschaftlich fundierten Beitrag zu leisten, der sowohl die technologischen Möglichkeiten als auch die gesellschaftlichen Herausforderungen der Energiewende beleuchtet.
+Die Arbeit beabsichtigt, die Rolle von VR als ein mächtiges Werkzeug in der Bildungs- und Kommunikationsstrategie zu erkunden, um ein breiteres Bewusstsein und eine stärkere Unterstützung für die Energiewende in der österreichischen Bevölkerung zu schaffen.
+Dabei nutze ich die neuesten Entwicklungen der VR"=Technologie und verbinde sie mit aktuellen Umweltthemen.
+
+Mein Ziel ist es, einen wissenschaftlich fundierten Beitrag zu leisten, der sowohl die technologischen Aspekte als auch die didaktischen Prinzipien bei der Vermittlung der Herausforderungen und Lösungen der Energiewende berücksichtigt. Die Arbeit soll als Grundlage für zukünftige Forschungen und Anwendungen dienen, die sich mit der Verwendung von VR"=Technologie in der Umweltbildung und "=kommunikation befassen.
 
 \chapter{Verwandte Arbeiten}
 
 \section{Virtual Reality in der Bildung}
 
-Ein zentraler Aspekt in der Diskussion über den Einsatz von Virtual Reality (VR) im Bildungsbereich wird in dem Artikel "Virtual Reality in Education: A Tool for Learning in the Experience Age" von Radić-Weissenfeld, Gutl und Marenzi (2019) aufgegriffen \cite{hu2017virtual}. Dieses Paper, veröffentlicht im International Journal of Advanced Corporate Learning, bietet einen tiefgreifenden Einblick in die vielfältigen Anwendungsmöglichkeiten und das Potenzial von VR als Bildungswerkzeug in der heutigen Ära der Erfahrung und Interaktivität.
+Ein zentraler Aspekt in der Diskussion über den Einsatz von Virtual Reality (VR) im Bildungsbereich wird in dem Artikel \glqq Virtual Reality in Education: A Tool for Learning in the Experience Age\grqq\cite{hu2017virtual} von Radić"=Weissenfeld et al. aufgegriffen. Dieses Paper bietet einen tiefgreifenden Einblick in die vielfältigen Anwendungsmöglichkeiten und das Potenzial von VR als Bildungswerkzeug in der heutigen Ära der Erfahrung und Interaktivität.
 
-Die Autoren erörtern, wie VR-Technologien das Lernen revolutionieren können, indem sie immersive und interaktive Umgebungen schaffen, die es Lernenden ermöglichen, komplexe Konzepte und Systeme auf eine Weise zu erleben, die durch traditionelle Lehrmethoden nicht möglich ist. Dieser Ansatz, der darauf abzielt, abstrakte Theorien durch direkte Erfahrung greifbar zu machen, ist besonders relevant für das grundlegende Verständnis der Energiewende und erneuerbarer Energietechnologien.
+Die Autoren erörtern, wie VR"=Technologien das Lernen revolutionieren können, indem sie immersive und interaktive Umgebungen schaffen, die es Lernenden ermöglichen, komplexe Konzepte und Systeme auf eine Weise zu erleben, die durch traditionelle Lehrmethoden nicht möglich ist. Dieser Ansatz, der darauf abzielt, abstrakte Theorien durch direkte Erfahrung greifbar zu machen, ist besonders relevant für das grundlegende Verständnis der Energiewende und erneuerbarer Energietechnologien. Die Autoren betonen, dass VR"=Technologie die Möglichkeit bietet, die Lernenden in die Lage zu versetzen, die Auswirkungen ihrer Entscheidungen und Handlungen in einer realistischen Umgebung zu erleben. Dieser Ansatz ist besonders relevant für die Energiewende, da er es den Lernenden ermöglicht, die Auswirkungen ihrer Entscheidungen auf die Umwelt zu verstehen und zu erleben.
 
-Im Kontext meiner Arbeit, die darauf abzielt, durch VR das Verständnis für die Funktionsweise erneuerbarer Energiesysteme zu verbessern, liefert der Artikel von Radić-Weissenfeld et al. wichtige Erkenntnisse. Die in dem Artikel beschriebenen Prinzipien der Immersion und Interaktivität sind grundlegende Säulen für die Entwicklung unserer VR-Anwendung. Insbesondere die Betonung auf die "Erfahrungsorientierung" im Lernprozess ist für unser Projekt von Bedeutung, da es darum geht, den Nutzenden ein tiefes Verständnis für die Dynamik und die Auswirkungen verschiedener Photovoltaik-Konfigurationen zu vermitteln.
+Im Kontext meiner Arbeit, die darauf abzielt, durch VR das Verständnis für die Funktionsweise erneuerbarer Energiesysteme zu verbessern, liefert dieser Artikel wichtige Erkenntnisse. Die in dem Artikel beschriebenen Prinzipien der Immersion und Interaktivität sind grundlegende Säulen für die Entwicklung der VR"=Anwendung. Insbesondere die Betonung auf die \glqq Erfahrungsorientierung\grqq im Lernprozess ist für das Projekt von Bedeutung, da es darum geht, den Nutzenden ein tiefes Verständnis für die Dynamik und die Auswirkungen verschiedener Photovoltaik"=Konfigurationen zu vermitteln.
 
-Radić-Weissenfeld et al. unterstreichen auch die Bedeutung der Nutzerzentrierung in VR-Lernumgebungen. Dieser Aspekt ist entscheidend, um sicherzustellen, dass unsere VR-Anwendung nicht nur informativ, sondern auch benutzerfreundlich und engagierend ist. Durch die Anwendung dieser Prinzipien können wir eine Lernerfahrung schaffen, die nicht nur lehrreich, sondern auch motivierend und inspirierend für die Nutzer ist.
+Radić"=Weissenfeld et al. unterstreichen auch die Bedeutung der Nutzerzentrierung in VR"=Lernumgebungen. Dieser Aspekt ist entscheidend, um sicherzustellen, dass unsere VR"=Anwendung nicht nur informativ, sondern auch benutzerfreundlich und engagierend ist. Durch die Anwendung dieser Prinzipien können wir eine Lernerfahrung schaffen, die nicht nur lehrreich, sondern auch motivierend und inspirierend für die Nutzer ist.
 
-Abschließend stellt der Artikel von Radić-Weissenfeld et al. eine wichtige Grundlage für unser Vorhaben dar, indem er aufzeigt, wie VR-Technologie effektiv in Bildungskontexten eingesetzt werden kann. Die daraus gewonnenen Erkenntnisse fließen direkt in die Gestaltung unserer VR-Anwendung ein, mit dem Ziel, ein intuitives und effektives Lernerlebnis rund um das Thema Energiewende zu schaffen.
+Abschließend stellt der Artikel von Radić"=Weissenfeld et al. eine wichtige Grundlage für unser Vorhaben dar, indem er aufzeigt, wie VR"=Technologie effektiv in Bildungskontexten eingesetzt werden kann. Die daraus gewonnenen Erkenntnisse fließen direkt in die Gestaltung unserer VR"=Anwendung ein, mit dem Ziel, ein intuitives und effektives Lernerlebnis rund um das Thema Energiewende zu schaffen.
+% welche erkenntnisse konkret?
 
-\section{Effektivität und Integration von VR-basiertem Unterricht}
+\section{VR"=Technologie in der höheren Bildung: Neue Perspektiven und Anwendungen}
 
-Die Integration von VR-basiertem Unterricht in traditionelle Lehrmethoden stellt ein zentrales Element meiner Literaturübersicht dar. Diese Thematik wird insbesondere im Paper "Effectiveness of virtual reality-based instruction on students' learning outcomes in K-12 and higher education" umfassend analysiert. Diese Meta-Analyse erforscht die Wirksamkeit von VR in verschiedenen Bildungskontexten und beleuchtet detailliert, unter welchen spezifischen Bedingungen VR den Lernerfolg signifikant beeinflussen kann. Somit bietet sie wertvolle Erkenntnisse für die effektive Nutzung von VR in Bildungsumgebungen. Die Ergebnisse sind insbesondere aufgrund der übereinstimmenden Altersgruppe der Teilnehmenden und des thematischen Fokus auf deklarative Lernziele für unser Vorhaben von hoher Relevanz.
+Virtual Reality hat sich als einflussreiches Instrument in der Hochschulbildung, insbesondere in den STEM"=Fächern (Wissenschaft, Technik, Ingenieurwesen und Mathematik), etabliert. Laut \glqq A Review of the Application of Virtual Reality Technology in Higher Education\grqq\cite{ding2022review} wird VR überwiegend in diesen Fachbereichen eingesetzt, um komplexe und abstrakte Konzepte anschaulich zu machen. Durch die immersiven Eigenschaften von VR können Studierende technische und wissenschaftliche Prozesse nicht nur theoretisch erlernen, sondern sie auch praktisch und visuell erfassen, was zu einem tieferen Verständnis führt. Diese Anwendung von VR unterstreicht das Potenzial der Technologie, anspruchsvolle Themen zugänglicher und greifbarer zu machen.
+
+Die in der Studie untersuchten empirischen Belege zeigen, dass VR einen signifikanten Einfluss auf die Lernergebnisse der Studierenden hat. Durch den Einsatz von VR"=Technologie in der Hochschulbildung wird eine Verbesserung in der Aufnahme und Retention von Wissen beobachtet. VR bietet eine einzigartige, interaktive Lernerfahrung, die traditionelle Lehrmethoden ergänzt und übertrifft, indem sie die Studierenden direkt in die Lernumgebung eintauchen lässt. Diese direkte, erfahrungsbasierte Lernmethode fördert nicht nur das Verständnis komplexer wissenschaftlicher und technischer Konzepte, sondern verbessert auch die langfristige Behaltensleistung.
+
+Überdies wird in der Studie hervorgehoben, dass VR das Lernverhalten von Studierenden positiv beeinflusst. Der Einsatz von VR in Lehrplänen führt zu erhöhtem Engagement und Motivation unter den Studierenden. Diese Technologie ermöglicht es den Lernenden, in einer interaktiven und dynamischen Umgebung zu experimentieren und zu erkunden, was das Lernen zu einer aktiven und fesselnden Erfahrung macht. Dadurch wird nicht nur das Interesse am Stoff geweckt, sondern auch die Fähigkeit zur Problemlösung und kritischen Analyse gefördert. Diese Veränderungen im Verhalten der Studierenden tragen dazu bei, den Lernerfolg zu steigern und ein tieferes, anhaltendes Interesse an den Themen zu fördern.
+
+\section{Bedeutende Entwicklungen in Bildungsvirtuellen Umgebungen}
+
+In ihrem wegweisenden Artikel \glqq Educational virtual environments: A ten-year review of empirical research (1999--2009)\grqq \cite{mikropoulos2011educational} bieten Tassos A. Mikropoulos und Antonis Natsis eine umfassende Analyse der Forschung im Bereich der bildungsorientierten virtuellen Umgebungen (VE) über einen Zeitraum von zehn Jahren. Diese umfangreiche Betrachtung beleuchtet die entscheidenden Entwicklungen und Veränderungen, die virtuelle Bildungsumgebungen im letzten Jahrzehnt durchlaufen haben, und liefert somit eine unverzichtbare Grundlage für das Verständnis der aktuellen und zukünftigen Trends in diesem Bereich.
+
+Mikropoulos und Natsis konzentrieren sich in ihrer Arbeit auf die vielfältigen Anwendungsmöglichkeiten von VEs in der Bildung. Sie stellen fest, dass VEs zunehmend als wirksame Werkzeuge anerkannt werden, die das Lernen durch ihre Immersion und Interaktivität bereichern. Ihre Analyse deckt ein breites Spektrum von Anwendungsbereichen ab, von naturwissenschaftlichen Fächern bis hin zu komplexen sozialen und kulturellen Themen, und beleuchtet dabei die einzigartigen Vorteile, die VEs in diesen verschiedenen Kontexten bieten.
+
+Ein zentraler Aspekt ihrer Erkenntnisse ist die Bedeutung der Interaktivität in VEs. Sie argumentieren, dass interaktive Elemente in virtuellen Bildungsumgebungen das Engagement und die Motivation der Lernenden steigern können, was zu einem tieferen und nachhaltigeren Verständnis des Lerninhalts führt.
+
+Darüber hinaus betonen Mikropoulos und Natsis die Rolle von VEs bei der Förderung von kollaborativem Lernen. Mikropoulos und Natsis zeigen auf, wie virtuelle Umgebungen das kooperative und kollaborative Lernen unterstützen können. Sie heben hervor, dass VEs eine Plattform bieten, auf der Schülerinnen und Schüler gemeinsam Aufgaben lösen und Wissen austauschen können, was zu einem verbesserten Verständnis und einer höheren Retention führt. Dieser Ansatz ist besonders wirkungsvoll, da er die sozialen Aspekte des Lernens betont, die in traditionellen Lernumgebungen oft vernachlässigt werden.
+
+Die Forscher weisen auch auf die Herausforderungen hin, die mit der Implementierung von VEs in Bildungseinrichtungen verbunden sind. Zu diesen Herausforderungen gehören technische Einschränkungen, hohe Kosten für die Einrichtung und Wartung solcher Systeme sowie die Notwendigkeit einer angemessenen Schulung für Lehrkräfte, um diese Technologien effektiv zu nutzen. Sie betonen die Bedeutung einer sorgfältigen Planung und Unterstützung durch die Bildungseinrichtungen, um diese Herausforderungen zu bewältigen.
+
+Abschließend unterstreichen Mikropoulos und Natsis das Potenzial von VEs als transformative Werkzeuge in der Bildung. Sie argumentieren, dass diese Technologien, wenn sie effektiv eingesetzt werden, das Lernen revolutionieren und zu tieferen, bedeutungsvolleren Bildungserfahrungen führen können. Ihre Forschung legt nahe, dass VEs eine Schlüsselrolle bei der Gestaltung zukünftiger Bildungsstrategien spielen könnten, insbesondere in Bereichen, die ein hohes Maß an Interaktivität und Engagement erfordern.
+
+In Anbetracht dieser Erkenntnisse ist es offensichtlich, dass die Arbeit von Mikropoulos und Natsis einen wichtigen Beitrag zum Verständnis und zur Weiterentwicklung von virtuellen Bildungsumgebungen leistet. Ihre Forschungsergebnisse bieten wertvolle Einblicke für Bildungsfachleute, Entwickler und Forscher, die an der Schnittstelle von Technologie und Bildung arbeiten, und bilden eine solide Grundlage für die zukünftige Erforschung und Implementierung von VEs in Bildungskontexten.
+
+Die Erkenntnisse von Mikropoulos und Natsis sind für mein Vorhaben von zentraler Bedeutung. Ihr Paper liefert nicht nur einen tiefgehenden Einblick in die historische Entwicklung und die verschiedenen Anwendungsbereiche von virtuellen Bildungsumgebungen, sondern es fungiert auch als wertvolle Inspirationsquelle für innovative Lehrmethoden in der virtuellen Realität. Die von ihnen hervorgehobene Bedeutung von Interaktivität in virtuellen Umgebungen ist für mein Projekt besonders relevant. Sie bieten konkrete Ansatzpunkte zur Gestaltung einer interaktiven und einbeziehenden VR"=Lernumgebung, die darauf abzielt, die Nutzer nicht nur zu unterhalten, sondern auch aktiv in den Lernprozess einzubinden.
+
+Darüber hinaus eröffnet das Verständnis der von Mikropoulos und Natsis diskutierten Herausforderungen -- insbesondere in Bezug auf technische, finanzielle und pädagogische Aspekte -- die Möglichkeit, mein Projekt realistisch und zielgerichtet zu planen und umzusetzen. Dies wird entscheidend sein, um eine reibungslose Integration und Akzeptanz der VR"=Lernanwendung in Bildungskontexten zu gewährleisten.
+
+Abschließend bildet das Paper eine fundierte Grundlage für die Entwicklung meiner VR"=Anwendung. Es dient als Kompass, der sowohl die Potenziale als auch die Fallstricke bei der Verwendung von Virtual Reality im Bildungsbereich aufzeigt. Durch die Berücksichtigung dieser Erkenntnisse kann ich eine Anwendung entwickeln, die nicht nur technologisch fortschrittlich, sondern auch pädagogisch wertvoll ist, und somit eine effektive und ansprechende Lernerfahrung für die Nutzer schafft.
+
+\section{Effektivität und Integration von VR"=basiertem Unterricht}
+
+Die Integration von VR"=basiertem Unterricht in traditionelle Lehrmethoden stellt ein zentrales Element meiner Literaturübersicht dar. Diese Thematik wird insbesondere im Paper \glqq Effectiveness of virtual reality"=based instruction on students' learning outcomes in K-12 and higher education\grqq\cite{merchant2014effectiveness} umfassend analysiert. Diese Meta"=Analyse erforscht die Wirksamkeit von VR in verschiedenen Bildungskontexten und beleuchtet detailliert, unter welchen spezifischen Bedingungen VR den Lernerfolg signifikant beeinflussen kann. Somit bietet sie wertvolle Erkenntnisse für die effektive Nutzung von VR in Bildungsumgebungen. Die Ergebnisse sind insbesondere aufgrund der übereinstimmenden Altersgruppe der Teilnehmenden und des thematischen Fokus auf deklarative Lernziele für unser Vorhaben sehr relevant.
 
 Haupterkenntnisse des Papers sind:
 \begin{itemize}
-    \item Die Art der Lernergebnisse, sei es Wissens- oder Fähigkeitserwerb, beeinflusst die Effektivität von VR-basiertem Unterricht. Insbesondere zeigt sich, dass VR bei der Vermittlung von deklarativem Wissen effektiver ist.
+  \item Die Ergebnisse zeigen, dass VR"=basierte Bildungsumgebungen die Lernergebnisse der Studierenden signifikant verbessern. Dies unterstreicht das Potenzial von VR als effektives Werkzeug in der Bildung.
 
-    \item Eine Kombination von VR und anderen Lehrmethoden erweist sich als besonders effektiv. Dies bestärkt den Ansatz einer integrierten Lehrmethode, bei der VR als Ergänzung zu traditionellen Unterrichtsformen eingesetzt wird.
+  \item Die Art der Lernergebnisse, sei es Wissens- oder Fähigkeitserwerb, beeinflusst die Effektivität von VR"=basiertem Unterricht. Insbesondere zeigt sich, dass VR bei der Vermittlung von deklarativem Wissen effektiver ist. Dies ist für unser Projekt relevant, da wir uns auf die Vermittlung von Wissen über die Funktionsweise von Photovoltaik"=Anlagen und Auswirkungen von diversen Konfigurationen konzentrieren.
 
-    \item Die Art des Feedbacks und die Natur der Lernaufgaben sind entscheidend für die Effektivität von VR im Bildungskontext. Detaillierte Erklärungen sind bei deklarativen Aufgaben wirksamer, während bei prozeduralen Aufgaben konkrete Rückmeldungen zur richtigen Antwort effektiver sind.
+  \item Eine Kombination von VR und anderen Lehrmethoden erweist sich als besonders effektiv. Dies bestärkt den Ansatz einer integrierten Lehrmethode, bei der VR als Ergänzung zu traditionellen Unterrichtsformen eingesetzt wird. Dieser Ansatz ist besonders relevant für unser Projekt, da wir die VR"=Anwendung als Ergänzung zu Workshops in Schulen entwickeln.
 
-    \item Die methodologische Strenge der Studiendesigns beeinflusst die festgestellten Lernergebnisse, wobei höhere methodologische Strenge zu stärkeren Belegen für die Wirksamkeit von VR führt.
+  \item Die Art des Feedbacks und die Natur der Lernaufgaben sind entscheidend für die Effektivität von VR im Bildungskontext. Detaillierte Erklärungen sind bei deklarativen Aufgaben wirksamer, während bei prozeduralen Aufgaben konkrete Rückmeldungen zur richtigen Antwort effektiver sind. Dies unterstreicht die Bedeutung der Anpassung des Feedbacks an die Art der Lernaufgabe.
+
+  \item Die methodologische Strenge der Studiendesigns beeinflusst die festgestellten Lernergebnisse, wobei höhere methodologische Strenge zu stärkeren Belegen für die Wirksamkeit von VR führt. Dies betont die Wichigkeit einer sorgfältigen Gestaltung von VR"=basierten Bildungsumgebungen.
+
+  \item Die Ergebnisse zeigen, dass VR"=Umgebungen in der Bildung das Engagement und die Motivation der Lernenden steigern. So dient VR als Werkzeug, um das Interesse der Lernenden zu wecken und sie aktiv in den Lernprozess einzubeziehen.
 \end{itemize}
 
-Für meine Arbeit bietet dieses Paper wertvolle Einblicke in die effektive Gestaltung von VR-basierten Bildungsumgebungen. Es unterstreicht die Notwendigkeit, VR"=Anwendungen sorgfältig zu gestalten, um sicherzustellen, dass sie die Lernziele unterstützen und ergänzen. Besonders relevant ist die Erkenntnis, dass eine Kombination aus VR und anderen Lehrmethoden sowie die Anpassung des Feedbacks an die Art der Lernaufgabe entscheidend für den Erfolg von VR in der Bildung sind. Diese Erkenntnisse sollen in der Entwicklung unserer VR-Anwendung berücksichtigt werden, um ein optimales und effektives Lernerlebnis zu gewährleisten.
+Für meine Arbeit bietet dieses Paper wertvolle Einblicke in die effektive Gestaltung von VR"=basierten Bildungsumgebungen. Es unterstreicht die Notwendigkeit, VR"=Anwendungen sorgfältig zu gestalten, um sicherzustellen, dass sie die Lernziele unterstützen und ergänzen. Besonders relevant ist die Erkenntnis, dass eine Kombination aus VR und anderen Lehrmethoden sowie die Anpassung des Feedbacks an die Art der Lernaufgabe entscheidend für den Erfolg von VR in der Bildung sind. Diese Erkenntnisse sollen in der Entwicklung unserer VR"=Anwendung berücksichtigt werden, um ein optimales und effektives Lernerlebnis zu gewährleisten.
 
 Die in diesem Paper hervorgehobene Effektivität der Kombination von VR mit traditionellen Lehrmethoden findet bereits in unserem Projekt Anwendung. Unsere VR"=Anwendung wird in Schulworkshops eingesetzt, um ergänzend zum Frontalunterricht die eher abstrakten Inhalte greifbar und nachvollziehbar zu machen. Diese methodische Verbindung hilft, die Aufmerksamkeit der Jugendlichen zurückzugewinnen und vertieft das Verständnis für die komplexen Themen der Energiewende. Hervorzuheben ist dabei auch der potenzielle Einfluss auf die Wissensretention, der durch die interaktive und immersive Natur von VR verstärkt wird.
 
-Basierend auf den Erkenntnissen aus dem genannten Paper sowie früheren Forschungen können wir unsere VR-Anwendung durch die Integration folgender Elemente weiterentwickeln:
+Basierend auf den Erkenntnissen aus dem genannten Paper sowie früheren Forschungen kann ich die VR"=Anwendung durch die Integration folgender Elemente weiterentwickeln:
 
 \begin{itemize}
 
-    \item Implementierung von interaktiven Feedback-Systemen, die es den Lernenden ermöglichen, unmittelbares und spezifisches Feedback zu ihren Aktionen und Entscheidungen innerhalb der VR-Umgebung zu erhalten. Dies lässt sich beispielsweise durch Echtzeit-Simulationsdaten und erläuternde Hinweise realisieren.
+    \item Implementierung von interaktiven Feedback"=Systemen, die es den Lernenden ermöglichen, unmittelbares und spezifisches Feedback zu ihren Aktionen und Entscheidungen innerhalb der VR"=Umgebung zu erhalten. Dies lässt sich beispielsweise durch Echtzeit"=Simulationsdaten und erläuternde Hinweise realisieren.
 
-    \item Integration von ansprechenden und informativen Datenvisualisierungen, die es den Nutzenden ermöglichen, die unmittelbaren Auswirkungen ihrer Entscheidungen auf Umwelt und Energieeffizienz zu visualisieren. Solche Visualisierungen könnten dynamisch die Veränderungen in Energiemengen, CO2-Emissionen oder Kosten in Abhängigkeit von den gewählten Parametern anzeigen.
+    \item Integration von ansprechenden und informativen Datenvisualisierungen, die es den Nutzenden ermöglichen, die unmittelbaren Auswirkungen ihrer Entscheidungen auf Umwelt und Energieeffizienz zu visualisieren. Solche Visualisierungen könnten dynamisch die Veränderungen in Energiemengen, CO2"=Emissionen oder Kosten in Abhängigkeit von den gewählten Parametern anzeigen.
 
     \item Entwicklung zusätzlicher interaktiver Module, die spezifische Aspekte der Energiewende thematisieren. Diese könnten beispielsweise Simulationen umfassen, die die Auswirkungen verschiedener Energiesysteme unter ausgewählten Umweltbedingungen darstellen.
 
-    \item Durch Bereitstellen von verschiedenen Interaktionsmöglichkeiten innerhalb der VR-Umgebung können unterschiedliche Lernstile berücksichtigt werden. Das kann durch Optionen für exploratives und strukturiertes Lernen ermöglicht werden.
+    \item Durch Bereitstellen von verschiedenen Interaktionsmöglichkeiten innerhalb der VR"=Umgebung können unterschiedliche Lernstile berücksichtigt werden. Das kann durch Optionen für exploratives und strukturiertes Lernen ermöglicht werden.
 
-    \item Sicherstellung, dass die VR-Anwendung nahtlos in die vor- und nachgelagerten Inhalte der Workshops integriert ist, um ein kohärentes Lernerlebnis zu schaffen. Dies könnte durch die Bereitstellung von Begleitmaterialien und durch die Abstimmung und Vorbereitung der Inhalte mit den Lehrkräften erreicht werden.
+    \item Sicherstellung, dass die VR"=Anwendung nahtlos in die vor- und nachgelagerten Inhalte der Workshops integriert ist, um ein kohärentes Lernerlebnis zu schaffen. Dies könnte durch die Bereitstellung von Begleitmaterialien und durch die Abstimmung und Vorbereitung der Inhalte mit den Lehrkräften erreicht werden.
 
 \end{itemize}
 
-Obwohl die Integration von VR in traditionelle Lehrmethoden vielversprechend ist, sollten wir die Wirksamkeit und Relevanz unserer Anwendung überprüfen und wenn nötig anpassen. Es ist wichtig, Feedback von Lehrkräften und Schülern zu sammeln und die Anwendung entsprechend zu optimieren, um sicherzustellen, dass sie den Lernzielen gerecht wird und effektiv zur Wissensvermittlung beiträgt.
+Obwohl die Integration von VR in traditionelle Lehrmethoden vielversprechend ist, sollten wir die Wirksamkeit und Relevanz der VR"=Anwendung überprüfen und wenn nötig anpassen. Es ist wichtig, Feedback von Lehrkräften und Schülern zu sammeln und die Anwendung entsprechend zu optimieren, um sicherzustellen, dass sie den Lernzielen gerecht wird und effektiv zur Wissensvermittlung beiträgt.
 
-Die Erkenntnisse aus dem Paper und früheren Studien unterstützen die Weiterentwicklung unserer VR-Anwendung als ein wirkungsvolles Werkzeug in der Bildung zur Energiewende. Durch die gezielte Anpassung und Erweiterung der Anwendung können wir den Lernerfolg weiter steigern und ein bleibendes Interesse für die Thematik fördern. Zukünftige Forschungen und Anwendungen könnten sich darauf konzentrieren, die Interaktion zwischen VR und traditionellen Lehrmethoden weiter zu optimieren und die Effekte auf verschiedene Lerngruppen zu untersuchen.
+Die Erkenntnisse aus dem Paper und früheren Studien unterstützen die Weiterentwicklung der VR"=Anwendung als ein wirkungsvolles Werkzeug in der Bildung zur Energiewende. Durch die gezielte Anpassung und Erweiterung der Anwendung können wir den Lernerfolg weiter steigern und ein bleibendes Interesse für die Thematik fördern. Zukünftige Forschungen und Anwendungen könnten sich darauf konzentrieren, die Interaktion zwischen VR und traditionellen Lehrmethoden weiter zu optimieren und die Effekte auf verschiedene Lerngruppen zu untersuchen.
 
-\section{VR-Technologie in der höheren Bildung: Neue Perspektiven und Anwendungen}
-Virtual Reality hat sich als einflussreiches Instrument in der Hochschulbildung, insbesondere in den STEM-Fächern (Wissenschaft, Technik, Ingenieurwesen und Mathematik), etabliert. Laut "A Review of the Application of Virtual Reality Technology in Higher Education" wird VR überwiegend in diesen Fachbereichen eingesetzt, um komplexe und abstrakte Konzepte anschaulich zu machen. Durch die immersiven Eigenschaften von VR können Studierende technische und wissenschaftliche Prozesse nicht nur theoretisch erlernen, sondern sie auch praktisch und visuell erfassen, was zu einem tieferen Verständnis führt. Diese Anwendung von VR unterstreicht das Potenzial der Technologie, anspruchsvolle Themen zugänglicher und greifbarer zu machen.
 
-Die in der gleichen Studie untersuchten empirischen Belege zeigen, dass VR einen signifikanten Einfluss auf die Lernergebnisse der Studierenden hat. Durch den Einsatz von VR-Technologie in der Hochschulbildung wird eine Verbesserung in der Aufnahme und Retention von Wissen beobachtet. VR bietet eine einzigartige, interaktive Lernerfahrung, die traditionelle Lehrmethoden ergänzt und übertrifft, indem sie die Studierenden direkt in die Lernumgebung eintauchen lässt. Diese direkte, erfahrungsbasierte Lernmethode fördert nicht nur das Verständnis komplexer wissenschaftlicher und technischer Konzepte, sondern verbessert auch die langfristige Behaltensleistung.
 
-Überdies wird in der Studie hervorgehoben, dass VR das Lernverhalten von Studierenden positiv beeinflusst. Der Einsatz von VR in Lehrplänen führt zu erhöhtem Engagement und Motivation unter den Studierenden. Diese Technologie ermöglicht es den Lernenden, in einer interaktiven und dynamischen Umgebung zu experimentieren und zu erkunden, was das Lernen zu einer aktiven und fesselnden Erfahrung macht. Dadurch wird nicht nur das Interesse am Stoff geweckt, sondern auch die Fähigkeit zur Problemlösung und kritischen Analyse gefördert. Diese Veränderungen im Verhalten der Studierenden tragen dazu bei, den Lernerfolg zu steigern und ein tieferes, anhaltendes Interesse an den Themen zu fördern.
 
 \section{VR-Anwendungen für erneuerbare Energien}
 Arbeiten, die sich mit dem Einsatz von VR in der Umweltbildung und -bewusstsein befassen.
 
 \section{Designprinzipien für VR}
-Forschungen, die sich mit User Experience (UX) und User Interface (UI) in VR-Umgebungen beschäftigen.
+Forschungen, die sich mit User Experience (UX) und User Interface (UI) in VR"=Umgebungen beschäftigen.
 
 \backmatter
 
