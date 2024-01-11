@@ -1,5 +1,5 @@
 % \documentclass[draft,final]{vutinfth} % Remove option 'final' to obtain debug information.
-\documentclass[draft]{vutinfth} % Remove option 'final' to obtain debug information.
+\documentclass[draft, final]{vutinfth} % Remove option 'final' to obtain debug information.
 
 % Extended LaTeX functionality is enables by including packages with \usepackage{...}.
 
@@ -19,7 +19,7 @@
 \usepackage{hyperref}  % Enables cross linking in the electronic document version. This package has to be included second to last.
 \usepackage[acronym,toc]{glossaries} % Enables the generation of glossaries and lists fo acronyms. This package has to be included last.
 
-\uselanguage{ngerman}
+\uselanguage{english}
 \bibstyle{plain}
 \bibdata{main}
 \setmainfont{Source Serif 4}
@@ -27,7 +27,7 @@
 \setmonofont{Fira Code}
 % Define convenience functions to use the author name and the thesis title in the PDF document properties.
 \newcommand{\authorname}{Daniel Jonas Otto} % The author name without titles.
-\newcommand{\thesistitle}{Virtuelle Realität als Katalysator für die Energiewende} % The title of the thesis. The English version should be used, if it exists.
+\newcommand{\thesistitle}{Virtual Reality as a Catalyst for the Energy Transition} % The title of the thesis. The English version should be used, if it exists.
 
 % Set PDF document properties
 \hypersetup{
@@ -66,8 +66,8 @@
 % \setthirdassistant{Pretitle}{Forename Surname}{Posttitle}{male}
 
 \setregnumber{11811332}
-\setdate{10}{11}{2023} % Set date with 3 arguments: {day}{month}{year}.
-\settitle{\thesistitle}{Virtuelle Realität als Katalysator\\für die Energiewende}
+\setdate{11}{1}{2024} % Set date with 3 arguments: {day}{month}{year}.
+\settitle{\thesistitle}{Virtual Reality as a Catalyst for the Energy Transition}
 % \setsubtitle{Optional Subtitle of the Thesis}{Eine wissenschaftliche Untersuchung des Potenzials von VR-Technologien in der Umweltbildung und -kommunikation}
 \setthesis{bachelor}
 \setcurriculum{Software and Information Engineering}{Software und Information Engineering}
@@ -78,13 +78,9 @@
 \addtitlepage{ngerman}
 \addstatementpage
 
-\begin{danksagung*}
-Danke an alle, die mich bei der Erstellung dieser Arbeit unterstützt haben. Besonders möchte ich meiner Partnerin Astrid Gaderbauer für ihre Unterstützung und ihr Verständnis während der gesamten Dauer dieser Arbeit danken. Ich möchte auch Helwin Prohaska für seine wertvollen Ratschläge und seine Unterstützung bei der Entwicklung der VR"=Anwendung danken. Darüber hinaus möchte ich mich bei meinen Großeltern für ihre finanzielle Unterstützung und Ermutigung bedanken. Schließlich möchte ich mich bei meiner Betreuerin Katharina Krösl für ihre Anleitung und ihr Feedback während der gesamten Arbeit bedanken.
-\end{danksagung*}
-
-% \begin{acknowledgements*}
-% \todo{Enter your text here.}
-% \end{acknowledgements*}
+\begin{acknowledgements*}
+  Thank you to everyone who supported me in the creation of this work. I would especially like to thank my partner Astrid Gaderbauer for her support and understanding throughout the duration of this work. I would also like to thank Helwin Prohaska for his valuable advice and support in the development of the VR application. Additionally, I would like to thank my grandparents for their financial support and encouragement. Finally, I would like to thank my supervisor Katharina Krösl for her guidance and feedback throughout the entire work.
+\end{acknowledgements*}
 
 % \begin{kurzfassung}
 % \todo{Ihr Text hier.}
@@ -103,116 +99,111 @@ This work is grounded in the belief that technological innovation, particularly 
 The findings and developments from this thesis are expected to offer new pathways in environmental education and communication, highlighting how VR can be a potent tool in promoting understanding and action in the face of environmental challenges. This research aims to stand as a testament to the power of technology in driving societal change, especially in contexts where political leadership may be lacking.
 \end{abstract}
 
-\selectlanguage{ngerman}
 \tableofcontents % Starred version, i.e., \tableofcontents*, removes the self-entry.
 \mainmatter
 
-\chapter{Einleitung}
-Diese Bachelorarbeit widmet sich der Entwicklung einer innovativen Virtual"=Reality"=Anwendung, die das Ziel verfolgt, die Energiewende in Österreich voranzubringen. In einem Kontext, in dem die öffentliche Meinung und die Medienberichterstattung in Österreich häufig eine gewisse Skepsis gegenüber der Energiewende und ihren Herausforderungen aufzeigen, strebt diese Arbeit an, durch den Einsatz von VR"=Technologie eine positive Veränderung zu bewirken.
+\chapter{Introduction}
+This bachelor thesis is dedicated to the development of an innovative Virtual Reality application, which aims to advance the energy transition in Austria. In a context where public opinion and media coverage in Austria often show a certain skepticism towards the energy transition and its challenges, this work aims to bring a positive change and deeper understanding through the use of VR technology.
 
-In Österreich wird die Energiewende oft in der öffentlichen Debatte und den Nachrichten als komplex und umstritten wahrgenommen. Die Notwendigkeit, die Vorteile und Machbarkeit dieses Übergangs klarer zu kommunizieren, ist dringend. Diese Bachelorarbeit zielt darauf ab, durch die Schaffung einer VR"=Anwendung, die die Prinzipien und Vorteile der Energiewende auf interaktive und immersive Weise vermittelt, die öffentliche Meinung positiv zu beeinflussen und ein tieferes Verständnis für ihre Bedeutung zu fördern.
+In Austria, the energy transition is often perceived as complex and controversial in public debate and the news. There is an urgent need to communicate more clearly the benefits and feasibility of this transition. This bachelor thesis aims to positively influence public opinion and promote a deeper understanding of its importance by creating a VR application that conveys the principles and benefits of the energy transition in an interactive and immersive manner.
 
-Die Arbeit beabsichtigt, die Rolle von VR als ein mächtiges Werkzeug in der Bildungs- und Kommunikationsstrategie zu erkunden, um ein breiteres Bewusstsein und eine stärkere Unterstützung für die Energiewende in der österreichischen Bevölkerung zu schaffen.
-Dabei nutze ich die neuesten Entwicklungen der VR"=Technologie und verbinde sie mit aktuellen Umweltthemen.
+The work intends to explore the role of VR as a powerful tool in education and communication strategies, to create broader awareness and stronger support for the energy transition among the Austrian population. In doing this, I utilize the latest developments in VR technology and combine them with current environmental issues.
 
-Mein Ziel ist es, einen wissenschaftlich fundierten Beitrag zu leisten, der sowohl die technologischen Aspekte als auch die didaktischen Prinzipien bei der Vermittlung der Herausforderungen und Lösungen der Energiewende berücksichtigt. Die Arbeit soll als Grundlage für zukünftige Forschungen und Anwendungen dienen, die sich mit der Verwendung von VR"=Technologie in der Umweltbildung und "=kommunikation befassen.
+My goal is to make a scientifically founded contribution that considers both the technological aspects and the didactic principles in conveying the challenges and solutions of the energy transition. The work is intended to serve as a basis for future research and applications dealing with the use of VR technology in environmental education and communication.
 
-\chapter{Verwandte Arbeiten}
+\chapter{Related Work}
 
-\section{Virtual Reality in der Bildung}
+\section{Virtual Reality in Education}
 
-Ein zentraler Aspekt in der Diskussion über den Einsatz von Virtual Reality (VR) im Bildungsbereich wird in dem Artikel \glqq Virtual Reality in Education: A Tool for Learning in the Experience Age\grqq\cite{hu2017virtual} von Radić"=Weissenfeld et al. aufgegriffen. Dieses Paper bietet einen tiefgreifenden Einblick in die vielfältigen Anwendungsmöglichkeiten und das Potenzial von VR als Bildungswerkzeug in der heutigen Ära der Erfahrung und Interaktivität.
+A central aspect in the discussion about the use of Virtual Reality (VR) in education is addressed in the article "Virtual Reality in Education: A Tool for Learning in the Experience Age"\cite{hu2017virtual} by Radić-Weissenfeld et al. This paper offers a profound insight into the diverse applications and the potential of VR as an educational tool in today's era of experience and interactivity.
 
-Die Autoren erörtern, wie VR"=Technologien das Lernen revolutionieren können, indem sie immersive und interaktive Umgebungen schaffen, die es Lernenden ermöglichen, komplexe Konzepte und Systeme auf eine Weise zu erleben, die durch traditionelle Lehrmethoden nicht möglich ist. Dieser Ansatz, der darauf abzielt, abstrakte Theorien durch direkte Erfahrung greifbar zu machen, ist besonders relevant für das grundlegende Verständnis der Energiewende und erneuerbarer Energietechnologien. Die Autoren betonen, dass VR"=Technologie die Möglichkeit bietet, die Lernenden in die Lage zu versetzen, die Auswirkungen ihrer Entscheidungen und Handlungen in einer realistischen Umgebung zu erleben. Dieser Ansatz ist besonders relevant für die Energiewende, da er es den Lernenden ermöglicht, die Auswirkungen ihrer Entscheidungen auf die Umwelt zu verstehen und zu erleben.
+The authors discuss how VR technologies can revolutionize learning by creating immersive and interactive environments that enable learners to experience complex concepts and systems in a way that is not possible with traditional teaching methods. This approach, aimed at making abstract theories tangible through direct experience, is particularly relevant for the fundamental understanding of the energy transition and renewable energy technologies. The authors emphasize that VR technology offers the possibility to enable learners to experience the impacts of their decisions and actions in a realistic environment. This approach is especially relevant for the energy transition, as it allows learners to understand and experience the effects of their decisions on the environment.
 
-Im Kontext meiner Arbeit, die darauf abzielt, durch VR das Verständnis für die Funktionsweise erneuerbarer Energiesysteme zu verbessern, liefert dieser Artikel wichtige Erkenntnisse. Die in dem Artikel beschriebenen Prinzipien der Immersion und Interaktivität sind grundlegende Säulen für die Entwicklung der VR"=Anwendung. Insbesondere die Betonung auf die \glqq Erfahrungsorientierung\grqq im Lernprozess ist für das Projekt von Bedeutung, da es darum geht, den Nutzenden ein tiefes Verständnis für die Dynamik und die Auswirkungen verschiedener Photovoltaik"=Konfigurationen zu vermitteln.
+In the context of my work, which aims to improve understanding of the functioning of renewable energy systems through VR, this article provides important insights. The principles of immersion and interactivity described in the article are fundamental pillars for the development of the VR application. In particular, the emphasis on "experience orientation" in the learning process is important for the project, as it is about giving users a deep understanding of the dynamics and impacts of various photovoltaic configurations.
 
-Radić"=Weissenfeld et al. unterstreichen auch die Bedeutung der Nutzerzentrierung in VR"=Lernumgebungen. Dieser Aspekt ist entscheidend, um sicherzustellen, dass unsere VR"=Anwendung nicht nur informativ, sondern auch benutzerfreundlich und engagierend ist. Durch die Anwendung dieser Prinzipien können wir eine Lernerfahrung schaffen, die nicht nur lehrreich, sondern auch motivierend und inspirierend für die Nutzer ist.
+Radić-Weissenfeld et al. also underline the importance of user-centricity in VR learning environments. This aspect is crucial to ensure that our VR application is not only informative but also user-friendly and engaging. By applying these principles, we can create a learning experience that is not only educational but also motivating and inspiring for users.
 
-Abschließend stellt der Artikel von Radić"=Weissenfeld et al. eine wichtige Grundlage für unser Vorhaben dar, indem er aufzeigt, wie VR"=Technologie effektiv in Bildungskontexten eingesetzt werden kann. Die daraus gewonnenen Erkenntnisse fließen direkt in die Gestaltung unserer VR"=Anwendung ein, mit dem Ziel, ein intuitives und effektives Lernerlebnis rund um das Thema Energiewende zu schaffen.
+In conclusion, the article by Radić-Weissenfeld et al. provides an important foundation for our project by demonstrating how VR technology can be effectively used in educational contexts. The insights gained from this directly flow into the design of our VR application, with the goal of creating an intuitive and effective learning experience around the topic of energy transition.
 % welche erkenntnisse konkret?
 
-\section{VR"=Technologie in der höheren Bildung: Neue Perspektiven und Anwendungen}
+\section{VR Technology in Higher Education: New Perspectives and Applications}
 
-Virtual Reality hat sich als einflussreiches Instrument in der Hochschulbildung, insbesondere in den STEM"=Fächern (Wissenschaft, Technik, Ingenieurwesen und Mathematik), etabliert. Laut \glqq A Review of the Application of Virtual Reality Technology in Higher Education\grqq\cite{ding2022review} wird VR überwiegend in diesen Fachbereichen eingesetzt, um komplexe und abstrakte Konzepte anschaulich zu machen. Durch die immersiven Eigenschaften von VR können Studierende technische und wissenschaftliche Prozesse nicht nur theoretisch erlernen, sondern sie auch praktisch und visuell erfassen, was zu einem tieferen Verständnis führt. Diese Anwendung von VR unterstreicht das Potenzial der Technologie, anspruchsvolle Themen zugänglicher und greifbarer zu machen.
+Virtual Reality has established itself as a powerful tool in higher education, especially in the STEM fields (Science, Technology, Engineering, and Mathematics). According to "A Review of the Application of Virtual Reality Technology in Higher Education"\cite{ding2022review}, VR is predominantly used in these subject areas to make complex and abstract concepts more comprehensible. The immersive properties of VR enable students to not only theoretically learn technical and scientific processes but also to grasp them practically and visually, leading to a deeper understanding. This application of VR highlights the technology's potential to make challenging topics more accessible and tangible.
 
-Die in der Studie untersuchten empirischen Belege zeigen, dass VR einen signifikanten Einfluss auf die Lernergebnisse der Studierenden hat. Durch den Einsatz von VR"=Technologie in der Hochschulbildung wird eine Verbesserung in der Aufnahme und Retention von Wissen beobachtet. VR bietet eine einzigartige, interaktive Lernerfahrung, die traditionelle Lehrmethoden ergänzt und übertrifft, indem sie die Studierenden direkt in die Lernumgebung eintauchen lässt. Diese direkte, erfahrungsbasierte Lernmethode fördert nicht nur das Verständnis komplexer wissenschaftlicher und technischer Konzepte, sondern verbessert auch die langfristige Behaltensleistung.
+The empirical evidence examined in the study shows that VR has a significant impact on students' learning outcomes. The use of VR technology in higher education has been observed to improve the absorption and retention of knowledge. VR offers a unique, interactive learning experience that complements and surpasses traditional teaching methods by immersing students directly in the learning environment. This direct, experience-based learning method not only fosters an understanding of complex scientific and technical concepts but also improves long-term retention.
 
-Überdies wird in der Studie hervorgehoben, dass VR das Lernverhalten von Studierenden positiv beeinflusst. Der Einsatz von VR in Lehrplänen führt zu erhöhtem Engagement und Motivation unter den Studierenden. Diese Technologie ermöglicht es den Lernenden, in einer interaktiven und dynamischen Umgebung zu experimentieren und zu erkunden, was das Lernen zu einer aktiven und fesselnden Erfahrung macht. Dadurch wird nicht nur das Interesse am Stoff geweckt, sondern auch die Fähigkeit zur Problemlösung und kritischen Analyse gefördert. Diese Veränderungen im Verhalten der Studierenden tragen dazu bei, den Lernerfolg zu steigern und ein tieferes, anhaltendes Interesse an den Themen zu fördern.
+Furthermore, the study emphasizes that VR positively influences students' learning behavior. The incorporation of VR into curricula leads to increased engagement and motivation among students. This technology allows learners to experiment and explore in an interactive and dynamic environment, making learning an active and captivating experience. This not only arouses interest in the subject matter but also enhances problem-solving and critical analysis skills. These changes in student behavior contribute to increasing learning success and fostering a deeper, lasting interest in the topics.
 
-\section{Bedeutende Entwicklungen in Bildungsvirtuellen Umgebungen}
+\section{Significant Developments in Educational Virtual Environments}
 
-In ihrem wegweisenden Artikel \glqq Educational virtual environments: A ten-year review of empirical research (1999--2009)\grqq \cite{mikropoulos2011educational} bieten Tassos A. Mikropoulos und Antonis Natsis eine umfassende Analyse der Forschung im Bereich der bildungsorientierten virtuellen Umgebungen (VE) über einen Zeitraum von zehn Jahren. Diese umfangreiche Betrachtung beleuchtet die entscheidenden Entwicklungen und Veränderungen, die virtuelle Bildungsumgebungen im letzten Jahrzehnt durchlaufen haben, und liefert somit eine unverzichtbare Grundlage für das Verständnis der aktuellen und zukünftigen Trends in diesem Bereich.
+In their groundbreaking article "Educational virtual environments: A ten-year review of empirical research (1999--2009)" \cite{mikropoulos2011educational}, Tassos A. Mikropoulos and Antonis Natsis provide a comprehensive analysis of research in the field of education-oriented virtual environments (VE) over a ten-year period. This extensive review illuminates the crucial developments and changes that virtual educational environments have undergone in the last decade, thus providing an indispensable basis for understanding the current and future trends in this field.
 
-Mikropoulos und Natsis konzentrieren sich in ihrer Arbeit auf die vielfältigen Anwendungsmöglichkeiten von VEs in der Bildung. Sie stellen fest, dass VEs zunehmend als wirksame Werkzeuge anerkannt werden, die das Lernen durch ihre Immersion und Interaktivität bereichern. Ihre Analyse deckt ein breites Spektrum von Anwendungsbereichen ab, von naturwissenschaftlichen Fächern bis hin zu komplexen sozialen und kulturellen Themen, und beleuchtet dabei die einzigartigen Vorteile, die VEs in diesen verschiedenen Kontexten bieten.
+Mikropoulos and Natsis focus on the diverse applications of VEs in education. They note that VEs are increasingly recognized as effective tools that enrich learning through their immersive and interactive properties. Their analysis covers a broad range of application areas, from scientific subjects to complex social and cultural topics, highlighting the unique benefits that VEs offer in these various contexts.
 
-Ein zentraler Aspekt ihrer Erkenntnisse ist die Bedeutung der Interaktivität in VEs. Sie argumentieren, dass interaktive Elemente in virtuellen Bildungsumgebungen das Engagement und die Motivation der Lernenden steigern können, was zu einem tieferen und nachhaltigeren Verständnis des Lerninhalts führt.
+A central aspect of their findings is the importance of interactivity in VEs. They argue that interactive elements in virtual educational environments can increase learner engagement and motivation, leading to deeper and more sustainable understanding of the learning content.
 
-Darüber hinaus betonen Mikropoulos und Natsis die Rolle von VEs bei der Förderung von kollaborativem Lernen. Mikropoulos und Natsis zeigen auf, wie virtuelle Umgebungen das kooperative und kollaborative Lernen unterstützen können. Sie heben hervor, dass VEs eine Plattform bieten, auf der Schülerinnen und Schüler gemeinsam Aufgaben lösen und Wissen austauschen können, was zu einem verbesserten Verständnis und einer höheren Retention führt. Dieser Ansatz ist besonders wirkungsvoll, da er die sozialen Aspekte des Lernens betont, die in traditionellen Lernumgebungen oft vernachlässigt werden.
+Moreover, Mikropoulos and Natsis emphasize the role of VEs in promoting collaborative learning. They demonstrate how virtual environments can support cooperative and collaborative learning, where students can jointly solve tasks and share knowledge, leading to improved understanding and higher retention. This approach is particularly effective as it emphasizes the social aspects of learning, which are often neglected in traditional learning environments.
 
-Die Forscher weisen auch auf die Herausforderungen hin, die mit der Implementierung von VEs in Bildungseinrichtungen verbunden sind. Zu diesen Herausforderungen gehören technische Einschränkungen, hohe Kosten für die Einrichtung und Wartung solcher Systeme sowie die Notwendigkeit einer angemessenen Schulung für Lehrkräfte, um diese Technologien effektiv zu nutzen. Sie betonen die Bedeutung einer sorgfältigen Planung und Unterstützung durch die Bildungseinrichtungen, um diese Herausforderungen zu bewältigen.
+The researchers also point out the challenges associated with implementing VEs in educational institutions. These challenges include technical limitations, high costs for setting up and maintaining such systems, and the need for adequate training for teachers to effectively use these technologies. They stress the importance of careful planning and support from educational institutions to overcome these challenges.
 
-Abschließend unterstreichen Mikropoulos und Natsis das Potenzial von VEs als transformative Werkzeuge in der Bildung. Sie argumentieren, dass diese Technologien, wenn sie effektiv eingesetzt werden, das Lernen revolutionieren und zu tieferen, bedeutungsvolleren Bildungserfahrungen führen können. Ihre Forschung legt nahe, dass VEs eine Schlüsselrolle bei der Gestaltung zukünftiger Bildungsstrategien spielen könnten, insbesondere in Bereichen, die ein hohes Maß an Interaktivität und Engagement erfordern.
+In conclusion, Mikropoulos and Natsis underscore the potential of VEs as transformative tools in education. They argue that these technologies, when effectively utilized, can revolutionize learning and lead to deeper, more meaningful educational experiences. Their research suggests that VEs could play a key role in shaping future educational strategies, especially in areas that require a high degree of interactivity and engagement.
 
-In Anbetracht dieser Erkenntnisse ist es offensichtlich, dass die Arbeit von Mikropoulos und Natsis einen wichtigen Beitrag zum Verständnis und zur Weiterentwicklung von virtuellen Bildungsumgebungen leistet. Ihre Forschungsergebnisse bieten wertvolle Einblicke für Bildungsfachleute, Entwickler und Forscher, die an der Schnittstelle von Technologie und Bildung arbeiten, und bilden eine solide Grundlage für die zukünftige Erforschung und Implementierung von VEs in Bildungskontexten.
+Given these insights, it is clear that the work of Mikropoulos and Natsis makes an important contribution to the understanding and further development of virtual educational environments. Their research findings provide valuable insights for educational professionals, developers, and researchers working at the intersection of technology and education, forming a solid foundation for future exploration and implementation of VEs in educational contexts.
 
-Die Erkenntnisse von Mikropoulos und Natsis sind für mein Vorhaben von zentraler Bedeutung. Ihr Paper liefert nicht nur einen tiefgehenden Einblick in die historische Entwicklung und die verschiedenen Anwendungsbereiche von virtuellen Bildungsumgebungen, sondern es fungiert auch als wertvolle Inspirationsquelle für innovative Lehrmethoden in der virtuellen Realität. Die von ihnen hervorgehobene Bedeutung von Interaktivität in virtuellen Umgebungen ist für mein Projekt besonders relevant. Sie bieten konkrete Ansatzpunkte zur Gestaltung einer interaktiven und einbeziehenden VR"=Lernumgebung, die darauf abzielt, die Nutzer nicht nur zu unterhalten, sondern auch aktiv in den Lernprozess einzubinden.
+The insights of Mikropoulos and Natsis are of central importance to my project. Their paper not only offers a deep insight into the historical development and various application areas of virtual educational environments but also serves as a valuable source of inspiration for innovative teaching methods in virtual reality. The importance they place on interactivity in virtual environments is particularly relevant to my project. They provide concrete starting points for designing an interactive and engaging VR learning environment, aiming not just to entertain users but actively involve them in the learning process.
 
-Darüber hinaus eröffnet das Verständnis der von Mikropoulos und Natsis diskutierten Herausforderungen -- insbesondere in Bezug auf technische, finanzielle und pädagogische Aspekte -- die Möglichkeit, mein Projekt realistisch und zielgerichtet zu planen und umzusetzen. Dies wird entscheidend sein, um eine reibungslose Integration und Akzeptanz der VR"=Lernanwendung in Bildungskontexten zu gewährleisten.
+Furthermore, understanding the challenges discussed by Mikropoulos and Natsis -- particularly regarding technical, financial, and pedagogical aspects -- opens the possibility to plan and implement my project realistically and purposefully. This will be crucial for ensuring smooth integration and acceptance of the VR learning application in educational contexts.
 
-Abschließend bildet das Paper eine fundierte Grundlage für die Entwicklung meiner VR"=Anwendung. Es dient als Kompass, der sowohl die Potenziale als auch die Fallstricke bei der Verwendung von Virtual Reality im Bildungsbereich aufzeigt. Durch die Berücksichtigung dieser Erkenntnisse kann ich eine Anwendung entwickeln, die nicht nur technologisch fortschrittlich, sondern auch pädagogisch wertvoll ist, und somit eine effektive und ansprechende Lernerfahrung für die Nutzer schafft.
+In conclusion, the paper forms a sound basis for the development of my VR application. It serves as a compass that highlights both the potentials and pitfalls of using Virtual Reality in education. By taking these insights into account, I can develop an application that is not only technologically advanced but also pedagogically valuable, thus creating an effective and appealing learning experience for users.
 
-\section{Effektivität und Integration von VR"=basiertem Unterricht}
+\section{Effectiveness and Integration of VR-based Instruction}
 
-Die Integration von VR"=basiertem Unterricht in traditionelle Lehrmethoden stellt ein zentrales Element meiner Literaturübersicht dar. Diese Thematik wird insbesondere im Paper \glqq Effectiveness of virtual reality"=based instruction on students' learning outcomes in K-12 and higher education\grqq\cite{merchant2014effectiveness} umfassend analysiert. Diese Meta"=Analyse erforscht die Wirksamkeit von VR in verschiedenen Bildungskontexten und beleuchtet detailliert, unter welchen spezifischen Bedingungen VR den Lernerfolg signifikant beeinflussen kann. Somit bietet sie wertvolle Erkenntnisse für die effektive Nutzung von VR in Bildungsumgebungen. Die Ergebnisse sind insbesondere aufgrund der übereinstimmenden Altersgruppe der Teilnehmenden und des thematischen Fokus auf deklarative Lernziele für unser Vorhaben sehr relevant.
+The integration of VR-based instruction into traditional teaching methods is a central element of my literature review. This topic is extensively analyzed in the paper "Effectiveness of virtual reality-based instruction on students' learning outcomes in K-12 and higher education"\cite{merchant2014effectiveness}. This meta-analysis explores the effectiveness of VR in various educational contexts and details the specific conditions under which VR can significantly influence learning success. Therefore, it provides valuable insights for the effective use of VR in educational environments. The results are particularly relevant for our project due to the matching age group of the participants and the thematic focus on declarative learning objectives.
 
-Haupterkenntnisse des Papers sind:
+Key findings of the paper are:
 \begin{itemize}
-  \item Die Ergebnisse zeigen, dass VR"=basierte Bildungsumgebungen die Lernergebnisse der Studierenden signifikant verbessern. Dies unterstreicht das Potenzial von VR als effektives Werkzeug in der Bildung.
+  \item The results show that VR-based educational environments significantly improve students' learning outcomes. This underscores the potential of VR as an effective tool in education.
 
-  \item Die Art der Lernergebnisse, sei es Wissens- oder Fähigkeitserwerb, beeinflusst die Effektivität von VR"=basiertem Unterricht. Insbesondere zeigt sich, dass VR bei der Vermittlung von deklarativem Wissen effektiver ist. Dies ist für unser Projekt relevant, da wir uns auf die Vermittlung von Wissen über die Funktionsweise von Photovoltaik"=Anlagen und Auswirkungen von diversen Konfigurationen konzentrieren.
+  \item The type of learning outcomes, whether knowledge or skill acquisition, influences the effectiveness of VR-based instruction. VR is particularly effective in imparting declarative knowledge. This is relevant for our project as we focus on conveying knowledge about the functioning of photovoltaic systems and the effects of various configurations.
 
-  \item Eine Kombination von VR und anderen Lehrmethoden erweist sich als besonders effektiv. Dies bestärkt den Ansatz einer integrierten Lehrmethode, bei der VR als Ergänzung zu traditionellen Unterrichtsformen eingesetzt wird. Dieser Ansatz ist besonders relevant für unser Projekt, da wir die VR"=Anwendung als Ergänzung zu Workshops in Schulen entwickeln.
+  \item A combination of VR and other teaching methods proves to be particularly effective. This supports an integrated teaching approach where VR is used as a complement to traditional teaching forms. This approach is particularly relevant for our project as we develop the VR application as an addition to workshops in schools.
 
-  \item Die Art des Feedbacks und die Natur der Lernaufgaben sind entscheidend für die Effektivität von VR im Bildungskontext. Detaillierte Erklärungen sind bei deklarativen Aufgaben wirksamer, während bei prozeduralen Aufgaben konkrete Rückmeldungen zur richtigen Antwort effektiver sind. Dies unterstreicht die Bedeutung der Anpassung des Feedbacks an die Art der Lernaufgabe.
+  \item The nature of feedback and the type of learning tasks are crucial for the effectiveness of VR in an educational context. Detailed explanations are more effective for declarative tasks, while concrete feedback on the correct answer is more effective for procedural tasks. This underlines the importance of tailoring feedback to the type of learning task.
 
-  \item Die methodologische Strenge der Studiendesigns beeinflusst die festgestellten Lernergebnisse, wobei höhere methodologische Strenge zu stärkeren Belegen für die Wirksamkeit von VR führt. Dies betont die Wichigkeit einer sorgfältigen Gestaltung von VR"=basierten Bildungsumgebungen.
+  \item The methodological rigor of study designs influences the observed learning outcomes, with higher methodological rigor leading to stronger evidence of VR's effectiveness. This highlights the importance of careful design of VR-based educational environments.
 
-  \item Die Ergebnisse zeigen, dass VR"=Umgebungen in der Bildung das Engagement und die Motivation der Lernenden steigern. So dient VR als Werkzeug, um das Interesse der Lernenden zu wecken und sie aktiv in den Lernprozess einzubeziehen.
+  \item The results show that VR environments in education increase learner engagement and motivation. Thus, VR serves as a tool to arouse students' interest and actively involve them in the learning process.
 \end{itemize}
 
-Für meine Arbeit bietet dieses Paper wertvolle Einblicke in die effektive Gestaltung von VR"=basierten Bildungsumgebungen. Es unterstreicht die Notwendigkeit, VR"=Anwendungen sorgfältig zu gestalten, um sicherzustellen, dass sie die Lernziele unterstützen und ergänzen. Besonders relevant ist die Erkenntnis, dass eine Kombination aus VR und anderen Lehrmethoden sowie die Anpassung des Feedbacks an die Art der Lernaufgabe entscheidend für den Erfolg von VR in der Bildung sind. Diese Erkenntnisse sollen in der Entwicklung unserer VR"=Anwendung berücksichtigt werden, um ein optimales und effektives Lernerlebnis zu gewährleisten.
+This paper provides valuable insights for the effective design of VR-based educational environments for my work. It emphasizes the need to carefully design VR applications to ensure they support and complement learning objectives. The insight that a combination of VR and other teaching methods, as well as tailoring feedback to the type of learning task, is crucial for the success of VR in education. These insights will be considered in developing our VR application to ensure an optimal and effective learning experience.
 
-Die in diesem Paper hervorgehobene Effektivität der Kombination von VR mit traditionellen Lehrmethoden findet bereits in unserem Projekt Anwendung. Unsere VR"=Anwendung wird in Schulworkshops eingesetzt, um ergänzend zum Frontalunterricht die eher abstrakten Inhalte greifbar und nachvollziehbar zu machen. Diese methodische Verbindung hilft, die Aufmerksamkeit der Jugendlichen zurückzugewinnen und vertieft das Verständnis für die komplexen Themen der Energiewende. Hervorzuheben ist dabei auch der potenzielle Einfluss auf die Wissensretention, der durch die interaktive und immersive Natur von VR verstärkt wird.
+The effectiveness of combining VR with traditional teaching methods highlighted in this paper is already being applied in our project. Our VR application is used in school workshops to make the more abstract content tangible and comprehensible, complementing frontal teaching. This methodological connection helps regain the attention of young people and deepens their understanding of the complex topics of the energy transition. Notably, the potential influence on knowledge retention is enhanced by the interactive and immersive nature of VR.
 
-Basierend auf den Erkenntnissen aus dem genannten Paper sowie früheren Forschungen kann ich die VR"=Anwendung durch die Integration folgender Elemente weiterentwickeln:
+Based on the findings from the mentioned paper and previous research, I can further develop the VR application by integrating the following elements:
 
 \begin{itemize}
+  \item Implementation of interactive feedback systems that allow learners to receive immediate and specific feedback on their actions and decisions within the VR environment. This can be realized, for example, through real-time simulation data and explanatory notes.
 
-    \item Implementierung von interaktiven Feedback"=Systemen, die es den Lernenden ermöglichen, unmittelbares und spezifisches Feedback zu ihren Aktionen und Entscheidungen innerhalb der VR"=Umgebung zu erhalten. Dies lässt sich beispielsweise durch Echtzeit"=Simulationsdaten und erläuternde Hinweise realisieren.
+  \item Integration of appealing and informative data visualizations that enable users to visualize the immediate effects of their decisions on the environment and energy efficiency. Such visualizations could dynamically display changes in energy amounts, CO2 emissions, or costs depending on the chosen parameters.
 
-    \item Integration von ansprechenden und informativen Datenvisualisierungen, die es den Nutzenden ermöglichen, die unmittelbaren Auswirkungen ihrer Entscheidungen auf Umwelt und Energieeffizienz zu visualisieren. Solche Visualisierungen könnten dynamisch die Veränderungen in Energiemengen, CO2"=Emissionen oder Kosten in Abhängigkeit von den gewählten Parametern anzeigen.
+  \item Development of additional interactive modules that address specific aspects of the energy transition. These could include simulations that illustrate the effects of different energy systems under selected environmental conditions.
 
-    \item Entwicklung zusätzlicher interaktiver Module, die spezifische Aspekte der Energiewende thematisieren. Diese könnten beispielsweise Simulationen umfassen, die die Auswirkungen verschiedener Energiesysteme unter ausgewählten Umweltbedingungen darstellen.
+  \item By providing various interaction options within the VR environment, different learning styles can be accommodated. This can be enabled through options for exploratory and structured learning.
 
-    \item Durch Bereitstellen von verschiedenen Interaktionsmöglichkeiten innerhalb der VR"=Umgebung können unterschiedliche Lernstile berücksichtigt werden. Das kann durch Optionen für exploratives und strukturiertes Lernen ermöglicht werden.
-
-    \item Sicherstellung, dass die VR"=Anwendung nahtlos in die vor- und nachgelagerten Inhalte der Workshops integriert ist, um ein kohärentes Lernerlebnis zu schaffen. Dies könnte durch die Bereitstellung von Begleitmaterialien und durch die Abstimmung und Vorbereitung der Inhalte mit den Lehrkräften erreicht werden.
+  \item Ensuring that the VR application is seamlessly integrated into the preceding and subsequent content of the workshops to create a coherent learning experience. This could be achieved by providing accompanying materials and by coordinating and preparing the content with the teachers.
 
 \end{itemize}
 
-Obwohl die Integration von VR in traditionelle Lehrmethoden vielversprechend ist, sollten wir die Wirksamkeit und Relevanz der VR"=Anwendung überprüfen und wenn nötig anpassen. Es ist wichtig, Feedback von Lehrkräften und Schülern zu sammeln und die Anwendung entsprechend zu optimieren, um sicherzustellen, dass sie den Lernzielen gerecht wird und effektiv zur Wissensvermittlung beiträgt.
+Although the integration of VR into traditional teaching methods is promising, we should review and adjust the effectiveness and relevance of the VR application as necessary. It is important to gather feedback from teachers and students and optimize the application accordingly to ensure that it meets learning objectives and effectively contributes to knowledge transfer.
 
-Die Erkenntnisse aus dem Paper und früheren Studien unterstützen die Weiterentwicklung der VR"=Anwendung als ein wirkungsvolles Werkzeug in der Bildung zur Energiewende. Durch die gezielte Anpassung und Erweiterung der Anwendung können wir den Lernerfolg weiter steigern und ein bleibendes Interesse für die Thematik fördern. Zukünftige Forschungen und Anwendungen könnten sich darauf konzentrieren, die Interaktion zwischen VR und traditionellen Lehrmethoden weiter zu optimieren und die Effekte auf verschiedene Lerngruppen zu untersuchen.
-
-
+The insights from the paper and previous studies support the further development of the VR application as an effective tool in education for the energy transition. By specifically adapting and expanding the application, we can further increase learning success and foster lasting interest in the topic. Future research and applications could focus on optimizing the interaction between VR and traditional teaching methods and examining the effects on different learning groups.
 
 
-\section{VR-Anwendungen für erneuerbare Energien}
-Arbeiten, die sich mit dem Einsatz von VR in der Umweltbildung und -bewusstsein befassen.
+\section{VR Applications for Renewable Energy}
+Works focusing on the use of VR in environmental education and awareness.
 
-\section{Designprinzipien für VR}
-Forschungen, die sich mit User Experience (UX) und User Interface (UI) in VR"=Umgebungen beschäftigen.
+\section{Design Principles for VR}
+Research dealing with User Experience (UX) and User Interface (UI) in VR environments.
 
 \backmatter
 

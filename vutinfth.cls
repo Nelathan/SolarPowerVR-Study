@@ -715,6 +715,7 @@
   }%
 }%
 \newcommand{\AddTitlePage}{
+  \selectlanguage{english}
   \thispagestyle{vutinfth@pagestyle@titlepage}%
   \newgeometry{%
     left=3cm,right=3cm,bottom=3cm,top=2cm,
@@ -806,11 +807,11 @@
   \vutinfth@restorelayout
 }%
 \newcommand{\addtitlepage}[1]{%
-  \selectlanguage{#1}%
+  % \selectlanguage{#1}%
   \AddTitlePage
 }%
 \newcommand{\addstatementpage}{%
-  \selectlanguage{ngerman}%
+  \selectlanguage{english}%
   \ifundergraduate{\AddStatementPage}%
   \ifgraduate{%
     \ifdoctor{\AddStatementPage}%
