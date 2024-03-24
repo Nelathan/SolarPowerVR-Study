@@ -3,19 +3,19 @@
 
 % Extended LaTeX functionality is enables by including packages with \usepackage{...}.
 
+\usepackage{microtype}  % Small-scale typographic enhancements.
 \usepackage{amsmath}    % Extended typesetting of mathematical expression.
 \usepackage{amssymb}    % Provides a multitude of mathematical symbols.
 \usepackage{mathtools}  % Further extensions of mathematical typesetting.
-\usepackage{microtype}  % Small-scale typographic enhancements.
 \usepackage[inline]{enumitem} % User control over the layout of lists (itemize, enumerate, description).
 \usepackage{multirow}   % Allows table elements to span several rows.
 \usepackage{booktabs}   % Improves the typesettings of tables.
 \usepackage{subcaption} % Allows the use of subfigures and enables their referencing.
 \usepackage[ruled,linesnumbered,algochapter]{algorithm2e} % Enables the writing of pseudo code.
 \usepackage[dvipsnames,table]{xcolor} % Allows the definition and use of colors. This package has to be included before tikz.
+\usepackage{fontspec} % Determines font encoding of the output. Font packages have to be included before this line.
 \usepackage{nag}       % Issues warnings when best practices in writing LaTeX documents are violated.
 \usepackage{todonotes} % Provides tooltip-like todo notes.
-\usepackage{fontspec} % Determines font encoding of the output. Font packages have to be included before this line.
 \usepackage{hyperref}  % Enables cross linking in the electronic document version. This package has to be included second to last.
 \usepackage[acronym,toc]{glossaries} % Enables the generation of glossaries and lists fo acronyms. This package has to be included last.
 
@@ -330,7 +330,7 @@ In the "Kaisergasse VR" experience, users can engage in a few key activities: in
 
 To evaluate the impact of the "Kaisergasse VR" on participants' understanding, the responses to the questions will be analyzed statistically. The mean ratings for each question will be calculated to ascertain the overall effectiveness of the VR experience in conveying the intended information. The results will shed light on the potential of VR as an educational tool in promoting sustainable practices and technologies.
 
-\section{Can a VR simulation such as the VR application of Energiewende Linz ("Kaisergasse VR") increase understanding of and interest in climate-friendly technologies?}
+\section{Can a VR simulation such as Kaisergasse VR increase understanding of and interest in climate-friendly technologies?}
 Statistical tests will be conducted to compare the mean scores from the preliminary and final study, allowing for the assessment of any significant changes in participants' understanding post-interaction with the VR simulation.
 
 \textbf{Hypothesis 1:} VR applications such as "Kaisergasse VR" enhance participants' understanding of climate-friendly technologies.
@@ -344,18 +344,23 @@ We anticipated that scores above the midpoint of 3 would indicate a successful e
 
 \begin{figure}[h]
   \centering
-  \includegraphics[width=\textwidth]{test1.png}
-  \caption[Distribution of answers for question 1.1]{Distribution of answers for question 1.1}
-  \label{fig:analysis-image}
+  \includegraphics[width=\textwidth]{test1.1.png}
+  \caption[Distribution of answers for question 1.1]{Distribution of answers for question 1}
+  \label{fig:analysis-image1}
+\end{figure}
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=\textwidth]{test1.2.png}
+  \caption[Distribution of answers for question 1.2]{Distribution of answers for question 2}
+  \label{fig:analysis-image2}
 \end{figure}
 
 Initially, the Shapiro-Wilk test was applied to check for normality in the response distribution, yielding values of 0.865 (p=0.036) and 0.874 (p=0.048) for the two questions, respectively. These results indicated a deviation from normal distribution, necessitating the use of the non-parametric Wilcoxon test suited for small, non-normally distributed samples.
 
-The Wilcoxon test produced a statistic of 54.5 with a p-value of 0.02466 for the first question and a statistic of 45.0 with a p-value of 0.03301 for the second. These initial p-values suggested a statistically significant impact of the VR experience on understanding. However, after applying the Bonferroni correction to account for multiple comparisons, these findings were adjusted to be statistically insignificant, leading to the retention of the null hypothesis for both questions.
+The Wilcoxon test produced a statistic of 54.5 with a p-value of 0.02466 for the first question and a statistic of 45.0 with a p-value of 0.03301 for the second. These initial p-values suggested a statistically significant impact of the VR experience on understanding. However, after applying the Bonferroni correction to account for multiple tests (4 tests for this resaerch question), these findings were adjusted to be statistically insignificant, leading to the retention of the null hypothesis for both questions.
 
-In conclusion, while the initial analysis hinted at a potential impact of the "Kaisergasse VR" on enhancing participants' understanding of climate-friendly technologies, the application of the Bonferroni correction revealed that these effects did not meet the threshold for statistical significance. This indicates that, based on this strict statistical criterion, the VR simulation did not significantly improve participants' understanding as initially hypothesized. Further research, possibly with a larger sample size or different methodological approaches, is suggested to explore the educational potential of VR in environmental awareness.
-
-% present the results
+In conclusion, while the initial analysis hinted at a potential impact of the "Kaisergasse VR" on enhancing participants' understanding of climate-friendly technologies, the application of the Bonferroni correction revealed that these effects did not meet the threshold for statistical significance. This indicates that, based on this strict statistical criterion, the VR simulation did not significantly improve participants' understanding as initially hypothesized.
 
 \textbf{Hypothesis 2:} VR applications such as "Kaisergasse VR" stimulate increased interest in adopting climate-friendly technologies.
 
@@ -363,11 +368,26 @@ Participant responses to post-experience questions will assess their interest in
 \begin{itemize}
 \item Would you be more likely to install a green roof after testing the VR simulation?
 \item Would you be more likely to install a PV system on your roof after testing the VR simulation?
-\item If you were to purchase a new car, would it be an electric vehicle?
 \end{itemize}
-The mean scores for each scenario will be calculated and compared against the scale's midpoint (a score of 3) to determine the VR simulation's influence on participants' interest. Scores significantly exceeding the midpoint will indicate a heightened interest in climate-friendly technologies attributable to the VR experience, thus supporting Hypothesis 2.The analysis will focus on the distribution of scores to understand the VR simulation's impact on interest levels.
+It is anticipated that scores over the median of three will indicate a rise in interest in implementing eco-friendly technologies, confirming the effect of Kaisergasse VR.
 
-% present the results
+\begin{figure}[h]
+\centering
+\includegraphics[width=\textwidth]{test2.1.png}
+\caption[Interest in green roof installation post-VR]{Participants' interest in installing a green roof after the VR simulation.}
+\label{fig:interest-green-roof}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\textwidth]{test2.2.png}
+\caption[Interest in PV system installation post-VR]{Participants' interest in installing a PV system after the VR simulation.}
+\label{fig:interest-pv-system}
+\end{figure}
+
+The Wilcoxon test was chosen due to the non-normal distribution of participant responses, which was demonstrated by Shapiro-Wilk statistics (0.842, p=0.017 for green roofs and 0.849, p=0.022 for PV systems). Our null hypotheses claimed that the VR simulation had no meaningful impact on participants' willingness to embrace green roofs or PV systems for real-world applications.
+
+The mean scores (3.71 for green roofs and 3.57 for PV systems) indicated a reasonable level of interest. However, the Wilcoxon test results (statistics of 40.0 for green roofs and 31.0 for PV systems, with p-values of 0.01658 and 0.03097, respectively) initially suggested the VR experience might have a positive effect. After the Bonferroni correction was applied (to account for multiple comparisons), these effects were deemed statistically insignificant, leading to the retention of the null hypotheses that the VR simulation had no significant impact on participants' willingness to adopt green roofs or PV systems.
 
 \section{Can an interactive photovoltaic use case increase understanding of and interest in PV solutions?}
 
@@ -378,17 +398,51 @@ To evaluate this hypothesis, we will analyze responses to two pivotal questions 
     \item Did the VR experience help you understand how a photovoltaic system can be utilized?
     \item Did the VR experience help you understand the benefits of a photovoltaic system?
 \end{itemize}
-The mean scores for each question will be calculated and compared between the preliminary and final studies. A significant increase in the mean scores in the final study would indicate an enhanced understanding attributed to the interactive PV use case in the VR experience.
 
-% present the results
+\begin{figure}[h]
+  \centering
+  \begin{subfigure}[b]{\textwidth}
+    \includegraphics[width=\textwidth]{test3.1a.png}
+    \label{fig:preliminary-survey-use}
+  \end{subfigure}
+  
+  \begin{subfigure}[b]{\textwidth}
+    \includegraphics[width=\textwidth]{test3.1b.png}
+    \label{fig:final-survey-use}
+  \end{subfigure}
+  
+  \caption{Responses on understanding the utilization of photovoltaic systems}
+  \label{fig:combined-survey-use}
+\end{figure}
+
+\begin{figure}[h]
+  \centering
+  \begin{subfigure}[b]{\textwidth}
+    \includegraphics[width=\textwidth]{test3.2a.png}
+    \label{fig:preliminary-survey-benefits}
+  \end{subfigure}
+  
+  \begin{subfigure}[b]{\textwidth}
+    \includegraphics[width=\textwidth]{test3.2b.png}
+    \label{fig:final-survey-benefits}
+  \end{subfigure}
+  
+  \caption{Responses on understanding the benefits of photovoltaic systems}
+  \label{fig:combined-survey-benefits}
+\end{figure}
+
+The Shapiro-Wilk test indicated that the final survey data was not normally distributed for both the understanding of PV system utilization (p=0.000) and the benefits of PV systems (p=0.029). Consequently, the one-sided Mann-Whitney U test was employed.
+
+Results demonstrated a significant effect, with the null hypothesis being rejected for both aspects of understanding a PV system's usage (U=211, p=0.000419) and benefits (U=190, p=0.005654). This indicates that the interactive VR use case had a statistically significant positive impact on participants' understanding and interest in PV solutions. The empirical evidence thus strongly supports that interactive VR simulations can effectively improve understanding and stimulate interest in photovoltaic technologies. This finding reinforces the role of immersive learning environments in enhancing educational outcomes within the domain of renewable energy technologies.
 
 \section{How does an interactive VR simulation enhance factual knowledge regarding the optimal orientation of photovoltaic panels?}
 
 This research question focuses on the VR simulation's capacity to enhance factual knowledge related to the strategic placement of photovoltaic panels to optimize electricity production throughout different times of the year.
 
-\textbf{Hypothesis 4:} The interactive PV use case in the VR simulation significantly gain factual knowledge regarding the optimal orientation of PV panels.
+\textbf{Hypothesis 4:} Experiencing SolarPower VR improves factual knowledge about the optimal orientation of photovoltaic panels for electricity generation.
 
 To assess this hypothesis, participants' responses to specific knowledge-based questions were analyzed post-interaction with the VR simulation. These questions aimed to evaluate the understanding of PV panel orientation for maximum electricity generation in June, December, and over the year. The correct answers were predetermined based on technical PV system optimization principles and are marked in Bold:
+
 \begin{enumerate}
     \item In which orientation does a single panel generate the most electricity in June?
     
@@ -400,13 +454,43 @@ To assess this hypothesis, participants' responses to specific knowledge-based q
     
     (a) Flat, (b) \textbf{Tilted towards the South}, (c) East-West tilt
 \end{enumerate}
-The percentage of participants selecting the correct option for each question is calculated and compared to what would be expected from a random distribution. Given three choices for each question, a random guess would have a one-third chance of being correct. 
 
-A significantly higher percentage of correct responses in the post-VR experience indicates that participants' understanding exceeds what would be expected by chance, thereby supporting Hypothesis 4. Statistical significance can be assessed using a one-sample proportion test against the expected proportion of 1/3 for random guessing.
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{graphics/test4.1.png}
+    \caption[Responses for PV panel orientation in June]{Proportion of responses identifying the optimal orientation of PV panels in June.}
+    \label{fig:june-orientation}
+\end{figure}
 
-To further analyze the data, we will examine the distribution of responses to determine if the observed pattern of correct answers significantly deviates from a random distribution. This will involve using a chi-square goodness-of-fit test, where the null hypothesis is that the distribution of answers conforms to random guessing, and the alternative hypothesis is that it does not, indicating that the VR experience had a tangible impact on participants' understanding.
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{graphics/test4.2.png}
+    \caption[Responses for PV panel orientation in December]{Proportion of responses identifying the optimal orientation of PV panels in December.}
+    \label{fig:december-orientation}
+\end{figure}
 
-% present the results
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{graphics/test4.3.png}
+    \caption[Responses for PV panel orientation throughout the year]{Proportion of responses identifying the optimal orientation of PV panels throughout the year.}
+    \label{fig:annual-orientation}
+\end{figure}
+
+For each question, we applied a one-sample proportion test to see if the proportion of correct responses was significantly higher than chance (33.3\%, given three options). A chi-square goodness-of-fit test was also used to check if the distribution of responses deviated from what would be expected by random guessing.
+
+\subsection{June Orientation}
+Out of 18 responses, 7 were correct, equating to a mean correct percentage of 38.9\%. Statistical tests, however, supported the null hypothesis (Z-statistic: 0.483, P-value: 0.314; Chi-square: 2.333, P-value: 0.311), suggesting the VR simulation did not significantly aid in understanding this concept.
+
+\subsection{December Orientation}
+With 10 out of 18 correct responses (55.6\%), initial indications were promising. Yet, after a Bonferroni correction, the Z-test did not find a significant improvement (P-value: 0.02889). The chi-square test also upheld the null hypothesis (Chi-square: 4.000, P-value: 0.135), indicating a random distribution in the answers.
+
+\subsection{Annual Orientation}
+The VR simulation appeared to have a modest impact, with 8 correct answers out of 18 (44.4\%). Nonetheless, statistical analysis did not show a significant increase in correct answers (Z-statistic: 0.949, P-value: 0.171; Chi-square: 1.333, P-value: 0.513).
+
+\subsection{Conclusion}
+While the analysis did not provide statistical evidence to reject the null hypothesis for Hypothesis 4, it did reveal a noticeable, though not substantial, level of factual knowledge among participants. This suggests that while the VR simulation imparted some understanding of PV panel orientation, the knowledge gained was not pronounced.
+
+It stands to reason that if participants were provided with specific tasks or directives on what aspects to observe within the VR simulation, their performance and subsequent understanding might have improved. A more guided experience could potentially lead to a better internalization of the concepts presented. It could also help participants apply and observe these ideas more successfully during the interactive experience if a theoretical basis on orientation, the impact of angles, and airmass is provided before the VR simulation. Such initial instruction could boost their capacity to spot and understand the subtleties of PV panel optimization, resulting in a more thoughtful and informed observation. This hybrid method, which combines immersive virtual reality technology with theory, has great potential for educational projects in the future that aim to enhance students' understanding of renewable energy technologies and their real-world applications.
 
 \chapter{Discussion}
 interpretation of results
