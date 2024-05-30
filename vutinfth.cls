@@ -5,10 +5,10 @@
 %% The original source files were:
 %%
 %% vutinfth.dtx  (with options: `class')
-%%
+%% 
 %% This is a generated file.
-%% Copyright (C) 2014-2020 by Thomas Auzinger <thomas@auzinger.name>
-%%
+%% Copyright (C) 2014-2023 by Thomas Auzinger <thomas@auzinger.name>
+%% 
 %% This work may be distributed and/or modified under the
 %% conditions of the LaTeX Project Public License, either version 1.3
 %% of this license or (at your option) any later version.
@@ -16,20 +16,20 @@
 %%   http://www.latex-project.org/lppl.txt
 %% and version 1.3 or later is part of all distributions of LaTeX
 %% version 2005/12/01 or later.
-%%
+%% 
 %% This work has the LPPL maintenance status `maintained'.
-%%
+%% 
 %% The Current Maintainer of this work is Thomas Auzinger.
-%%
+%% 
 %% This work consists of the files vutinfth.dtx and vutinfth.ins
 %% and the derived file vutinfth.cls.
 %% This work also consists of the file intro.tex.
-%%
+%% 
 %% vutinfth.dtx
-%% Copyright (C) 2014-2020 by Thomas Auzinger <thomas@auzinger.name>
+%% Copyright (C) 2014-2023 by Thomas Auzinger <thomas@auzinger.name>
 \NeedsTeXFormat{LaTeX2e}[1999/12/01]
 \ProvidesClass{vutinfth}
-    [2020/02/20 v1.10 TU Wien Faculty of Informatics thesis template]
+    [2023/06/04 v1.12 TU Wien Informatics thesis template]
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -49,19 +49,18 @@
   \PassOptionsToClass{\CurrentOption}{memoir}%
 }%
 \ProcessOptions\relax
-\LoadClass[a4paper,12pt]{memoir}%
+\LoadClass[a4paper,11pt]{memoir}%
 \chapterstyle{veelo}%
-% \RequirePackage[scaled]{helvet}%
-% \RequirePackage{lmodern}%
-% \RequirePackage{courier}%
+\RequirePackage[scaled]{helvet}%
+\RequirePackage{lmodern}%
+\RequirePackage{courier}%
 \RequirePackage[T1]{fontenc}%
-\RequirePackage[english,ngerman]{babel}%
-\RequirePackage[nodayofweek]{datetime}%
+\RequirePackage[english,naustrian]{babel}%
+\RequirePackage[useregional]{datetime2}%
 \RequirePackage{geometry}%
 \RequirePackage{calc}%
 \RequirePackage{etoolbox}%
 \RequirePackage{graphicx}%
-
 \graphicspath{{graphics/}}%
 \newcommand{\@namexdef}[1]{\expandafter\xdef\csname#1\endcsname}%
 \newcommand{\ifestrequal}[4]{%
@@ -71,16 +70,13 @@
     \expandafter\expandafter\expandafter\ifstrequal
       \expandafter\vutinfth@tempa\vutinfth@tempb{#3}{#4}%
   \endgroup
-}
-
-\renewcommand*\familydefault{\sfdefault}
-\newcommand{\vutinfth@title}{\fontsize{24}{28}\selectfont}%
-\newcommand{\vutinfth@subtitle}{\fontsize{18}{22}\selectfont}%
-\newcommand{\vutinfth@one}{\fontsize{16}{20}\selectfont}%
-\newcommand{\vutinfth@two}{\fontsize{14}{18}\selectfont}%
-\newcommand{\vutinfth@three}{\fontsize{12}{14}\selectfont}%
-\newcommand{\vutinfth@base}{\fontsize{12}{18}\selectfont}%
-
+}%
+\newcommand{\vutinfth@HUGE}{\fontsize{30}{34}\selectfont}%
+\newcommand{\vutinfth@huge}{\fontsize{20}{23}\selectfont}%
+\newcommand{\vutinfth@LARGE}{\fontsize{17}{22}\selectfont}%
+\newcommand{\vutinfth@Large}{\fontsize{14}{18}\selectfont}%
+\newcommand{\vutinfth@large}{\fontsize{12}{14.5}\selectfont}%
+\newcommand{\vutinfth@normalsize}{\fontsize{11}{13.6}\selectfont}%
 \newenvironment{SFFont}[1]{%
   \begingroup
     \sffamily
@@ -93,7 +89,7 @@
 }%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newcommand{\setdate}[3]{%
-  \newdate{vutinfth@date@signing}{#1}{#2}{#3}%
+  \DTMsavedate{vutinfth@date@signing}{#3-#2-#1}%
 }%
 \newcommand{\vutinfth@def@data}[2]{%
   \@namedef{vutinfth@data@#1@def}{}%
@@ -233,25 +229,7 @@
     \vutinfth@thesis@basetype@graduate
   }{#1}{}%
 }%
-\newcommand{\vutinfth@thesis@doctortype@doctor}{%
-  vutinfth@doctor}%
-\newcommand{\vutinfth@thesis@doctortype@phd}{%
-  vutinfth@phd}%
-\newcommand{\ifdoctor}[1]{%
-  \ifestrequal{\vutinfth@thesis@doctortype}{%
-    \vutinfth@thesis@doctortype@doctor
-  }{#1}{}%
-}%
-\newcommand{\ifphd}[1]{%
-  \ifestrequal{\vutinfth@thesis@doctortype}{%
-    \vutinfth@thesis@doctortype@phd
-  }{#1}{}%
-}%
 \newcommand{\vutinfth@thesis@basetype}{%
-  \ClassError{vutinfth}{No \string\setthesis \space issued}{%
-    Set thesis type with \string\setthesis.}%
-}%
-\newcommand{\vutinfth@thesis@doctortype}{%
   \ClassError{vutinfth}{No \string\setthesis \space issued}{%
     Set thesis type with \string\setthesis.}%
 }%
@@ -266,7 +244,6 @@
 \newcommand{\vutinfth@thesis@bachelor}{bachelor}%
 \newcommand{\vutinfth@thesis@master}{master}%
 \newcommand{\vutinfth@thesis@doctor}{doctor}%
-\newcommand{\vutinfth@thesis@phd}{phd-school}%
 \newcommand{\@setthesisname}[1]{%
   \renewcommand{\vutinfth@polylingual@thesisname}{#1}}%
 \newcommand{\@setdegreename}[1]{%
@@ -295,23 +272,13 @@
     }%
   }{}%
   \ifdefstring{\vutinfth@thesis@doctor}{#1}{%
-   \renewcommand{\vutinfth@thesis@basetype}{%
-     \vutinfth@thesis@basetype@graduate}%
-   \renewcommand{\vutinfth@thesis@doctortype}{%
-     \vutinfth@thesis@doctortype@doctor}%
-   \@setthesisname{\vutinfth@polylingual@DOCTORTHESIS}%
-   \@setdegreename{%
-     \ClassError{vutinfth}{No \string\setdoctordegree \space issued}{%
-       Set doctor degree with \string\setdoctordegree.}%
-   }%
-  }{}%
-  \ifdefstring{\vutinfth@thesis@phd}{#1}{%
-   \renewcommand{\vutinfth@thesis@basetype}{%
-     \vutinfth@thesis@basetype@graduate}%
-   \renewcommand{\vutinfth@thesis@doctortype}{%
-     \vutinfth@thesis@doctortype@phd}%
-   \@setthesisname{\vutinfth@polylingual@PHDTHESIS}%
-   \@setdegreename{\vutinfth@polylingual@Pdeg}%
+    \renewcommand{\vutinfth@thesis@basetype}{%
+      \vutinfth@thesis@basetype@graduate}%
+    \@setthesisname{\vutinfth@polylingual@DOCTORTHESIS}%
+    \@setdegreename{%
+      \ClassError{vutinfth}{No \string\setdoctordegree \space issued}{%
+        Set doctor degree with \string\setdoctordegree.}%
+    }%
   }{}%
 }%
 \newcommand{\vutinfth@thesis@mdeg@dipl}{dipl.}%
@@ -386,135 +353,121 @@
 \CreatePerson{firstreviewer}%
 \CreatePerson{secondreviewer}%
 \AddLanguage{english}%
-\AddLanguage{ngerman}%
+\AddLanguage{naustrian}%
 \CreatePolylingual[
   english=Advisor,
-  ngerman=Betreuung]{Advisor}%
+  naustrian=Betreuung]{Advisor}%
 \CreatePolylingual[
   english=Second advisor,
-  ngerman=Zweitbetreuung]{Secondadvisor}%
+  naustrian=Zweitbetreuung]{Secondadvisor}%
 \CreatePolylingual[
-  english=submitted in partial fulfillment of the requirements
+  english=submitted in partial fulfilment of the requirements
     for the degree of,
-  ngerman=zur Erlangung des akademischen Grades]{submission}%
+  naustrian=zur Erlangung des akademischen Grades]{submission}%
 \CreatePolylingual[
   english=in,
-  ngerman=im Rahmen des Studiums]{in}%
-\CreatePolylingual[
-  english=within the]{within}%
-\CreatePolylingual[
-  english=Vienna PhD School of Informatics]{School}%
+  naustrian=im Rahmen des Studiums]{in}%
 \CreatePolylingual[
   english=by,
-  ngerman=eingereicht von]{by}%
+  naustrian=eingereicht von]{by}%
 \CreatePolylingual[
-  english=Registration Number,
-  ngerman=Matrikelnummer]{Registrationnumber}%
+  english=Registration number,
+  naustrian=Matrikelnummer]{Registrationnumber}%
 \CreatePolylingual[
-  english=to the Faculty of Informatics,
-  ngerman=an der Fakultät für Informatik]{faculty}%
+  english=at the Faculty of Computer Science,
+  naustrian=an der Fakult\"at f\"ur Informatik]{faculty}%
 \CreatePolylingual[
-  english=at the TU Wien,
-  ngerman=der Technischen Universität Wien]{university}%
+  english=at the TU Vienna,
+  naustrian=der Technischen Universit\"at Wien]{university}%
 \CreatePolylingual[
   english=Assistance,
-  ngerman=Mitwirkung]{Assistance}%
+  naustrian=Mitwirkung]{Assistance}%
 \CreatePolylingual[
-  english=The dissertation has been reviewed by:,
-  ngerman=Diese Dissertation haben begutachtet:]{Reviewed}%
+  english=The thesis has been examined by:,
+  naustrian=Diese Dissertation haben begutachtet:]{Reviewed}%
 \CreatePolylingual[
   english=External reviewers:]{Reviewers}%
 \CreatePolylingual[
   english=Vienna,
-  ngerman=Wien]{Place}%
+  naustrian=Wien]{Place}%
 \CreatePolylingual[
   english=Declaration of Authorship,
-  ngerman=Erkl\"arung zur Verfassung der Arbeit]{StatementChapter}%
+  naustrian=Erkl\"arung zur Verfassung der Arbeit]{StatementChapter}%
 \CreatePolylingual[
-  english={I hereby declare that I have written this Doctoral Thesis
-    independently, that I have completely specified the utilized
-    sources and resources and that I have definitely marked all parts
-    of the work - including tables, maps and figures - which belong
-    to other works or to the internet, literally or extracted, by
-    referencing the source as borrowed.},
-  ngerman={Hiermit erkläre ich, dass ich diese Arbeit
-    selbständig verfasst habe, dass ich die verwendeten Quellen
-    und Hilfsmittel vollständig angegeben habe und dass ich die
-    Stellen der Arbeit -- einschließlich Tabellen, Karten und
+  english={I hereby declare that I have independently written this bachelor thesis and have fully indicated all sources and resources utilized. I have attributed all parts of the work, including tables, maps, and figures, that are derived, in whole or in part, from other works or the Internet.},
+  naustrian={Hiermit erkl\"are ich, dass ich diese Arbeit
+    selbst\"andig verfasst habe, dass ich die verwendeten Quellen
+    und Hilfsmittel vollst\"andig angegeben habe und dass ich die
+    Stellen der Arbeit -- einschlie{\ss}lich Tabellen, Karten und
     Abbildungen --, die anderen Werken oder dem Internet im Wortlaut
     oder dem Sinn nach entnommen sind, auf jeden Fall unter Angabe
     der Quelle als Entlehnung kenntlich gemacht habe.}]{Statement}%
 \CreatePolylingual[
   english=Bachelor of Science,
-  ngerman=Bachelor of Science]{Bdeg}%
+  naustrian=Bachelor of Science]{Bdeg}%
 \CreatePolylingual[
   english=Master of Science,
-  ngerman=Master of Science]{MdegMaster}%
+  naustrian=Master of Science]{MdegMaster}%
 \CreatePolylingual[
   english=Diplom-Ingenieur,
-  ngerman=Diplom-Ingenieur]{MdegDiplMale}%
+  naustrian=Diplom-Ingenieur]{MdegDiplMale}%
 \CreatePolylingual[
   english=Diplom-Ingenieurin,
-  ngerman=Diplom-Ingenieurin]{MdegDiplFemale}%
+  naustrian=Diplom-Ingenieurin]{MdegDiplFemale}%
 \CreatePolylingual[
   english=Magister der Naturwissenschaften,
-  ngerman=Magister der Naturwissenschaften]{MdegRerNatMale}%
+  naustrian=Magister der Naturwissenschaften]{MdegRerNatMale}%
 \CreatePolylingual[
   english=Magistra der Naturwissenschaften,
-  ngerman=Magistra der Naturwissenschaften]{MdegRerNatFemale}%
+  naustrian=Magistra der Naturwissenschaften]{MdegRerNatFemale}%
 \CreatePolylingual[
   english=Magister der Sozial- und Wirtschaftswissenschaften,
-  ngerman=Magister der Sozial- und Wirtschaftswissenschaften]{%
+  naustrian=Magister der Sozial- und Wirtschaftswissenschaften]{%
   MdegRerSocOecMale}%
 \CreatePolylingual[
   english=Magistra der Sozial- und Wirtschaftswissenschaften,
-  ngerman=Magistra der Sozial- und Wirtschaftswissenschaften]{%
+  naustrian=Magistra der Sozial- und Wirtschaftswissenschaften]{%
   MdegRerSocOecFemale}%
 \CreatePolylingual[
   english=Doktor der Naturwissenschaften,
-  ngerman=Doktor der Naturwissenschaften]{DdegRerNatMale}%
+  naustrian=Doktor der Naturwissenschaften]{DdegRerNatMale}%
 \CreatePolylingual[
   english=Doktorin der Naturwissenschaften,
-  ngerman=Doktorin der Naturwissenschaften]{DdegRerNatFemale}%
+  naustrian=Doktorin der Naturwissenschaften]{DdegRerNatFemale}%
 \CreatePolylingual[
   english=Doktor der Technischen Wissenschaften,
-  ngerman=Doktor der Technischen Wissenschaften]{DdegTechnMale}%
+  naustrian=Doktor der Technischen Wissenschaften]{DdegTechnMale}%
 \CreatePolylingual[
   english=Doktorin der Technischen Wissenschaften,
-  ngerman=Doktorin der Technischen Wissenschaften]{DdegTechnFemale}%
+  naustrian=Doktorin der Technischen Wissenschaften]{DdegTechnFemale}%
 \CreatePolylingual[
   english=Doktor der Sozial- und Wirtschaftswissenschaften,
-  ngerman=Doktor der Sozial- und Wirtschaftswissenschaften]{%
+  naustrian=Doktor der Sozial- und Wirtschaftswissenschaften]{%
   DdegRerSocOecMale}%
 \CreatePolylingual[
   english=Doktorin der Sozial- und Wirtschaftswissenschaften,
-  ngerman=Doktorin der Sozial- und Wirtschaftswissenschaften]{%
+  naustrian=Doktorin der Sozial- und Wirtschaftswissenschaften]{%
   DdegRerSocOecFemale}%
 \CreatePolylingual[
-  english=Doctor of Technical Sciences]{%
-  Pdeg}%
-\CreatePolylingual[
   english=BACHELOR'S THESIS,
-  ngerman=BACHELORARBEIT]{BACHELORTHESIS}%
+  naustrian=BACHELORARBEIT]{BACHELORTHESIS}%
 \CreatePolylingual[
   english=MASTER'S THESIS,
-  ngerman=MASTERARBEIT]{MASTERTHESIS}%
+  naustrian=MASTERARBEIT]{MASTERTHESIS}%
 \CreatePolylingual[
   english=DIPLOMA THESIS,
-  ngerman=DIPLOMARBEIT]{DIPLOMATHESIS}%
+  naustrian=DIPLOMARBEIT]{DIPLOMATHESIS}%
 \CreatePolylingual[
   english=DISSERTATION,
-  ngerman=DISSERTATION]{DOCTORTHESIS}%
-\CreatePolylingual[
-  english=PhD THESIS]{PHDTHESIS}%
+  naustrian=DISSERTATION]{DOCTORTHESIS}%
 \newcommand{\settitle}[2]{%
-  \CreatePolylingual[english=#1,ngerman=#2]{Title}%
+  \CreatePolylingual[english=#1,naustrian=#2]{Title}%
 }%
 \newcommand{\setsubtitle}[2]{%
-  \CreatePolylingual[english=#1,ngerman=#2]{Subtitle}%
+  \CreatePolylingual[english=#1,naustrian=#2]{Subtitle}%
 }%
 \newcommand{\setcurriculum}[2]{%
-  \CreatePolylingual[english=#1,ngerman=#2]{Curriculum}%
+  \CreatePolylingual[english=#1,naustrian=#2]{Curriculum}%
 }%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newcommand{\newsetlength}[2]{%
@@ -538,21 +491,21 @@
 \newsetlength{\vutinfth@logo@offset@x}{10.6mm}%
 \newsetlength{\vutinfth@logo@offset@y}{22mm}%
 \newsetlength{\vutinfth@logo@width@safe}{74mm}%
-\newsetlength{\vutinfth@logo@height}{12mm}%
+\newsetlength{\vutinfth@logo@height}{11mm}%
 \newsetlength{\vutinfth@header@width}{\paperwidth - \vutinfth@logo@offset@x - \vutinfth@logo@offset@x}%
 \newsetlength{\vutinfth@header@height}{\vutinfth@logo@height}%
 \newsetlength{\vutinfth@header@separator}{-12mm}%
 \newcommand{\vutinfth@header@titlepage}{%
   \setlength{\unitlength}{1mm}%
-  \begin{picture}(74, 12)%
+  \begin{picture}(74, 11)%
     {\includegraphics[height=\vutinfth@logo@height]{Logo-schwarz.pdf}}
   \end{picture}\hfill
 }%
 \newcommand{\vutinfth@footer@titlepage}{%
   \centering
   \begin{minipage}{\textwidth}%
-    \centering\vutinfth@base\sffamily
-    Technische Universität Wien\\
+    \centering\vutinfth@normalsize\sffamily
+    Technische Universit\"{a}t Wien\\
     A-1040 Wien \vutinfth@squarebullet\space
     Karlsplatz 13 \vutinfth@squarebullet\space
     Tel. +43-1-58801-0 \vutinfth@squarebullet\space
@@ -579,7 +532,7 @@
 \newcommand{\AdvisorBlock}{%
   \ifundergraduate{%
     \begin{minipage}[t][2.5cm][t]{\textwidth}%
-      \vutinfth@base
+      \vutinfth@normalsize
       \begin{tabular}{@{}l@{ }l}%
         \vutinfth@polylingual@Advisor: &
         \vutinfth@person@advisor@fullname\\
@@ -610,7 +563,7 @@
   }%
   \ifgraduate{%
     \begin{minipage}[t][1.6cm][t]{\textwidth}%
-      \vutinfth@base
+      \vutinfth@normalsize
       \vutinfth@polylingual@Advisor:
       \vutinfth@person@advisor@fullname
       \ifdef{\vutinfth@person@secondadvisor@def}{%
@@ -621,18 +574,19 @@
     \end{minipage}\par%
   }%
 }%
-\newsetlength{\vutinfth@signature@height}{20mm}%
-\newsetlength{\vutinfth@signature@width}{64mm}%
-\newsetlength{\vutinfth@placedate@width}{60mm}%
+\newsetlength{\vutinfth@signature@height}{25mm}%
+\newsetlength{\vutinfth@signature@width}{51mm}%
+\newsetlength{\vutinfth@placedate@width}{50mm}%
 \newcommand{\SignatureFields}[3][n]{%
-  {\vutinfth@base
+  {\vutinfth@normalsize
     \ifstrequal{#1}{y}{%
       \begin{minipage}[b][\vutinfth@signature@height]{%
           \vutinfth@placedate@width
         }%
         \vutinfth@polylingual@Place,
-        \displaydate{vutinfth@date@signing}\vspace*{\baselineskip}%
-      \end{minipage}\par
+        \DTMusedate{vutinfth@date@signing}\vspace*{\baselineskip}%
+      \end{minipage}%
+      \hfill
     }{}%
     \ifstrequal{#1}{n}{}{}%
     \ifstrequal{#1}{h}{%
@@ -648,7 +602,7 @@
         }%
         \centering
         \rule{\vutinfth@signature@width}{0.5pt}\\
-        #2
+        #2%
       \end{minipage}%
       \hfill
     }%
@@ -666,30 +620,19 @@
 
 \newcommand{\ReviewerBlock}{%
   \ifgraduate{%
-    \ifdoctor{%
-      {\vutinfth@base
-        \vutinfth@polylingual@Reviewed\\
-        \SignatureFields[h]{%
-          \vutinfth@person@firstreviewer@name
-        }{%
-          \vutinfth@person@secondreviewer@name
-        }%
-      }%
-    }%
-    \ifphd{%
-      {\vutinfth@base
-        \vutinfth@polylingual@Reviewers\\
-        \vutinfth@person@firstreviewer@name.
-        \vutinfth@data@firstreviewerdata.\\
-        \vutinfth@person@secondreviewer@name.
-        \vutinfth@data@secondreviewerdata.\\
+    {\vutinfth@normalsize
+      \vutinfth@polylingual@Reviewed\\
+      \SignatureFields[h]{%
+        \vutinfth@person@firstreviewer@name
+      }{%
+        \vutinfth@person@secondreviewer@name
       }%
     }%
   }%
 }%
 \newcommand{\SignatureBlock}{%
   \ifundergraduate{%
-    {\vutinfth@base
+    {\vutinfth@normalsize
       \SignatureFields[y]{%
         \vutinfth@person@author@name
       }{%
@@ -698,128 +641,100 @@
     }%
   }%
   \ifgraduate{%
-    {\vutinfth@base
-      \ifdoctor{%
-        \SignatureFields[y]{}{%
-          \vutinfth@person@author@name
-        }%
-      }%
-      \ifphd{%
-        \SignatureFields[y]{%
-          \vutinfth@person@author@name
-        }{%
-          \vutinfth@person@advisor@name
-        }%
+    {\vutinfth@normalsize
+      \SignatureFields[y]{}{%
+        \vutinfth@person@author@name
       }%
     }%
   }%
 }%
 \newcommand{\AddTitlePage}{
-  \selectlanguage{english}
   \thispagestyle{vutinfth@pagestyle@titlepage}%
   \newgeometry{%
-    left=3cm,right=3cm,bottom=3cm,top=2cm,
+    left=2.4cm,right=2.4cm,bottom=2.5cm,top=2cm,
     headsep=\vutinfth@header@separator,
     head=\vutinfth@header@height
   }%
   \vutinfth@savelayout
-  \setlength{\headheight}{39pt}
-  \linespread{1.2}\selectfont
   \setlength{\parindent}{0pt}%
-  \setlength{\parskip}{0pt plus 1pt}
-  {\centering
-    \vspace*{\fill}\par
-    \begin{minipage}[t][3cm][b]{\textwidth}%
-      \centering
-      \vutinfth@title{\bfseries\vutinfth@polylingual@Title}\\
-      \bigskip
-      \vutinfth@subtitle{\bfseries
-        \ifdef{\vutinfth@polylingual@Subtitle}{%
-          \vutinfth@polylingual@Subtitle}{%
+  \setlength{\baselineskip}{13.6pt}%
+  \setlength{\parskip}{0pt plus 1pt}%
+    \sffamily
+    {\centering
+      \vspace*{1.2cm}\par
+      \begin{minipage}[t][5cm][b]{\textwidth}%
+        \centering
+        \vutinfth@HUGE{\bfseries\vutinfth@polylingual@Title}\\
+        \bigskip
+        \vutinfth@huge{\bfseries
+          \ifdef{\vutinfth@polylingual@Subtitle}{%
+            \vutinfth@polylingual@Subtitle}{%
+          }%
         }%
+      \end{minipage}\par
+      \vutinfth@bigskip\vutinfth@bigskip
+      {\vutinfth@LARGE\vutinfth@polylingual@thesisname}\par
+      \vutinfth@bigskip
+      {\vutinfth@large\vutinfth@polylingual@submission}\par
+      \vutinfth@bigskip
+      \ifundergraduate{%
+        {\vutinfth@LARGE{\bfseries\vutinfth@polylingual@degreename}}\par
+        \vutinfth@bigskip
+        {\vutinfth@large\vutinfth@polylingual@in}\par
+        \vutinfth@bigskip
+        {\vutinfth@Large{\bfseries\vutinfth@polylingual@Curriculum}}\par
       }%
-    \end{minipage}\par
+      \ifgraduate{%
+        {\vutinfth@LARGE{\bfseries\vutinfth@polylingual@degreename}}\par
+      }%
+      \vutinfth@bigskip
+      {\vutinfth@large\vutinfth@polylingual@by}\par
+      \vutinfth@bigskip
+      {\vutinfth@Large{\bfseries\vutinfth@person@author@fullname}}\par
+      \smallskip
+      {\vutinfth@large\vutinfth@polylingual@Registrationnumber\
+      \vutinfth@data@regnumber}\par
+    }%
     \vutinfth@bigskip\vutinfth@bigskip
-    {\vutinfth@one\vutinfth@polylingual@thesisname}\par
-    \vutinfth@bigskip
-    {\vutinfth@three\vutinfth@polylingual@submission}\par
-    \vutinfth@bigskip
-    \ifundergraduate{%
-      {\vutinfth@one{\bfseries\vutinfth@polylingual@degreename}}\par
-      \vutinfth@bigskip
-      {\vutinfth@three\vutinfth@polylingual@in}\par
-      \vutinfth@bigskip
-      {\vutinfth@two{\bfseries\vutinfth@polylingual@Curriculum}}\par
-    }%
-    \ifgraduate{%
-      {\vutinfth@one{\bfseries\vutinfth@polylingual@degreename}}\par
-      \ifphd{%
-        \vutinfth@bigskip
-        {\vutinfth@three\vutinfth@polylingual@within}\par
-        \vutinfth@bigskip
-        {\vutinfth@one{\bfseries\vutinfth@polylingual@School}}\par
-      }%
-    }%
-    \vutinfth@bigskip
-    {\vutinfth@three\vutinfth@polylingual@by}\par
-    \vutinfth@bigskip
-    {\vutinfth@two{\bfseries\vutinfth@person@author@fullname}}\par
-    \smallskip
-    {\vutinfth@three\vutinfth@polylingual@Registrationnumber\
-    \vutinfth@data@regnumber}\par
-  }%
-  \vutinfth@bigskip\vutinfth@bigskip
-  % \ifgraduate{\ifphd{\vspace*{-8mm}}}%
-
-  % \begin{minipage}[b][1.6cm][c]{\textwidth}%
-  %   % \vutinfth@base%
-  %   \vutinfth@polylingual@faculty\par
-  %   \vutinfth@polylingual@university
-  % \end{minipage}\par
-  \vutinfth@polylingual@faculty\par
-  \vutinfth@polylingual@university\par
-  \vutinfth@bigskip
-  % \AdvisorBlock\par
-  \vutinfth@polylingual@Advisor:\par
-  \vutinfth@person@advisor@fullname\par
-  % \vutinfth@bigskip
-  \SignatureFields[y]{\vutinfth@person@author@name}{\vutinfth@person@advisor@name}
-  \vspace*{\fill}%
+    \begin{minipage}[b][1.6cm][c]{\textwidth}%
+      \vutinfth@normalsize%
+      \vutinfth@polylingual@faculty\par
+      \vutinfth@polylingual@university
+    \end{minipage}\par
+    \AdvisorBlock\par
+    \vfill
+    \ReviewerBlock\par
+    \SignatureBlock\par
+    \vspace*{1cm}%
+  \rmfamily
   \pagestyle{empty}%
   \cleardoublepage
   \vutinfth@restorelayout
   \restoregeometry
 }%
-
 \newcommand{\AddStatementPage}{
   \vutinfth@savelayout
-  % \linespread{1.5}\selectfont
   \setlength{\parindent}{0pt}%
-  % \setlength{\baselineskip}{13.6pt}%
+  \setlength{\baselineskip}{13.6pt}%
   \setlength{\parskip}{0pt plus 1pt}%
+  \sffamily
   \chapter*{\vutinfth@polylingual@StatementChapter}%
   \vutinfth@person@author@fullname\par
   \vspace{1.2cm}%
   {\normalfont\vutinfth@polylingual@Statement}\par
   \vspace{1.2cm}%
   \SignatureFields[y]{\vutinfth@person@author@name}{}%
+  \rmfamily
   \cleardoublepage
   \vutinfth@restorelayout
 }%
 \newcommand{\addtitlepage}[1]{%
-  % \selectlanguage{#1}%
+  \selectlanguage{#1}%
   \AddTitlePage
 }%
 \newcommand{\addstatementpage}{%
   \selectlanguage{english}%
-  \ifundergraduate{\AddStatementPage}%
-  \ifgraduate{%
-    \ifdoctor{\AddStatementPage}%
-    \ifphd{%
-      \selectlanguage{english}%
-      \AddStatementPage
-    }%
-  }%
+  \AddStatementPage
 }%
 \newenvironment{acknowledgements}{%
   \selectlanguage{english}%
@@ -834,13 +749,13 @@
   \cleardoublepage
 }%
 \newenvironment{danksagung}{%
-  \selectlanguage{ngerman}%
+  \selectlanguage{naustrian}%
   \chapter{Danksagung}%
 }{%
   \cleardoublepage
 }%
 \newenvironment{danksagung*}{%
-  \selectlanguage{ngerman}%
+  \selectlanguage{naustrian}%
   \chapter*{Danksagung}%
 }{%
   \cleardoublepage
@@ -858,13 +773,13 @@
   \cleardoublepage
 }%
 \newenvironment{kurzfassung}{%
-  \selectlanguage{ngerman}%
+  \selectlanguage{naustrian}%
   \chapter{Kurzfassung}%
 }{%
   \cleardoublepage
 }%
 \newenvironment{kurzfassung*}{%
-  \selectlanguage{ngerman}%
+  \selectlanguage{naustrian}%
   \chapter*{Kurzfassung}%
 }{%
   \cleardoublepage
@@ -878,3 +793,5 @@
 \addto\mainmatter{\pagestyle{Ruled}}%
 \addto\backmatter{\pagestyle{vutinfth@pagestyle@default}}%
 \endinput
+%%
+%% End of file `vutinfth.cls'.
