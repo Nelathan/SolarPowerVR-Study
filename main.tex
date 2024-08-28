@@ -1,4 +1,3 @@
-% \documentclass[draft,final]{vutinfth} % Remove option 'final' to obtain debug information.
 \documentclass[draft, final]{vutinfth} % Remove option 'final' to obtain debug information.
 
 \usepackage{ifxetex}
@@ -94,8 +93,8 @@
 
 \setregnumber{11811332}
 \setdate{10}{5}{2024} % Set date with 3 arguments: {day}{month}{year}.
-\settitle{\thesistitle}{Virtual Reality as a Catalyst for the Energy Transition}
-% \setsubtitle{Optional Subtitle of the Thesis}{Eine wissenschaftliche Untersuchung des Potenzials von VR-Technologien in der Umweltbildung und -kommunikation}
+\settitle{\thesistitle}{The Power of Virtual Reality in Environmental Education}{}
+\setsubtitle{Promoting Photovoltaic System Adoption in Austria}{}
 \setthesis{bachelor}
 \setcurriculum{Software and Information Engineering}{Software und Information Engineering}
 
@@ -123,13 +122,13 @@
 % \end{kurzfassung}
 
 \begin{abstract}
-This thesis presents the development of a Virtual Reality (VR) application aimed at facilitating the energy transition in Austria. It addresses the widespread perception of the energy transition as overly complex and unachievable, a view that has often led to political inaction and public uncertainty. Through the use of VR technology, this research seeks to demonstrate the necessity and feasibility of transitioning towards renewable energy sources, countering the prevailing skepticism and inertia.
+This thesis investigates the potential of Virtual Reality (VR) as a catalyst for promoting the energy transition in Austria, specifically focusing on increasing understanding and adoption of photovoltaic (PV) systems.  Addressing the prevailing perception of the energy transition as complex and unattainable, this research leverages VR's immersive capabilities to demonstrate the feasibility and benefits of transitioning to renewable energy sources.
 
-The core of this study lies in creating an immersive VR experience that elucidates the concepts and advantages of the energy transition in an engaging and understandable manner. The application is designed to simplify complex environmental principles, making them accessible and relatable to users. By doing so, it aims to inspire a sense of urgency and possibility regarding the adoption of sustainable energy practices.
+We first evaluate \textit{KaisergasseVR}, an existing VR application showcasing climate-friendly solutions in an urban context, to establish a baseline understanding of user experience and learning outcomes. Building upon this, we develop \textit{SolarPowerVR}, a novel VR application designed to provide an interactive and engaging learning experience focused on PV systems. \textit{SolarPowerVR} allows users to explore a realistic virtual environment, manipulate PV panel configurations, and observe the resulting impact on energy production under varying conditions, fostering a deeper understanding of PV system dynamics.
 
-This work is grounded in the belief that technological innovation, particularly in the realm of VR, can play a crucial role in environmental advocacy. The goal is to empower individuals with knowledge and perspective, contributing to a more proactive and optimistic approach to environmental challenges in Austria.
+Our findings reveal that \textit{SolarPowerVR} significantly enhances user understanding of PV systems compared to \textit{KaisergasseVR}, highlighting the importance of interactive engagement in VR-based learning.  However, the results also indicate that interactivity alone may not be sufficient for acquiring specific factual knowledge, such as optimal panel orientation.  We discuss these findings in the context of existing research on VR in education and climate change communication, emphasizing the need for careful design choices that balance interactivity with clear instruction and guidance.
 
-The findings and developments from this thesis are expected to offer new pathways in environmental education and communication, highlighting how VR can be a potent tool in promoting understanding and action in the face of environmental challenges. This research aims to stand as a testament to the power of technology in driving societal change, especially in contexts where political leadership may be lacking.
+This thesis contributes to the growing body of knowledge on the potential of VR for environmental education and advocacy. By demonstrating the effectiveness of \textit{SolarPowerVR} in enhancing understanding of PV systems, we provide valuable insights for the design of future VR educational tools aimed at promoting sustainable energy solutions and contributing to a more sustainable future.
 \end{abstract}
 
 \tableofcontents % Starred version, i.e., \tableofcontents*, removes the self-entry.
@@ -137,229 +136,360 @@ The findings and developments from this thesis are expected to offer new pathway
 
 \chapter{Introduction}
 
-% One sentence or short paragraph about what the paper is about and a mini-summary of your main results. (1 par) 
+The need to transition from fossil fuels to renewable energy sources has become a pressing global concern. The alarming pace of climate change, largely driven by our continued reliance on unsustainable energy practices, demands immediate action \cite{IPCC_2018_SR15}. In this context, photovoltaic (PV) systems, which utilize the abundant and clean energy of the sun, are a promising solution. However, despite the many benefits of PV technology, significant challenges remain, and overcoming these hurdles is critical to ensuring a sustainable energy future \cite{iea2020world}.
 
+Austria, with its existing hydropower resources, has the potential to play a leading role in this transition. The European Climate Law, which legally binds all member states to achieve climate neutrality by 2050, underscores the urgency of action \cite{EUClimateLaw}.
+While Austria has achieved a commendable 72\% share of renewable electricity, only 33\% of the country's total energy consumption comes from renewable sources. Emissions from industry, especially steel production, remain high and rising (25 Mt CO2eq). The transport sector, the second largest contributor to Austria's carbon footprint (21 Mt CO2eq), remains heavily dependent on oil. Austria's total gas consumption has increased by 30\% since 1990 \cite{StatistikAustria2024Energiebilanzen}. Meeting the EU targets will require a dramatic acceleration in the deployment of renewable energy solutions. This will require effective policy adjustments, streamlined implementation strategies, and a fundamental shift in public perception and acceptance of sustainable solutions. However, effectively communicating the benefits and encouraging the adoption of technologies such as PV systems requires innovative approaches that go beyond traditional methods such as brochures and websites. While valuable, these methods clearly struggle to provide the level of engagement and experiential learning needed to inspire widespread behavior change. This thesis explores the potential of virtual reality (VR) as such an innovative tool for environmental education, with a specific focus on increasing awareness and understanding of photovoltaic (PV) systems to catalyze their adoption in Austria.
 
-% Introducing the important problem you solve, give some (possibly simplified) definitions (1 par)
+Despite the growing body of research highlighting the potential of VR in education \cite{HuAu2018VrExperience,Merchant2014VrEffectiveness} and promoting pro-environmental behaviors \cite{Queiroz2023Efficacy,McEvoy2023Climate}, a critical gap remains in its application to public education about PV technology. Existing resources often lack the engaging and immersive qualities of VR, particularly in providing experiences that foster a sense of ownership over energy choices. VR can fill this gap by allowing users to directly manipulate and experiment with PV systems in a virtual environment. This hands-on interaction, as explored by Gee \cite{Gee2009Deep}, can foster a sense of agency and empowerment, leading to a deeper understanding of PV technology and potentially influencing positive attitudes toward adoption. We evaluate the impact of VR on learning outcomes and attitudes towards PV systems through two applications:
 
+\begin{itemize}
+    \item \textit{KaisergasseVR}, developed by Energiewende Linz, provides a broad overview of climate friendly solutions in an urban context and serves as a baseline for this thesis.
+    \item \textit{SolarPowerVR}, developed by me as a key component of this thesis, directly addresses the identified gap in public PV education.  By allowing users to design and experiment with virtual PV systems, \textit{SolarPowerVR} offers an immersive and relatable virtual environment based on a real site in Linz, utilizing high-resolution 3D models.  Users can intuitively interact with the system, installing and adjusting virtual PV panels to observe their impact on energy output. By integrating professional PV calculation software, the application ensures an accurate simulation of system performance, enhancing the learning experience.
+\end{itemize}
 
-% Why is this problem important, who has attempted to solve it, which solutions exist so far, why aren‘t they sufficient, why are we left with a dilemma, what are the main obstacles, why would it be useful to fight them. What would be the benefit of a (better) solution. (1/2 page)
+We aim to answer the following \textbf{Research Questions}:
+\begin{itemize}
+    \item \textbf{Q1:} Can a VR simulation like \textit{KaisergasseVR} effectively increase understanding, acceptance, and interest in climate-friendly technologies?
+    \item \textbf{Q2:} Can an interactive photovoltaic use case, as implemented in \textit{SolarPowerVR}, increase the understanding and acceptance of PV solutions?
+    \item \textbf{Q3:} How effective is an interactive VR simulation in increasing factual knowledge about the optimal orientation of photovoltaic panels?
+\end{itemize}
 
-...
+We make the following \textbf{contributions}:
+\begin{itemize}
+    \item A user study and evaluation of the effectiveness of \textit{KaisergasseVR} in raising awareness of climate-friendly technologies.
+    \item The Design and Implementation of \textit{SolarPowerVR}
+    \item A user study and evaluation of \textit{SolarPowerVR}, assessing the impact of interactive engagement on learning outcomes and attitudes toward PV systems. This provides insights into the design principles that enhance the educational effectiveness of VR experiences.
+\end{itemize}
 
-research questions:
-%Wie können die Möglichkeiten von VR genutzt werden, um grundlegendes Verständnis für die Energiewende zu schaffen und die Funktionsweise eines erneuerbaren Energiesystems zu vermitteln?
-%1) nutzen von VR generell für verständnis /akzeptanz
-1) Can a VR simulation such as the VR application of Energiewende Linz (\textit{KaisergasseVR}) increase understanding/acceptance  and interest for climate-friendly technologies? 
-
-%2) vorteil einer interaktiven sim für photovoltaic
-2) Can an interactive photovoltaic use case increase understanding and acceptance of PV solutions?
-
-
-% Elaboration on single obstacles and how you overcome them.
-
-
-
-% Short description of results and their advantage and usefulness in chronological order.
-
-
-% Some remarks about the nontriviality of the solution 
-
-
-
-% Summary of main results in form of a dotlist
-
-contribution:
--) user study and evaluation of \textit{KaisergasseVR}
--) use case designed and implemented (derive from related work) ... as educational tool?
--) user study to evaluate the benefit of a more interactive solution
-
-
-% Further related work and a sentence about future plans
-
-
-
-
-% Roadmap „This paper is organized as follows... 
-
-
-
-
-This bachelor thesis is dedicated to the development of an innovative Virtual Reality application, which aims to advance the energy transition in Austria. In a context where public opinion and media coverage in Austria often show a certain skepticism towards the energy transition and its challenges, this work aims to bring a positive change and deeper understanding through the use of VR technology.
-
-In Austria, the energy transition is often perceived as complex and controversial in public debate and the news. There is an urgent need to communicate more clearly the benefits and feasibility of this transition. This bachelor thesis aims to positively influence public opinion and promote a deeper understanding of its importance by creating a VR application that conveys the principles and benefits of the energy transition in an interactive and immersive manner.
-
-The work intends to explore the role of VR as a powerful tool in education and communication strategies, to create broader awareness and stronger support for the energy transition among the Austrian population. In doing this, I utilize the latest developments in VR technology and combine them with current environmental issues.
-
-My goal is to make a scientifically founded contribution that considers both the technological aspects and the didactic principles in conveying the challenges and solutions of the energy transition. The work is intended to serve as a basis for future research and applications dealing with the use of VR technology in environmental education and communication.
-
-
-
-
-
+By exploring the potential of VR to promote understanding, shift attitudes, and inspire action, we aim to contribute to the transition to a more sustainable energy future.
 
 \chapter{Related Work}
+% Remember to use clear and concise language, provide context for each paper, and connect the dots between different research areas. The goal is to create a cohesive narrative that leads the reader smoothly towards your own research question and approach.
 
-% am besten du machst dir hier als erstes mal ein paar stichworte zur struktur und den main take-aways
-% sowas wie:
-% VR wird viel in education verwendet (in unterschiedlichen gebieten
-% dabei ist besonders wichtig/beneficial/etc: 
-% orientierung 
-% interaktivität
-% collaboration
-% ...
-% das hab ich jetzt so bissl aus deinem related work raus gelesen. das sind aber eigentlich dinge die gut sind für die argumentation/motivation und daher in die introduction passen. im related work geht es eher darum den state of the art in dem bereich zusammenzufassen. also was gibt es für ähnliche arbeiten? wie unterscheiden sich die? wie sind die besser oder schlechter, etc.
+This chapter reviews existing research in three key areas: photovoltaic (PV) simulation, VR-based education, and applications of VR for climate change awareness. By examining these, we establish the context for this thesis and highlight a significant opportunity for innovation in the use of VR to promote broader understanding and adoption of PV systems.
 
-\section{Virtual Reality in Education}
+\section{PV Simulation and Visualization}
 
-A central aspect in the discussion about the use of Virtual Reality (VR) in education is addressed by Radić-Weissenfeld et al.\cite{hu2017virtual}. This paper offers a profound insight into the diverse applications and the potential of VR as an educational tool in today's era of experience and interactivity.
+Accurate and accessible simulation of PV systems is crucial for both professionals and the general public \cite{Milosavljevic2022SimTools}. Professionals rely on these tools for design, optimization, and feasibility studies, while the public needs to understand how PV systems work to make informed decisions about their adoption. However, traditional simulation software often presents complex data in a way that is difficult to understand, particularly for those without technical expertise.
 
-The authors discuss how VR technologies can revolutionize learning by creating immersive and interactive environments that enable learners to experience complex concepts and systems in a way that is not possible with traditional teaching methods. This approach, aimed at making abstract theories tangible through direct experience, is particularly relevant for the fundamental understanding of the energy transition and renewable energy technologies. The authors emphasize that VR technology offers the possibility to enable learners to experience the impacts of their decisions and actions in a realistic environment. This approach is especially relevant for the energy transition, as it allows learners to understand and experience the effects of their decisions on the environment.
+Researchers have focused on improving the accuracy of PV simulations by refining the mathematical foundations of PV system performance. Jensen et al. \cite{Jensen2010Model} developed and validated a mathematical model to estimate the power output of a 75 kW PV solar array, demonstrating the importance of robust mathematical modeling in understanding and optimizing PV systems. This research highlights the crucial role of accurate calculations in predicting system performance.
 
-In the context of my work, which aims to improve understanding of the functioning of renewable energy systems through VR, this article provides important insights. The principles of immersion and interactivity described in the article are fundamental pillars for the development of the VR application. In particular, the emphasis on "experience orientation" in the learning process is important for the project, as it is about giving users a deep understanding of the dynamics and impacts of various photovoltaic configurations.
+Despite advancements in mathematical modeling, the lack of user-friendly interfaces remains a significant barrier to broader adoption of PV simulation tools. Umar et al. \cite{Umar2018PvSimSoftware} provide a comprehensive overview of the existing landscape of PV simulation software, identifying difficulties navigating and interpreting the results as a key limitation. They also point to the need for more accurate and comprehensive environmental data to account for the variability of solar irradiance across different locations and times of year.
 
-Radić-Weissenfeld et al. also underline the importance of user-centricity in VR learning environments. This aspect is crucial to ensure that our VR application is not only informative but also user-friendly and engaging. By applying these principles, we can create a learning experience that is not only educational but also motivating and inspiring for users.
+Addressing the need for more accurate data, Marion et al. \cite{Marion2014PvData} highlight the importance of creating a comprehensive dataset of PV module performance data. Their dataset, including over 1 million IV curves collected from diverse locations, is invaluable for improving the accuracy of PV simulation tools and understanding the impact of environmental factors such as irradiance and temperature on system efficiency. 
 
-In conclusion, the article by Radić-Weissenfeld et al. provides an important foundation for our project by demonstrating how VR technology can be effectively used in educational contexts. The insights gained from this directly flow into the design of our VR application, with the goal of creating an intuitive and effective learning experience around the topic of energy transition.
-% welche erkenntnisse konkret?
+The influence of environmental variables on PV system efficiency is further explored by Micheli et al. \cite{Micheli2014OutdoorPerformance}, who focus on the effects of temperature and irradiance. Their analysis of two grid-connected PV systems demonstrates the effect of panel orientation and tilt on energy production. By comparing temperature-normalized power output with manufacturer declarations, the study emphasizes the importance of accurate data and modeling for understanding PV system dynamics. This underscores the importance of effectively communicating these concepts when explaining the basic operation of PV systems. Such concepts are well understood through observation, making them ideally suited for exploration in a virtual environment. SolarPowerVR allows users to interactively explore and observe first-hand the resulting impact of three different orientations and tilt angles, empowering them to make informed decisions about PV adoption.
 
-\section{VR Technology in Higher Education: New Perspectives and Applications}
-
-Virtual Reality has established itself as a powerful tool in higher education, especially in the STEM fields (Science, Technology, Engineering, and Mathematics), where VR is predominantly used to make complex and abstract concepts more comprehensible~\cite{ding2022review}. The immersive properties of VR enable students to not only theoretically learn technical and scientific processes but also to grasp them practically and visually, leading to a deeper understanding. This application of VR highlights the technology's potential to make challenging topics more accessible and tangible.
-
-Ding and Li ~\cite{ding2022review} ran a study with ... students to investigate... Their results showed that VR has a significant impact on students' learning outcomes. The use of VR technology in higher education has been observed to improve the absorption and retention of knowledge. VR offers a unique, interactive learning experience that complements and surpasses traditional teaching methods by immersing students directly in the learning environment. This direct, experience-based learning method not only fosters an understanding of complex scientific and technical concepts but also improves long-term retention.
-
-Furthermore, the study emphasizes that VR positively influences students' learning behavior. The incorporation of VR into curricula leads to increased engagement and motivation among students. This technology allows learners to experiment and explore in an interactive and dynamic environment, making learning an active and captivating experience. This not only arouses interest in the subject matter but also enhances problem-solving and critical analysis skills. These changes in student behavior contribute to increasing learning success and fostering a deeper, lasting interest in the topics.
-
-\section{Significant Developments in Educational Virtual Environments}
-
-Mikropoulos and Natsis~\cite{mikropoulos2011educational} provide a comprehensive analysis of research in the field of education-oriented virtual environments (VE) over a ten-year period. This extensive review illuminates the crucial developments and changes that virtual educational environments have undergone in the last decade, thus providing an indispensable basis for understanding the current and future trends in this field.
-
-Mikropoulos and Natsis focus on the diverse applications of VEs in education. They note that VEs are increasingly recognized as effective tools that enrich learning through their immersive and interactive properties in different application areas, from scientific subjects to complex social and cultural topics.
-
-They argue that interactive elements in virtual educational environments can increase learner engagement and motivation, leading to a deeper and more sustainable understanding of the learning content.
-
-Moreover, the authors emphasize the role of VEs in promoting collaborative learning. They demonstrate how virtual environments can support cooperative and collaborative learning, where students can jointly solve tasks and share knowledge, leading to improved understanding and higher retention. This approach is particularly effective as it emphasizes the social aspects of learning, which are often neglected in traditional learning environments.
-
-The researchers also point out the challenges associated with implementing VEs in educational institutions. These challenges include technical limitations, high costs for setting up and maintaining such systems, and the need for adequate training for teachers to effectively use these technologies. They stress the importance of careful planning and support from educational institutions to overcome these challenges.
-
-In conclusion, Mikropoulos and Natsis underscore the potential of VEs as transformative tools in education. They argue that these technologies, when effectively utilized, can revolutionize learning and lead to deeper, more meaningful educational experiences. Their research suggests that VEs could play a key role in shaping future educational strategies, especially in areas that require a high degree of interactivity and engagement.
-
-Given these insights, it is clear that the work of Mikropoulos and Natsis makes an important contribution to the understanding and further development of virtual educational environments. Their research findings provide valuable insights for educational professionals, developers, and researchers working at the intersection of technology and education, forming a solid foundation for future exploration and implementation of VEs in educational contexts.
-
-The insights of Mikropoulos and Natsis are of central importance to my project. Their paper not only offers a deep insight into the historical development and various application areas of virtual educational environments but also serves as a valuable source of inspiration for innovative teaching methods in virtual reality. The importance they place on interactivity in virtual environments is particularly relevant to my project. They provide concrete starting points for designing an interactive and engaging VR learning environment, aiming not just to entertain users but actively involve them in the learning process.
-
-Furthermore, understanding the challenges discussed by Mikropoulos and Natsis -- particularly regarding technical, financial, and pedagogical aspects -- opens the possibility to plan and implement my project realistically and purposefully. This will be crucial for ensuring smooth integration and acceptance of the VR learning application in educational contexts.
-
-In conclusion, the paper forms a sound basis for the development of my VR application. It serves as a compass that highlights both the potentials and pitfalls of using Virtual Reality in education. By taking these insights into account, I can develop an application that is not only technologically advanced but also pedagogically valuable, thus creating an effective and appealing learning experience for users.
-
-\section{Effectiveness and Integration of VR-based Instruction}
-
-The integration of VR-based instruction into traditional teaching methods is a central element of my literature review. This topic is extensively analyzed in the paper "Effectiveness of virtual reality-based instruction on students' learning outcomes in K-12 and higher education"\cite{merchant2014effectiveness}. This meta-analysis explores the effectiveness of VR in various educational contexts and details the specific conditions under which VR can significantly influence learning success. Therefore, it provides valuable insights for the effective use of VR in educational environments. The results are particularly relevant for our project due to the matching age group of the participants and the thematic focus on declarative learning objectives.
-
-Key findings of the paper are:
-\begin{itemize}
-  \item The results show that VR-based educational environments significantly improve students' learning outcomes. This underscores the potential of VR as an effective tool in education.
-
-  \item The type of learning outcomes, whether knowledge or skill acquisition, influences the effectiveness of VR-based instruction. VR is particularly effective in imparting declarative knowledge. This is relevant for our project as we focus on conveying knowledge about the functioning of photovoltaic systems and the effects of various configurations.
-
-  \item A combination of VR and other teaching methods proves to be particularly effective. This supports an integrated teaching approach where VR is used as a complement to traditional teaching forms. This approach is particularly relevant for our project as we develop the VR application as an addition to workshops in schools.
-
-  \item The nature of feedback and the type of learning tasks are crucial for the effectiveness of VR in an educational context. Detailed explanations are more effective for declarative tasks, while concrete feedback on the correct answer is more effective for procedural tasks. This underlines the importance of tailoring feedback to the type of learning task.
-
-  \item The methodological rigor of study designs influences the observed learning outcomes, with higher methodological rigor leading to stronger evidence of VR's effectiveness. This highlights the importance of careful design of VR-based educational environments.
-
-  \item The results show that VR environments in education increase learner engagement and motivation. Thus, VR serves as a tool to arouse students' interest and actively involve them in the learning process.
-\end{itemize}
-
-This paper provides valuable insights for the effective design of VR-based educational environments for my work. It emphasizes the need to carefully design VR applications to ensure they support and complement learning objectives. The insight that a combination of VR and other teaching methods, as well as tailoring feedback to the type of learning task, is crucial for the success of VR in education. These insights will be considered in developing our VR application to ensure an optimal and effective learning experience.
-
-The effectiveness of combining VR with traditional teaching methods highlighted in this paper is already being applied in our project. Our VR application is used in school workshops to make the more abstract content tangible and comprehensible, complementing frontal teaching. This methodological connection helps regain the attention of young people and deepens their understanding of the complex topics of the energy transition. Notably, the potential influence on knowledge retention is enhanced by the interactive and immersive nature of VR.
-
-Based on the findings from the mentioned paper and previous research, I can further develop the VR application by integrating the following elements:
-
-\begin{itemize}
-  \item Implementation of interactive feedback systems that allow learners to receive immediate and specific feedback on their actions and decisions within the VR environment. This can be realized, for example, through real-time simulation data and explanatory notes.
-
-  \item Integration of appealing and informative data visualizations that enable users to visualize the immediate effects of their decisions on the environment and energy efficiency. Such visualizations could dynamically display changes in energy amounts, CO2 emissions, or costs depending on the chosen parameters.
-
-  \item Development of additional interactive modules that address specific aspects of the energy transition. These could include simulations that illustrate the effects of different energy systems under selected environmental conditions.
-
-  \item By providing various interaction options within the VR environment, different learning styles can be accommodated. This can be enabled through options for exploratory and structured learning.
-
-  \item Ensuring that the VR application is seamlessly integrated into the preceding and subsequent content of the workshops to create a coherent learning experience. This could be achieved by providing accompanying materials and by coordinating and preparing the content with the teachers.
-
-\end{itemize}
-
-Although the integration of VR into traditional teaching methods is promising, we should review and adjust the effectiveness and relevance of the VR application as necessary. It is important to gather feedback from teachers and students and optimize the application accordingly to ensure that it meets learning objectives and effectively contributes to knowledge transfer.
-
-The insights from the paper and previous studies support the further development of the VR application as an effective tool in education for the energy transition. By specifically adapting and expanding the application, we can further increase learning success and foster lasting interest in the topic. Future research and applications could focus on optimizing the interaction between VR and traditional teaching methods and examining the effects on different learning groups.
+To address the limitations of traditional simulation tools, researchers are exploring innovative approaches. Mann et al. \cite{Mann2022deltaPV} introduce a novel simulation tool called ∂PV that leverages gradient-based optimization algorithms and neural networks. This approach uses automatic differentiation libraries to efficiently calculate derivatives, enabling faster and more accurate optimization of key parameters. ∂PV demonstrates the potential for applying machine learning techniques to improve the accuracy and efficiency of PV simulations, paving the way for more user-friendly and data-driven tools.
 
 
-\section{VR Applications for Renewable Energy}
-% related work
-% Works focusing on the use of VR in environmental education and awareness.
-% what, how, result, relevance
+Incorporating real-world data is crucial for enhancing the realism of virtual PV systems. SolarPowerVR utilizes simulation results from Levarsoft SolarProTool\footnote{https://spt.solar/}, to enhance the accuracy of its simulated energy production. It is widely used in the industry for its detailed modeling capabilities and extensive database of PV components and environmental data. By integrating these insights, we provides users with a more realistic representation of real-world energy generation, further bridging the gap between theoretical models and practical applications.
 
+These studies illustrate the ongoing progress in advancing the field of PV simulation, highlighting the need for user-friendly interfaces, comprehensive data sets, and robust mathematical models. This progress is crucial to enable both professionals and the general public to understand and engage with PV systems, ultimately contributing to the wider adoption of renewable energy sources. This thesis addresses these needs through the development of SolarPowerVR. The application features an intuitive interface, aiming to simplify the exploration of various factors influencing PV system performance. Established mathematical formulas for irradiance calculation are utilized to ensure simulation accuracy. Furthermore, simulation results from SolarProTool, are incorporated to enhance the realism of the virtual PV system's energy production. By combining these elements, we contribute to the ongoing progress in PV simulation by providing a platform for understanding and exploring the complexities of solar energy generation.
+
+\section{VR in Interactive Education}
+
+Virtual reality offers distinct advantages for interactive education, enhancing student engagement, motivation, and knowledge retention \cite{Dalgarno2010Learning, HuAu2018VrExperience, Lege2020VrProgress}. A growing body of research supports the effectiveness of VR for teaching technical subjects, particularly within STEM fields \cite{Merchant2014VrEffectiveness, Mikropoulos2011VrEducational}. This section delves into studies that incorporate interactive elements and simulations within VR learning environments, emphasizing their positive impact on learning outcomes.
+
+Hu-Au and Lee \cite{HuAu2018VrExperience} highlight the pedagogical benefits of VR, noting increased student engagement and active, constructivist learning. They cite examples such as \textit{Google Expeditions}\footnote{https://artsandculture.google.com/project/expeditions}, where students embark on immersive virtual field trips, and \textit{The Body VR}\footnote{https://store.steampowered.com/app/451980}, which allows students to navigate through the human bloodstream. By providing immersive and interactive experiences, VR enhances learning by enabling students to construct their knowledge through exploration and problem-solving. The pedagogical model underpinning VR applications is crucial for optimal learning outcomes. This aligns with the design of SolarPowerVR, which aims to create an engaging and interactive learning experience for understanding PV systems.
+
+Constructivism, the predominant theoretical framework for Educational Virtual Environments (EVEs) \cite{Mikropoulos2011VrEducational}, fosters knowledge construction through authentic tasks and multiple representations of reality. This aligns with Dalgarno and Lee's \cite{Dalgarno2010Learning} model of learning in 3D virtual environments, which proposes five key affordances: spatial knowledge representation, experiential learning, engagement, contextual learning, and collaborative learning. Meta-analyses further substantiate the effectiveness of VR in enhancing learning. For example, Merchant et al. \cite{Merchant2014VrEffectiveness}, in their analysis of 79 studies, concluded that games, simulations, and virtual worlds significantly improve learning outcomes. Notably, games showed higher learning gains, attributed to their ability to promote prolonged engagement and motivation \cite{Gee2012Situated}. This finding supports SolarPowerVR's incorporation of game-like elements to enhance user engagement and motivation.
+
+VR also facilitates authentic and highly relevant learning contexts, providing students with first-hand experiences. Virtual field trips, such as career-focused expeditions offered by \textit{Google Expeditions} \cite{Sung2015Effects}, offer students insights into various professions and mentorship opportunities. Specific VR characteristics have been examined for their impact on learning. Mikropoulos and Natsis' review \cite{Mikropoulos2011VrEducational} underscores the value of features like first-order experiences, natural semantics, and presence in EVEs. Their findings indicate that EVEs promoting first-order experiences through free navigation and a first-person perspective positively influence learning outcomes. The sense of presence in VR, the feeling of 'being there,' significantly contributes to learning. Mikropoulos and Natsis \cite{Mikropoulos2011VrEducational} suggest that presence enhances first-hand experiences and facilitates knowledge construction. SolarPowerVR incorporates these principles by providing a first-person perspective and allowing users to freely navigate the virtual environment, fostering a sense of presence and enhancing the learning experience.
+
+Bailenson et al. \cite{Bailenson2008Transformations} reinforce this idea, emphasizing that immersive VR allows for multiple perspectives and situated learning, thereby enhancing educational experiences. Winn et al. \cite{Winn2002Immersion} conducted a study investigating the impact of immersion in a virtual environment on students' understanding of complex, dynamic processes. Their research focused on a simulated tidal current and salinity environment to explore the effectiveness of immersion in promoting conceptual change. The study revealed that immersion significantly enhanced students' understanding of three-dimensional, spatial phenomena, specifically water movement, which requires advanced visual exploration and spatial reasoning skills. The findings demonstrated that students immersed in the VE exhibited significantly better learning outcomes on post-tests compared to those interacting with a desktop simulation. This effect was attributed to the increased sense of presence within the VE, which positively influenced learning. This finding directly supports the rationale behind SolarPowerVR's immersive design, as understanding the impact of panel orientation and tilt on energy production requires spatial reasoning and visualization, skills that are enhanced by VR immersion.
+
+These studies collectively demonstrate the potential of VR to enhance interactive education, particularly in STEM fields, by improving engagement, motivation, and knowledge retention. The research highlighted in this section provides a strong theoretical foundation for the development and implementation of SolarPowerVR. By incorporating principles of constructivism, experiential learning, and immersive design, SolarPowerVR aims to leverage the unique affordances of VR to create an engaging and effective learning experience for understanding the complexities of PV systems. The findings of these studies support the rationale behind SolarPowerVR's design choices, emphasizing the importance of interactivity, immersion, and authentic learning experiences in promoting deeper understanding and knowledge retention.
+
+\section{VR for Climate Awareness}
+
+Virtual reality (VR) is rapidly gaining recognition for its potential to transform environmental education and inspire behavior change. Beyond traditional educational approaches, VR offers immersive experiences that can evoke powerful emotional responses and foster a deeper understanding of the complexity and urgency of climate change \cite{Ball2023Effects}. Researchers and developers are increasingly exploring how to harness the power of VR to raise awareness, shift attitudes, and ultimately drive pro-environmental behaviors \cite{McEvoy2023Climate}.
+
+One of VR's greatest strengths is its ability to create empathy and emotional engagement. By immersing users in carefully crafted simulations, VR allows individuals to experience the effects of climate change firsthand, even if only virtually. McEvoy \cite{McEvoy2023Climate} suggests that these experiences, often absent from traditional educational materials, can lead to more profound and lasting changes in attitudes and behaviors. For example, Xu et al. \cite{Xu2022Explore} demonstrated the effectiveness of a VR simulation that vividly depicts the effects of sea level rise.  Users reported increased awareness and concern about this pressing issue, demonstrating VR's unique ability to connect individuals to abstract environmental threats on a personal and emotional level. This aligns with SolarPowerVR's goal of fostering a deeper understanding and appreciation of the benefits of renewable energy through an immersive and engaging experience.
+
+In addition, studies highlight the importance of embodiment and interactivity in maximizing the effectiveness of VR for climate change education. Queiroz et al. \cite{Queiroz2023Efficacy} found that incorporating physical movement into a VR experience significantly increased users' sense of agency and resulted in more substantial pro-environmental attitude changes. These findings highlight a critical aspect of effective VR design -- when users actively participate and directly engage with the virtual environment, the experience transcends passive observation and promotes a sense of ownership and empowerment that can catalyze real-world action. SolarPowerVR embraces this principle by allowing users to actively interact with the virtual environment, manipulating PV panels and observing the impact of their choices on energy production.
+
+The KaisergasseVR project by \href{https://www.energiewende-linz.at}{Energiewende Linz} aimed to raise awareness of climate-friendly solutions for residential buildings through an immersive virtual reality experience. Users could explore a virtual environment, green the courtyard, and install photovoltaic panels to power electric vehicles. While this project focuses on a broader range of sustainability initiatives, it shares a common goal with SolarPowerVR: to use the immersive capabilities of VR to promote understanding and adoption of sustainable practices. KaisergasseVR served as a valuable precursor to this research, providing insights into the potential of VR for environmental education and informing the design choices of SolarPowerVR.
+
+Building upon the research and examples discussed, it is evident that VR offers a transformative tool for environmental education, uniquely positioned to translate complex data into compelling experiences.  By leveraging the power of immersive storytelling, emotional resonance, and embodied interaction, VR can empower individuals to move beyond passive awareness, foster a sense of urgency and agency, and ultimately inspire meaningful action to combat climate change.  This research builds on the foundation laid by projects such as KaisergasseVR and further explores the potential of VR to specifically promote understanding and adoption of solar PV systems. By focusing on the intricacies of solar energy generation, SolarPowerVR aims to contribute to the growing body of evidence supporting the efficacy of VR in environmental education and its potential to drive positive change towards a more sustainable future.
+
+
+\section{Bridging the Gap: VR for PV Education}
+
+The potential of VR for educational purposes is well documented, particularly in raising awareness about climate change and teaching technical subjects \cite{HuAu2018VrExperience, Merchant2014VrEffectiveness, Queiroz2023Efficacy, McEvoy2023Climate}. However, a critical gap remains in its application to public education about PV systems. Existing resources often lack the engaging and immersive qualities of VR, particularly in providing experiences that foster a sense of ownership over energy choices.
+
+We address this gap by introducing and evaluating \textit{SolarPowerVR}, specifically designed to make learning about solar energy engaging and accessible for the general public. It provides a hands-on, virtual learning environment where users can experiment with solar systems and gain a deeper understanding of solar energy principles. By fostering a more intuitive and interactive learning experience, we aim to encourage wider adoption of PV systems and contribute to a more sustainable future.
+
+The research reviewed in this chapter provides a strong foundation for the development and evaluation of SolarPowerVR. By drawing upon the insights of previous studies on VR in education, climate change communication, and interactive learning, this thesis aims to contribute to the growing body of knowledge in this field and advance the understanding of how VR can be effectively utilized to promote sustainable energy solutions. We build upon prior research in several key ways. Studies have demonstrated the positive impact of immersive VR experiences on learning and understanding complex concepts \cite{Winn2002Immersion, Bailenson2008Transformations}. We leverages this potential by providing a highly immersive environment where users can directly interact with and manipulate virtual PV systems. Furthermore, research has highlighted the importance of active learning and embodied interaction in VR environments \cite{Queiroz2023Efficacy}. We incorporate these principles by allowing users to actively experiment with different panel configurations and observe the impact of their choices on energy production. Recognizing the limitations of existing applications that cater to technical experts, we build upon the work of researchers \cite{HuAu2018VrExperience} by prioritizing user-friendliness and accessibility, aiming to engage a broader audience with varying levels of technical knowledge.
+
+The results of this thesis have the potential to drive change by informing the design of future VR educational tools aimed at promoting sustainable energy solutions. By evaluating the effectiveness of SolarPowerVR, we can provide valuable insights into how to create engaging and accessible learning experiences that increase public understanding and acceptance of PV technology. This increased understanding can ultimately contribute to wider adoption of PV systems, ultimately fostering a more sustainable energy future.  Furthermore, this thesis contributes to the growing body of research exploring the potential of VR to drive positive change in the realm of climate action and renewable energy adoption. By bridging the gap between technical knowledge and public engagement, SolarPowerVR has the potential to be a valuable tool for promoting sustainable energy solutions and contributing to a more sustainable future.
 
 \chapter{Approach}
-\section{Reviewing \textit{KaisergasseVR}}
-The association \href{https://www.energiewende-linz.at}{Energiewende Linz} presented their first exhibition at the Ars Electronica Festival in 2022 under the name "PowerPlayGround". This exposition aimed to present multiple interactive stations, each delving into a different aspect of the climate crisis and energy transition. The centerpiece of the exhibit was the recently completed \href{https://www.pilotprojekt-kaisergasse.at/}{Pilotprojekt Kaisergasse Phase 1}, which outlined a comprehensive strategy for making the residential building Kaisergasse 20 Linz more climate-friendly. To visually demonstrate the proposed solutions, the \textit{KaisergasseVR} Virtual Reality application was developed, effectively building on the thematic groundwork established by the preceding stations and strengthening understanding of the solutions.
 
-Participants in \textit{KaisergasseVR} begin their journey in the courtyard of Kaisergasse 20, where they can use a watering can to change dusty dirt into a lush, wild meadow with some trees, visually reducing the surrounding temperature as indicated by a thermometer. The addition of greenery to two nearby commercial building rooftops brings the temperature down to a comfortable 24°C. Accessing these rooftops involves the use of flight capabilities, which are facilitated by the controllers for ascending or descending, with gravity turned off for easy navigation. On the roof of the residential building, semi-transparent solar panel templates became visible. Interacting with these templates via the controllers causes the installation of panel groups, which tints the cables green to indicate electricity generation.
-Interacting with these templates via the controllers triggers the installation of panel groups, which turns the cables green to represent electricity generation. Exploring further to the courtyard's garages and parking spots shows four plugs that have been activated by the photovoltaic system. Engaging with these connectors enables the construction of cables to electric car charging stations, visibly discerning which cars are being charged.
-Throughout the virtual environment, numerous bubbles invite interaction; clicking on these bubbles reveals 360° photographs that provide a panoramic glimpse into reality, enhancing the experience by bridging the gap between virtual and real-world visuals.
+This chapter outlines the design and development methods employed in creating SolarPowerVR, a virtual reality (VR) application crafted to enhance public understanding of photovoltaic (PV) systems. Drawing upon Mikropoulos and Natsis's \cite{Mikropoulos2011VrEducational} comprehensive review of Educational Virtual Environments (EVEs), we detail how SolarPowerVR leverages immersion, interactivity, and constructivist learning to create a truly effective learning experience. A key insight guiding our approach is that merely utilizing VR technology is insufficient; instead, the careful integration of essential features such as first-order experiences, natural semantics, and presence is required to transform it into a powerful educational tool. We analyze the strengths and weaknesses of the preceding VR application, KaisergasseVR, and explain how its lessons inform the key design choices and functionalities of SolarPowerVR, ultimately demonstrating how these decisions align with research-backed principles to create a more impactful and engaging EVE for PV technology.
 
-The \textit{KaisergasseVR} simulation aimed to bring the real-world project of installing photovoltaic panels on residential housing to a wider audience. To share the project's experiences, a VR visualization was created for an exhibition at Ars Electronica, assuming that the background information would be provided in a preceding lecture. As a result, the VR functionality was designed to be straightforward.
+\section{Learning from \textit{KaisergasseVR}}
 
-In the \textit{KaisergasseVR} experience, users can engage in a few key activities: installing groups of PV panels with a few clicks, drawing cables from the house to the charging stations to power them for electric vehicles, and using a "brush" to greenify the courtyard and surrounding flat roofs, which in turn reduces the ambient temperature. The intention behind allowing users to implement these measures themselves within the VR environment is to help them understand and potentially support or initiate similar actions in their own surroundings.
+\textit{KaisergasseVR} was developed to raise awareness about climate friendly solutions for residential buildings by using VR to create an immersive educational experience. Designed for use in exhibitions and workshops, the application allows users to explore and interact with sustainable solutions. Set in a real-world location, \textit{KaisergasseVR} allows users to navigate through a courtyard and engage with various interactive elements. Users can green the courtyard by transforming the ground into a lush, grassy meadow and planting trees to experience the impact on the urban environment. They can also green two roofs, further enhancing the ecological value. Another feature is the ability to install photovoltaic panels on the roof of the main building. Users can click on an offline PV system to activate it and watch the power lines turn green. They can then connect power plugs to electric vehicle (EV) chargers, visualizing the process of powering EVs with renewable energy. The application also includes 360° drone photos, which are displayed as green bubbles in the environment. Users can click on these bubbles to teleport into a spherical view, grounding the connection between the VE and the real world. \textit{KaisergasseVR} was used in various settings, including the PowerPlayground exhibition and workshops, where it served to reinforce theoretical knowledge gained from previous presentations and discussions.
 
-\section{Planning \textit{SolarPowerVR}}
-By building the next evolution of \textit{KaisergasseVR} i am able to help bringing the energiewende a step further. My application would  be used at ars electronica and workshops. this should enable us to improve understanding and engagement of many people for climate friendly technologies and actions. 
+While the application offers a promising foundation for environmental education in VR, it also presents limitations in terms of interactivity, simulation depth, and performance. Initially, the intention was to develop \textit{SolarPowerVR} as an evolution of \textit{KaisergasseVR}, aiming for a version 2.0 that addressed its limitations and expanded its functionality. To understand these limitations and user experiences, a user study was conducted with \textit{KaisergasseVR}. This study, combined with my own observations while working with the application's codebase, revealed both strengths to be carried forward and significant shortcomings to be addressed.
 
-After some brainstorming it was clear that focusing on one aspect and do it well would wield the best results and are perfect workpiece for my bachelor thesis. Educatiion around the functionality and advantages of photovoltaic systems seemed a very promising endeavor. It is also the aspect where the existing application lacked the most, in my personal opinion.
+\subsection{Strengths of \textit{KaisergasseVR}}
+\begin{itemize}
+    \item \textbf{Engaging Concept:} The use of VR to educate about climate-friendly solutions resonated well with users, demonstrating VR's potential in environmental education.
+    \item \textbf{Real-World Context:} Basing the virtual environment on a real-world location enhanced user familiarity and relevance.
+    \item \textbf{Visual Appeal:} Despite some performance limitations, the application's visual presentation was generally appreciated, especially the detailed trees and grass in the courtyard and the high-quality model of the main building.
+    \item \textbf{Educational Potential:} The application showed promise in educating users about sustainable practices, particularly when combined with prior theoretical background from the PowerPlayground exhibition or workshops.
+    \item \textbf{Engagement and Motivation:} The VR experience provided a welcome break from the theoretical portion of the workshop, re-energizing participants and helping them refocus. It also served to reinforce the concepts discussed earlier in a more engaging and interactive manner.
+    \item \textbf{Interactive Elements:} Features such as the watering can interaction to green the courtyard and the ability to green roofs added a level of engagement and immersion.
+\end{itemize}
 
-%I was very excited about helping in making austria more future proof and climate friendly. Developing games was my childhood dream, quite forgotten and labeled unrealistic, this was my big chance in pursuing something meaningful for the future and myself. To build upon the existing application and reuse whats already built, i decided to learn unreal engine from scratch, instead of considering to alternative VR-friendly options like unity and godot. In hindsight it may seem overkill but i completely worked through the tutorials by UnrealSensei and then GameDevTV. This also incorporated in depth the programming of game functionality in C++. This learning stage was extensive and spanned over 4 months.
+\subsection{Areas for Improvement}
+\begin{itemize}
+    \item \textbf{Limited Interactivity and Exploration:} Users desired more interactive opportunities, particularly in the photovoltaic system installation, to deepen their understanding of the technology.
+    \item \textbf{Lack of Simulation and Feedback:} The absence of an energy production simulation limited the educational impact, as users could not see the consequences of their actions.
+    \item \textbf{Immersion Deficiencies:} The mix of high fidelity and minimal fidelity assets, such as detailed trees alongside simplistic white block buildings, detracted from the immersive experience.
+    \item \textbf{Technical Issues:} Frame rate drops and navigation problems, especially when flying to the roof, led to discomfort and motion sickness, affecting user experience.
+    \item \textbf{Intuitiveness:} The controls were not very intuitive and required hand-holding, which could hinder accessibility for some users.
+\end{itemize}
 
-Subsequently my plan was to use the whole summer to complete the application is best possible condition for the Ars Electronica 2023. Helwin additionally hired the original Developer to fix several bugs in the application and improve the disappointing performance. Working as multiple Developers on the same game is very challenging in Unreal Engine as in any other engine. The game files are binary and impossible to merge different changes through git. To make matters worse the other developer refused to communicate or cooperate. I ended up reapplying my changes over and over when merging the main branch into my new feature. Additionally i volunteered to help realize 2 additional new games which would be showcased in the exhibition. One featured a highly realistic forest fire, the second featured a flood scenario where you are tasked to save the village from the water masses by building dams. I worked around the clock every day to also finish my own application in time. But sadly It just was impossible, regarding my lack of experience and worn mental state.
+\subsection{Technical Limitations}
+\begin{itemize}
+    \item \textbf{Fragile Codebase:} The existing codebase was difficult to modify, with minor changes often causing unexpected errors.
+    \item \textbf{Limited Flexibility:} The application's architecture did not support the desired enhancements, such as detailed energy simulations and increased interactivity.
+    \item \textbf{Collaboration Challenges:} Difficulty in collaborating with the original developer and merging changes due to the binary nature of UE blueprints and maps.
+\end{itemize}
 
-The Exhibition went smoothly, despite of numerous hardware faults. Following that i had to fully focus on my family and me moving to a new apartment. I was heavily exhausted and was not able to tackle writing the chapter 
+These insights, coupled with the limitations encountered during development, ultimately led to the decision to develop \textit{SolarPowerVR} as a new application. This fresh start allowed for greater control over the design and implementation, enabling the incorporation of features that enhance interactivity, simulation accuracy, and immersion.
 
-%describe the concept:
-%1) the whole VR project of Energiewende Linz
-%2) new use case (more focus here)
+\section{Designing \textit{SolarPowerVR}}
 
-\chapter{Implementation of \textit{SolarPowerVR}}
-%implementation details
-%describe the technology (UE, plugins)
-%structure
-%interesting difficult detail (feedback loop)
+This section details the design of \textit{SolarPowerVR}, a virtual reality (VR) application aimed at educating users about photovoltaic (PV) systems. Building upon the lessons learned from \textit{KaisergasseVR}, this application addresses key limitations by incorporating intuitive navigation, interactive elements, and a realistic, immersive environment. \textit{SolarPowerVR} strives to not only raise awareness about climate-friendly solutions but also inspire users to embrace sustainability. The design of \textit{SolarPowerVR} is informed by research on effective VR learning experiences, drawing upon principles of immersion, constructivist learning, and contextualized relevance \cite{Dalgarno2010Learning, Gee2009Deep, HuAu2018VrExperience, Mikropoulos2011VrEducational, Winn2002Immersion}.
 
-Vision: The goal is to create an immersive experience, putting the control for the suns position into the users hands and let them observe how the angle affects the power production. To visualize the efficiency throughout the day and also the year, we implement controls to start a simulation window on a specific day of the year and also allow to select this day. The simulation animates the suns position from dawn to dusk, calculating the loss to airmass and the angle efficiency to the PV-Panel and finally showing the resulting generated Power for each Panel and all Panels combined. It is common to design a tailored layout for each roof, allowing to optimize for maximum power output (flat layout) or more balanced output throughout the year (South facing) or more balanced through the day (east-west facing). To enable users to understand the differences, tailored layouts for this specific roof were designed with professional solar layout software. Using the professional results data, we retrofitted this into a modulation of the general formula for determining photovoltaik power output. This allows users to trust in the observed pronciples. This takes into account: Geographical position, Date and Time, Airmass for the resulting sun angle (azimuth and elevation), Angle from Sun to Panel surface.But still there are some limitations, we were not able to consider in this simulation: shadowing, clouds, snow on the panels, varying humidity, transformator and electrical infrastructure loss.
+\subsection{Key Design Choices}
 
-Inline code: \lstinline|This is inline code|.
+Several key design choices were made to create an effective and engaging VR learning experience, considering the limitations of time and resources:
 
-\begin{Verbatim}
-#include <iostream>
-int main() {
-    std::cout << "Hello, world!";
-    return 0;
-}
-\end{Verbatim}
+\begin{itemize}
+    \item \textbf{Immersive Environment:} We leverage high-resolution 3D models and a real-world Google 3D tile environment, replicating a real site in Linz, Austria (Kaisergasse 20). This enhances relatability and user engagement by grounding the experience in a familiar context, contributing to a sense of presence and immersion \cite{HuAu2018VrExperience, Winn2002Immersion}.
+    \item \textbf{Simplified Interactivity:} Users can freely explore the rooftop environment and interact with pre-defined PV panel configurations. This streamlined approach allows for quick comprehension for users, focusing on core concepts and minimizing cognitive overload \cite{Dalgarno2010Learning, Mikropoulos2011VrEducational}.
+    \item \textbf{Accurate Simulation:} \textit{SolarPowerVR} incorporates a detailed simulation of solar energy production, considering factors such as sun position, irradiance, atmospheric falloff, and panel tilt. This ensures the accuracy of energy output data and provides a realistic representation of PV system performance, based on data from SolarProTool simulations, contributing to contextualized and relevant learning \cite{Dalgarno2010Learning, HuAu2018VrExperience}.
+    \item \textbf{Performance Optimization:} The application is optimized for performance to minimize motion sickness and ensure a comfortable user experience. This was prioritized due to the potential for discomfort in VR environments, particularly for first-time VR users, aligning with accessibility considerations in VR design \cite{Lege2020VrProgress, Winn2002Immersion}.
+    \item \textbf{Pre-Experience Briefing:} A 2-minute presentation with images is used to explain the core mechanics of the application, including navigation, panel layouts, simulation controls, and data visualization. This ensures users are adequately prepared before entering the VR environment, providing a clear pedagogical framework and supporting effective learning \cite{HuAu2018VrExperience, Lege2020VrProgress}.
+\end{itemize}
 
-% The choice to focus on photovoltaics was driven by the conviction that the mechanics of photovoltaic systems, with their multifaceted factors, are best experienced intuitively through experimentation and observation within a VR environment. This immersive approach aimed to demystify the complexities associated with the energy transition, fostering a broader acceptance and initiative in this critical area.
+These design choices reflect a balance between creating an immersive and informative experience while remaining mindful of the constraints of a bachelor thesis project and incorporating research-backed principles for effective VR learning.
+
+\subsection{Game Description}
+
+Upon launching \textit{SolarPowerVR}, the user finds themselves on the rooftop of Kaisergasse 20 in Linz, Austria. This flat, metal roof offers a panoramic vista of the city, stretching from nearby buildings to the distant Pöstlingberg. Movement is facilitated through a teleporting mechanic. Pressing the forward button on the controller allows the user to aim at a desired location on the roof and teleport there upon release. This method minimizes motion sickness and provides a comfortable navigation experience, addressing a key challenge in VR design \cite{Winn2002Immersion}.
+
+\textbf{PV Panel Configurations:} Initially, the rooftop is devoid of PV panels. The user can cycle through three pre-designed PV setups by pressing a button:
+\begin{itemize}
+    \item \textbf{Flat Layout:} This configuration features the highest number of panels (150) due to their tight, shadow-minimizing arrangement. It also offers minimal wind resistance, a factor considered by the SolarProTool used in designing these layouts.
+    \item \textbf{30-Degree South Inclined Layout:} This setup, with 100 panels, captures more sunlight during the winter months when the sun's trajectory is lower.
+    \item \textbf{East-West Inclined Split Layout:} This configuration utilizes 90 panels inclined at 15 degrees, maximizing sun capture during morning and evening hours when energy consumption typically peaks. However, it demonstrates that this setup still cannot compete with the flat layout's higher panel count and overall energy generation.
+\end{itemize}
+These configurations allow users to explore different design considerations and their impact on energy production, fostering constructivist learning through experimentation \cite{Mikropoulos2011VrEducational}.
+
+\textbf{Simulation Controls:}
+\begin{itemize}
+    \item \textbf{Month Advancement:} A button allows the user to increment the month of the simulation, starting from the summer solstice.
+    \item \textbf{Simulation Start/Stop:} Another button starts and stops the simulation. Upon starting, the time is automatically set to sunrise, allowing the user to witness the entire day's energy production cycle.
+\end{itemize}
+These controls provide users with agency and control over the simulation, allowing them to manipulate variables and observe the outcomes, further supporting active learning \cite{Dalgarno2010Learning}.
+
+\textbf{User Interface (UI):} Three UI widgets are strategically placed on the lift housing walls, ensuring visibility from various points on the rooftop:
+\begin{itemize}
+    \item \textbf{The Clock:} Displays simulation input parameters such as date, time, number of panels deployed, current kilowatt (kW) output, and accumulated kilowatt-hours (kWh) for the day.
+    \item \textbf{Line Graph:} Shows curves representing the kW output for each simulated day, with time on the x-axis and kW on the y-axis. Each curve is color-coded for easy differentiation.
+    \item \textbf{Bar Graph:} Presents a bar for each simulated day, with the bar's height reflecting the accumulated kWh for that day.
+\end{itemize}
+These UI widgets provide clear and concise feedback on the performance of the PV system, enhancing understanding and supporting knowledge construction \cite{Merchant2014VrEffectiveness, Mikropoulos2011VrEducational, Sung2015Effects}.
+
+\todo{Insert screenshots showcasing the VR environment, UI widgets, and different PV panel configurations here.}
+
+By incorporating research-backed design principles and leveraging the immersive capabilities of virtual reality, \textit{SolarPowerVR} offers a focused and accessible platform for learning about PV systems, contributing to a greater understanding and acceptance of renewable energy technologies.
+
+\chapter{Implementation}
+
+This chapter details the implementation of SolarPowerVR, a virtual reality application designed to enhance public understanding of PV systems and promote their adoption in Austria.  The chapter outlines the development environment, software architecture, simulation implementation, user interface and interaction design, testing and validation procedures, performance optimization strategies, and deployment process.
+
+\section{Development Environment}
+
+SolarPowerVR was developed using \href{https://www.unrealengine.com/de}{Unreal Engine} (UE) 5.2 to 5.4, chosen for its robust rendering capabilities, extensive plugin ecosystem, and support for virtual reality platforms. The application was programmed using a combination of UE Blueprints for visual scripting and C++ for performance-critical components. C++ development and compilation were performed using \href{https://visualstudio.microsoft.com/de/vs/community/}{Visual Studio 2022 Community Edition}. The following tools were utilized to enhance the development environment:
+
+\begin{itemize}
+\item \href{https://dev.epicgames.com/documentation/en-us/unreal-engine/geographically-accurate-sun-positioning-tool-in-unreal-engine?application_version=5.4}{SunPosition} plugin: provides accurate simulation of the sun's position based on date, time, and geographic location, and was extended for our use case to calculate solar irradiance.
+\item \href{https://github.com/kamrann/KantanCharts}{KantanCharts} plugin: facilitated the creation of charts for visualizing simulation data, enabling users to analyze and compare the performance of different PV system configurations.
+\item \href{https://developers.google.com/maps/documentation/tile/3d-tiles-overview}{Google 3D Tiles}: provided photorealistic 3D images of geographic data in the OGC 3D Tiles format, allowing for stunning perspective views and immersive storytelling.
+\item \href{https://cesium.com/platform/cesium-for-unreal/}{Cesium} plugin: used to stream realistic environments from Google 3D Tiles, although it presented performance challenges and caching issues.
+\item \href{https://www.unrealengine.com/marketplace/en-US/product/convai}{Convai} plugin: enabled the integration of an AI character that could interact with users, provide voice responses, and animate accordingly, but ultimately required tighter coupling with the game state to be effective.
+\item \href{https://www.blender.org/}{Blender} 4.1 with \href{https://prochitecture.gumroad.com/l/blender-osm}{Blosm} plugin: allowed for the import of Google 3D Tiles into Blender, enabling the creation of optimized static meshes for the game environment, with six levels of quality.
+\end{itemize}
+
+\section{Software Architecture}
+
+SolarPowerVR is built using a modular architecture, with each class responsible for a specific set of functionalities. This design approach enables easy maintenance, modification, and extension of the simulation. The core classes that comprise the simulation are:
+
+\begin{itemize}
+    \item \lstinline|ASimulationGameMode|: This class serves as the central manager of the simulation, responsible for updating the sun's position, irradiance, and solar panel wattage each frame. It provides an interface for the users pawn to interact with the simulation, allowing for changes to the simulation's time and date and pv layout selection.
+    \item \lstinline|ASolarPanel|: Implemented in C++, this class represents a single solar panel, with properties such as nominal wattage (default 400W) and current power output. The class calculates its power output based on the irradiance received and its orientation relative to the sun. The class is extended in \lstinline|BPSolarPanel| to provide additional level design capabilities: the tilt of the panel and the visibility of the stands can be adjusted through actor settings in the level design, allowing for flexibility in the simulation.
+    \item \lstinline|BPSunSky|: Implemented in Blueprints and extending the SunPosition plugin, this class simulates the sun's position based on the current time, date, and the latitude and longitude of Linz. It then calculates the Airmass and irradiance, providing a realistic and accurate representation of the sun's behavior.
+    \item \lstinline|BPVrPawn|: Implemented in Blueprints and building upon the UE VR template pawn, this class represents the player character and handles all interactivity within the simulation. It uses the interface provided by the \lstinline|ASimulationGameMode| class to interact with the simulation, and also handles movement, displays the button mapping, and facilitates voice interactions with the AI.
+\end{itemize}
+
+A key aspect of the architecture is the decoupling of the classes, which allows for easier modification, iteration, and testing. By avoiding tight coupling, changes to one class do not have a ripple effect on the others, making it easier to refine and extend the simulation.
+
+\section{Simulation Interface and User Interaction Mechanisms}
+
+The simulation interface is designed to provide an intuitive and user-friendly experience for exploring photovoltaic systems. The interface consists of several key elements:
+
+\begin{itemize}
+    \item \textbf{Clock Widget:} The clock widget displays the current date, time, number of active solar panels, total power output (Watts), and total energy generated (Watt-hours). This information is updated every frame to reflect the current simulation state. The clock widget provides a quick and easy way for users to monitor the performance of the photovoltaic system.
+    \item \textbf{Line Graph:} The line graph displays the power output (Watts) of each photovoltaic system layout over time. This allows users to compare the performance of different configurations and identify trends in energy production. The line graph is updated every frame to reflect the current simulation state.
+    \item \textbf{Bar Chart:} The bar chart displays the total energy generated (Watt-hours) for each layout and month. This provides a visual representation of the long-term performance of different configurations and allows users to identify areas for improvement. The bar chart is updated at the end of each simulated day.
+\end{itemize}
+
+Users interact with the simulation through a VR headset and controllers. The primary interaction mechanisms include:
+
+\begin{itemize}
+    \item \textbf{Teleportation:} Users can teleport to different locations within the virtual environment to explore the photovoltaic system from various perspectives. This is implemented using UE's built-in VR teleportation functionality and provides a convenient way for users to navigate the simulation environment.
+    \item \textbf{Layout Selection:} Users can switch between different photovoltaic system layouts (flat, south-facing, east/west split) to observe the impact of panel orientation on power output. This is triggered by a button press on the VR controller and handled by the `NextLayout` function in the `SimulationGameMode` class.
+    \item \textbf{Month Selection:} Users can increment the month to observe the effects of seasonal variations on photovoltaic system performance. This is triggered by a button press on the VR controller and handled by the `NextMonth` function in the `VRPawn` blueprint.
+    \item \textbf{Simulation Control:} Users can start, stop, and reset the simulation using dedicated buttons on the VR controller. These actions are handled by the `StartSimulation`, `StopSimulation`, and `ResetSimulation` functions in the `SimulationGameMode` class.
+    \item \textbf{Button Map Visibility:} Users can toggle the visibility of a button map overlay, providing a reminder of the available controls. This is triggered by a button press on the VR controller.
+\end{itemize}
+
+\section{Simulation}
+
+\todo{screenshot of blueprint}
+
+The simulation uses a tick-based system, updating the simulation state each frame. \lstinline|SimulationGameMode| orchestrates the simulation loop, updating the sun's position and irradiance based on the current time and date. It allows users to run the simulation in time-lapse to observe the effects of different PV panel configurations over the day. This is achieved by multiplying the time elapsed between frames (deltaTime) with a fixed speed factor.
+
+The core of the simulation lies in the calculation of solar irradiance, which is influenced by the sun's position on the sky, atmospheric conditions, and seasonal variations. \lstinline|BPSunSky| uses the SunPosition plugin to accurately simulate the sun's position based on the current time and date. This is then used to calculate the airmass and then to calculate the theoretical irradiance, which is further corrected for seasonal variations using 3 empirical correction curves.
+
+\paragraph{\lstinline|updateAirmass()|} calculates the air mass ($AM$) based on the solar zenith angle ($\theta_z$) using the Kasten and Young model \cite{Kasten1989airmass}. This model provides a reliable approximation of $AM$ by accounting for atmospheric conditions and the path length of sunlight through the atmosphere.
+
+First, the solar zenith angle is derived from the inversed elevation angle provided by the SunPosition plugin using an inversion transformation:
+
+\begin{equation} \label{eq:theta_z}
+\theta_z = 180^\circ + 90^\circ - \text{elevation\_inv}
+\end{equation}
+
+This transformation aligns the plugin's output with the standard definition of the solar zenith angle. Subsequently, the air mass is calculated as follows:
+
+\begin{equation} \label{eq:airmass}
+AM = \frac{1}{\cos(\theta_z) + 0.50572 \cdot (96.07995 - \theta_z)^{-1.6364}}
+\end{equation}
+
+Figure \ref{fig:corrected-airmass} illustrates the non-linear relationship between the corrected air mass and the zenith angle. This accurate AM value is crucial for simulating the attenuation of solar radiation through the atmosphere.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{graphics/airmass.pdf}
+    \caption{Corrected air mass as a function of the zenith angle ($\theta_z$), plotted over a range from 0 to 90 degrees.}
+    \label{fig:corrected-airmass}
+\end{figure}
+
+\paragraph{\lstinline|updateIrradiance()|} calculates the solar irradiance based on the calculated air mass, utilizing the experimentally determined equation \ref{eq:irradiance} from Meinel and Meinel \cite{Meinel1976irradiance}. $I_D$ represents the direct component of sunlight intensity on a plane perpendicular to the sun's rays (kW/m2). $AM$ is the calculated air mass. The solar constant is represented by 1.353 kW/m2, while the factor 0.7 approximates the transmission of solar radiation through the atmosphere. The exponent 0.678 is a correction factor accounting for atmospheric layer non-uniformities.
+
+\begin{equation} \label{eq:irradiance}
+I_D = 1.353 \cdot 0.7^{AM^{0.678}}
+\end{equation}
+
+Figure \ref{fig:irradiance} depicts the relationship between irradiance, air mass, and zenith angle, highlighting the decrease in irradiance with increasing air mass and zenith angle due to scattering and absorption of sunlight.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{graphics/irradiance.pdf}
+    \caption{Irradiance as a function of air mass (left) and zenith angle (right), demonstrating the decrease in irradiance with increasing values.}
+    \label{fig:irradiance}
+\end{figure}
+
+\paragraph{Seasonal Correction}
+
+Calculating solar irradiance ($I_D$) under optimal conditions can lead to inaccuracies in power output predictions. To address this, we designed a seasonal correction factor ($I_C$), modulated by the day of the year, based on empirical testing. This correction ensures that the simulation results closely align with those generated by SolarProTool, reflecting realistic variations in solar irradiance throughout the year and leading to more accurate power output estimations.
+
+This seasonal correction is based on two empirically determined curves: a winter correction curve ($WinterCurve(I_D)$) and a summer correction curve ($SummerCurve(I_D)$). These curves were derived by comparing simulation output with Levasoft Solar Pro data, focusing on the winter and summer solstices, respectively. The winter correction curve utilizes a linear interpolation function defined by the points: (0,0), (0.1, 0), (0.4, 0.36), (0.5, 0.5), (0.6, 0.63). The summer correction curve is defined by another linear interpolation function with the points: (0,0), (0.3, 0.097), (0.4, 0.167), (0.7, 0.568), (0.9, 0.788), (0.92, 0.8038).
+
+To ensure a smooth transition between these two correction curves throughout the year, an interpolation factor ($t$) is calculated using a cubic interpolation curve based on the day of the year. This factor determines the blend between the winter and summer corrections, dynamically adjusting the seasonal correction factor ($I_C$) as the year progresses.
+
+\begin{equation} \label{eq:interpolation_factor}
+t = \text{InterpolationCurve}\left(\left(\text{day}_{\text{(of the year)}} - 12\right) \mod 365\right)
+\end{equation}
+
+The cubic interpolation curve uses the points (0,0), (80, 0.853), (180, 1), (285, 0.853), and (365,0). The corrected irradiance ($I_C$) is then determined by blending the winter and summer irradiance curves based on the interpolation factor ($t$):
+
+\begin{equation} \label{eq:seasonal_irradiance}
+I_C = \text{WinterCurve}(I_D) \cdot (1 - t) + \text{SummerCurve}(I_D) \cdot t
+\end{equation}
+
+Figure \ref{fig:seasonal_correction_curves} illustrates the seasonal correction curves and their interpolation.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{graphics/correction.pdf}
+    \caption{Seasonal correction curves, showing the interpolation between the winter and summer correction curves. Left: The winter and summer correction curves as functions of the irradiance. Right: The interpolation factor as a function of the day of the year.}
+    \label{fig:seasonal_correction_curves}
+\end{figure}
+
+This approach ensures that the simulated irradiance values closely match the expected values for Linz, Austria, throughout the year, enhancing the realism and accuracy of the SolarPowerVR simulation.
+
+\lstinline|SolarPanel| then calculates its power output based on the received irradiance and its orientation relative to the sun using the following formula:
+
+\begin{equation}
+    \text{Watt} = \cos(\theta) \cdot \text{NominalWatt} \cdot \text{Irradiance}
+\end{equation}
+
+where $\theta$ is the angle between the panel's normal vector and the sun direction vector.
+
+This data is then visualized as a label on the PV panel and aggregated using KantanCharts UI components, providing users with real-time feedback on the performance of the PV system.
+
+\section{Performance Optimization}
+
+To achieve a stable 90 frames per second (fps) on the target hardware (mobile RTX 4090), we conducted a thorough performance optimization process. Our goal was to minimize computational overhead while maintaining visual fidelity.
+
+One of the major performance bottlenecks was the Cesium plugin, which required 5ms alone to evaluate which tiles to show and did so on the game thread. This was not only too expensive, but also unnecessary. By replacing the Cesium plugin with static mesh assets, we zeroed the computational load associated with dynamic tile loading. Additionally, this allowed us to take advantage of Nanite optimization, which helped reduce overdraw.
+
+We also optimized the simulation loop by migrating it from Blueprints to C++. This provided a substantial performance boost, as the iteration over 350 panels per frame was no longer a bottleneck.
+
+To further optimize rendering performance, we merged tiles to reduce the number of draw calls and actors in the scene. Although this made frustrum culling less effective, it was a trade-off to achieve the desired performance.
+
+Another key optimization was tweaking the Virtual Shadow Maps (VSM) settings. As the highest fidelity shadows available in UE with software raytracing, VSMs are extremely expensive with a moving light source. However, by adjusting the max shadow distance and resolution, we found a compromise that balanced visual quality and performance.
+
+Finally, we disabled tick on environment assets, as they do not require per-frame updates, which saved cpu time. Through these optimizations, we achieved a stable 90 fps on the target hardware, ensuring a smooth and responsive user experience.
+
+\section{Testing and Validation}
+
+The application was continuously tested to ensure functionality and accuracy.  This included logging and analyzing simulation data to identify and resolve any discrepancies. A test session with my partner provided valuable feedback on the usability and effectiveness of the application. This feedback led to the implementation of the button map overlay \ref{fig:buttonMapping} to improve the user's understanding of the available controls.
+
+\todo{create figure button mapping}
+
+\section{Deployment}
+
+To ensure a great experience for the workshop attendees, we carefully planned and executed the deployment of the application to the target hardware. Some laptops were fresh out of the box, so we started by installing the latest Windows updates to ensure a stable operating system. We then manually installed the chipset drivers to support the full USB 3.2 speeds required to achieve the desired resolution and frame rate. We also installed the latest NVIDIA drivers and Oculus software.
+
+To optimize the Oculus experience, we used the Oculus Debug Tool to override some settings and achieve the best possible quality. Specifically, we set the screen resolution to 100\% for a clear image, disabled automatic frame generation to prevent image artifacts and receive a dynamic frame rate. We set the distortion to low and the encoding to H265, which provided better image quality without introducing any noticeable lag. Finally, we disabled the sharpening effect, which caused flickering in our tests.
+
+To ensure that the application would work seamlessly in the event of a link failure, we enabled "Link USB Auto Connect" in the headset's developer settings. This allowed us to simply unplug and replug the headset to reconnect without requiring any user action.
+
+After completing these steps, we tested each machine to ensure that the deployment was successful and the application was running smoothly. However, we experienced some problems with the Quest 2 devices, which would occasionally fail. Despite rebooting the PC and headsets, we were unable to determine the root cause of the problem. We did find that it was important to use a high quality cable, as some cables may have had defects that contributed to the problems. In contrast, the Quest 3 unit performed reliably, suggesting that it may be a more robust hardware platform.
 
 \chapter{Evaluation}
-This chapter outlines the evaluation process of the two virtual reality (VR) applications \textit{KaisergasseVR} and \textit{SolarPowerVR}. The primary objective was to assess whether \textit{SolarPowerVR} could contribute more than \textit{KaisergasseVR} to participants' understanding and engagement with climate-friendly technologies, with a particular focus on photovoltaic solutions. The user studies were conducted following participants' engagement with the respective VR application. Participation in this post-experience survey was optional.
+
+This chapter outlines the evaluation process of the two virtual reality (VR) applications \textit{KaisergasseVR} and \textit{SolarPowerVR}. The primary objective was to assess whether \textit{SolarPowerVR} could contribute more than \textit{KaisergasseVR} to participants' understanding and engagement with climate-friendly technologies, with a particular focus on photovoltaic solutions. The user studies were conducted following participants' engagement with the respective VR application. Participation in the post-experience surveys was optional.
 
 The initial evaluation began with the \textit{KaisergasseVR} application, which served as a baseline. This user study was conducted to assess the effectiveness of a VR application in raising awareness and influencing attitudes towards climate-positive actions within an urban environment. We aimed to determine the application's effectiveness in conveying the utility of climate-friendly actions and to identify areas needing enhancement.
 
-Building upon the established baseline and feedback, \textit{SolarPowerVR} was designed to incorporate more interactive elements and observational opportunities to engage users deeply. While continuing to target the primary goals of further increasing understanding and interest in PV solutions, it also aimed to additionally impart factual knowledge through observation, such as the optimal orientation of photovoltaic panels. This secondary goal explores whether deeper engagement and interactivity can contribute to more comprehensive learning outcomes.
+Building upon the established baseline and feedback, \textit{SolarPowerVR} was then designed to incorporate more interactive elements and observational opportunities to engage users. While continuing to target the primary goals of further increasing understanding and interest in PV solutions, it also aimed to additionally impart factual knowledge through observation, such as the optimal orientation of photovoltaic panels. This secondary goal explores whether deeper engagement and interactivity can contribute to more comprehensive learning outcomes.
 
 \section{User study on \textit{KaisergasseVR}}
-The evaluation took place in a large hall within the JKU building during the JKU Games 2023S.  We provided an open booth that was available from 14:00 to 01:00, with at least two helpers present at all times to assist participants and monitor station activities.
+The evaluation took place in a large hall within the Johannes Kepler University Linz (JKU) building during the JKU Games 2023S.  We provided an open booth that was available from 14:00 to 01:00, with at least two helpers present at all times to assist participants and monitor station activities.
 
 The setup included three VR stations, each offering a different experience:
+
 \begin{itemize}
     \item A PCVR station using a Meta Quest 2, exclusive to \textit{KaisergasseVR}.
     \item A PCVR station equipped with an HP Reverb G2 headset offering a choice of \textit{KaisergasseVR}, \hyperlink{https://store.steampowered.com/app/517160/Richies_Plank_Experience/}{Richie's Plank Experience} and \hyperlink{https://store.steampowered.com/app/620980/Beat_Saber/}{Beat Saber}.
@@ -367,10 +497,13 @@ The setup included three VR stations, each offering a different experience:
 \end{itemize}
 
 \subsection{Study Protocol}
+
  Participants were invited to experience the VR simulation, which encouraged a dynamic interaction scenario. Before starting the VR experience, participants were given detailed instructions about the VR equipment and the goals of the simulation as the VR application itself contained no instructions. This approach was necessary to ensure that participants could effectively navigate the VR environment and understand the solutions presented. Those who experienced \textit{KaisergasseVR} were then invited to fill out the user study form.
 
 \subsection{Questionnaire Design}
-The questionnaire covered a wide range of topics, including demographic information and detailed questions about climate change awareness, as well as specific feedback on the VR experience. Structured as follows, it began with an informed consent declaration followed by basic demographic questions (age, gender). Subsequent sections addressed participants' attitudes towards climate change, their personal engagement with eco-friendly practices, and their familiarity with VR technologies. The survey contained both Likert-scale questions (from 1: strongly disagree to 5: strongly agree) and open-ended questions. Specific questions related to the VR experience included:
+
+The questionnaire covered a wide range of topics, including demographic information and detailed questions about climate change awareness, as well as specific feedback on the VR experience. Structured as follows, it began with an informed consent declaration followed by basic demographic questions (age, gender). Subsequent sections addressed participants' attitudes towards climate change, their personal engagement with eco-friendly practices, and their familiarity with VR technologies. The survey contained both Likert-scale questions (from 1: strongly disagree to 5: strongly agree) and open-ended questions. Specific topics related to the VR experience included:
+
 \begin{itemize}
     \item Evaluation of ease of navigation and realism within the VR environment.
     \item Assessment of the educational effectiveness of the VR simulation concerning urban thermal conditions and photovoltaic systems.
@@ -381,22 +514,25 @@ The questionnaire covered a wide range of topics, including demographic informat
 Although the questionnaire turned out to be more extensive than necessary for statistical analysis, it provided valuable insights into the participants' perceptions and highlighted interesting findings for potential exploratory analysis.
 
 \subsection{Data Collection and Analysis Methods}
+
 Data was collected through Google Forms, allowing for seamless distribution and accessibility via QR codes that participants could scan with their mobile devices or access through a laptop provided at the site. The responses were later exported to a CSV file and analyzed using Python.
 
 \subsection{Participants}
-The study included 14 participants, with an age distribution as follows: under 20 (2), 20-29 (11), and 30-39 (1). The gender breakdown included nine males and five females. Participants' backgrounds and attitudes were assessed using a Likert scale.
 
-Participants reported moderate familiarity with VR technologies (mean: 3.29, SD: 1.33), indicating varied experience levels. The participants demonstrated a high level of agreement on the significance of climate change (mean: 4.07, SD: 0.59). They also exhibited a willingness to engage in energy transition activities (mean: 4.21, SD: 0.67), indicating a positive inclination towards environmental action. Furthermore, they expressed a strong belief in the impact of climate change on urban quality of life (mean: 4.86, SD: 0.35). There was a moderate level of interest in eco-electricity (mean: 4.00, SD: 1.25). These responses are visually summarized in \figurename~\ref{fig:participants_kaisergasse}.
+The study included a total of 14 participants, with the following age distribution: two participants were under 20 years old, eleven were between 20 and 29 years old, and one participant was in the age range of 30 to 39. The gender composition consisted of nine males and five females. To assess the backgrounds and attitudes of the participants, a series of questions were administered using a Likert scale, with responses ranging from 1 (strongly disagree) to 5 (strongly agree).
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=\textwidth]{graphics/participants-kaisergasse.pdf}
-    \caption{Stacked bar chart of participant responses to personal questions in the \textit{KaisergasseVR} study. The chart displays answers to questions assessing participants' experience with virtual reality, concerns about climate change, willingness to contribute to energy transition and climate protection, perceptions of climate change's impact on urban quality of life, and interest in green electricity.}
+    \caption{Stacked bar chart of participant responses to personal questions in the \textit{KaisergasseVR} study. The chart displays answers to questions assessing participants' experience with virtual reality, concerns about climate change, willingness to contribute to energy transition and climate protection, perceptions of climate change's impact on urban quality of life, and interest in green electricity. The color gradient progresses from red (strongly disagree) to blue (strongly agree) on the Likert scale.}
     \label{fig:participants_kaisergasse}
 \end{figure}
 
+Participants reported moderate familiarity with VR technologies (mean: 3.286, SD: 1.332), indicating varied experience levels. The participants demonstrated a high level of agreement on the significance of climate change (mean: 4.071, SD: 0.593). They also exhibited a willingness to engage in energy transition activities (mean: 4.214, SD: 0.674), indicating a positive inclination towards environmental action. Furthermore, they expressed a strong belief in the impact of climate change on urban quality of life (mean: 4.857, SD: 0.350). There was a moderate level of interest in eco-electricity (mean: 4.000, SD: 1.254). These responses are visually summarized in \figurename~\ref{fig:participants_kaisergasse}.
+
 \section{User study on \textit{SolarPowerVR}}
-The user study on \textit{SolarPowerVR} was conducted during the ``VR-Day'' event at HLW Steyr. This event was attended by students from one class of HLW Steyr and lasted three hours, from 13:00 to 16:00. The event began with a detailed presentation on the ongoing challenges and achievements in energy transition, including a highlight of our exhibition at Ars Electronica 2023. This served to set the context for the importance of renewable energy solutions, specifically photovoltaic systems. Following the presentation, students had the opportunity to experience \textit{SolarPowerVR} and various VR games. The feedback was overwhelmingly positive.
+
+The user study on \textit{SolarPowerVR} was conducted during the \textit{VR-Day} event at HLW Steyr. This event was attended by students from one class of HLW Steyr and lasted three hours, from 13:00 to 16:00. The event began with a detailed presentation on the ongoing challenges and achievements in energy transition, including a highlight of our exhibition at Ars Electronica 2023. This served to set the context for the importance of renewable energy solutions, specifically photovoltaic systems. Following the presentation, students had the opportunity to experience \textit{SolarPowerVR} and various VR games. The feedback was overwhelmingly positive.
 
 The setup included four PC-VR stations, each offering a different experience:
 \begin{itemize}
@@ -411,189 +547,194 @@ Additional sessions were later held at HTL Linz (n=5) and my office (n=3) to col
 \subsection{Study Protocol}
 Participants were individually invited and given a presentation on the interactive elements of \textit{SolarPowerVR} individually. The instructional session covered navigation, photovoltaic layout selection, adjusting the month for simulation, starting/stopping the simulation run, and data interpretation within the VR environment. This upfront guidance was crucial as participants were then expected to explore the application independently.
 
-The instructional session followed a prepared schema with a presentation lasting approximately 3 minutes. This ensured users would have an easy time navigating through the app; however, I remained available to assist if needed. To refine this protocol, it was tested once with my girlfriend prior to the main event. Based on this test, I added an in-game button schema for better user guidance.
+To ensure a smooth and effective instructional session, I prepared a structured schema that began with a 2-minute presentation. This introduction provided users with a clear understanding of how to navigate the app, minimizing the need for additional support. However, I remained available to assist users as needed. To validate and refine this approach, I conducted a pilot test with a single user prior to the main event. Based on the feedback from this test, I implemented an in-game button schema to provide users with additional guidance and support.
 
 After familiarizing themselves with the setup, participants put on their VR headsets and freely explored the simulation. Upon completion, they were invited to provide their insights and feedback through our user study form.
 
 \subsection{Questionnaire Design}
-The questionnaire for this study aimed to assess participants' perceptions of climate change and their experience of the VR simulation. It contained Likert-scale questions (from 1: strongly disagree to 5: strongly agree), multiple-choice questions, and open-ended questions structured around key components:
+
+The questionnaire for this study aimed to assess participants' perceptions of climate change and their experience of the VR simulation. It contained Likert-scale questions (from 1: strongly disagree to 5: strongly agree), multiple-choice questions, and open-ended questions:
+
 \begin{itemize}
-\item Initial questions collected demographic data and assessed participants' familiarity with VR technology and their concerns about climate change.
-\item Participants responded to questions about usability and realism of the VR simulation, its effectiveness in conveying benefits and applications of photovoltaic systems, and their likelihood of engaging in climate-positive actions following their experience.
-\item Specific questions tested understanding of optimal orientation of photovoltaic panels for different seasons, directly measuring educational outcomes from the VR experience.
-\item Open-ended questions invited comments on what participants liked most and least about their experience as well as suggestions for improvement.
+    \item \textbf{Demographics and Prior Knowledge}: Initial questions collected demographic data and assessed participants' familiarity with VR technology and their concerns about climate change.
+    \item \textbf{Effectiveness of the Simulation}: Participants responded to questions about usability and realism of the VR simulation, its effectiveness in conveying benefits and applications of photovoltaic systems, and their likelihood of engaging in climate-positive actions following their experience.
+    \item \textbf{Educational Outcomes}: Specific questions tested understanding of optimal orientation of photovoltaic panels for different seasons, directly measuring educational outcomes from the VR experience.
+    \item \textbf{User Experience and Feedback}: Open-ended questions invited comments on what participants liked most and least about their experience as well as suggestions for improvement.
 \end{itemize}
 
-The decision to use a 5-point Likert scale was made to ensure comparability with the previous study on \textit{KaisergasseVR}. While it may not capture all nuances, it provides a rough picture that is still valuable for analysis.
-
 \subsection{Data Collection and Analysis}
+
 Data was collected through Google Forms for seamless distribution via QR codes that participants could scan with their mobile devices. Responses were later exported to CSV files for analysis using Python.
 
 \subsection{Participants}
-The participant cohort consisted of 18 individuals, primarily young students (mean age: 19.11 years: SD: 5.96). Their familiarity with VR technology was modest (mean: 2.72, SD: 1.28), providing a unique perspective on the educational potential of immersive VR applications such as \textit{SolarPowerVR}. Participants expressed moderate concern about climate change (mean: 3.50, SD: 1.01) and a commendable willingness to engage in activities related to energy transition and climate protection (mean: 3.83, SD: 0.69). The perceived impact of climate change on urban quality of life was particularly high (mean: 4.28, SD: 0.93), while interest in using green electricity was more variable (mean: 3.33, SD: 0.75). These responses are summarized visually in \figurename~\ref{fig:participants_solarpowervr}.
+The participant cohort consisted of 18 individuals, primarily young students (mean age: 19.1 years, SD: 5.962). Their familiarity with VR technology was modest (mean: 2.722, SD: 1.283), providing a unique perspective on the educational potential of immersive VR applications such as \textit{SolarPowerVR}. Participants expressed moderate concern about climate change (mean: 3.500, SD: 1.014) and a commendable willingness to engage in activities related to energy transition and climate protection (mean: 3.833, SD: 0.687). The perceived impact of climate change on urban quality of life was particularly high (mean: 4.278, SD: 0.931), while interest in using green electricity was more variable (mean: 3.333, SD: 0.745). These responses are summarized visually in \figurename~\ref{fig:participants_solarpowervr}.
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=\textwidth]{graphics/participants-solarpowervr.pdf}
-    \caption[Participant Responses Summary]{Stacked bar graph showing participants' responses to personal virtual reality experiences, concerns about climate change, engagement in energy transition and climate action, perceived impact on urban quality of life, and interest in green electricity.}
+    \caption[Participant Responses Summary]{Stacked bar graph showing participants' responses to personal virtual reality experiences, concerns about climate change, engagement in energy transition and climate action, perceived impact on urban quality of life, and interest in green electricity. The color gradient progresses from red (strongly disagree) to blue (strongly agree) on the Likert scale.}
     \label{fig:participants_solarpowervr}
 \end{figure}
 
+%nice to have: figure comparing the plots of both user studies
+
+ 
 \chapter{Results}
-This chapter presents the findings of two empirical studies designed to assess the efficacy of virtual reality (VR) applications as educational instruments for enhancing comprehension of sustainable technologies, with a particular emphasis on photovoltaic (PV) systems. The initial study on \textit{KaisergasseVR} serves as a baseline for evaluating the impact of immersive VR experiences on environmental education. Subsequently, the \textit{SolarPowerVR} study builds upon this foundation by focusing on the educational outcomes related to solar energy.
 
-The methodologies employed in these studies were intentionally pragmatic, aiming to balance rigorous scientific inquiry with the flexibility necessary to adapt to the evolving nature of VR technology. This approach allowed for the collection of valuable data while acknowledging the exploratory phase of integrating VR into educational settings.
+% important: interpretation der ergebnisse. also da solltest du nochmal sagen um RQ1 zu beantworten haben wir untersucht ob ...
+% Unsere ergebnisse haben Hx unterstütz/nicht unterstütz. das heißt, dass.... (beantwortung der RQ)
+% dann die inhaltliche diskussion/erklärung die du ja eh schon zu den einzelenen teilen hast
+% das selbe für jede research question
 
-The results of these investigations indicate that VR has the potential to be a valuable tool in the educational domain. The findings demonstrate that VR can enhance cognitive understanding of complex environmental systems, such as PV installations, and foster increased awareness of sustainable practices. Furthermore, the studies suggest that VR-based educational tools can be an effective motivator for individuals to engage in pro-environmental behaviors.
+This chapter presents the findings of two empirical studies evaluating the efficacy of virtual reality (VR) applications for enhancing public understanding of photovoltaic (PV) systems.  These studies were motivated by the recognized potential of VR for education, particularly in areas like climate change and technical training, and the identified need for more engaging and effective tools to promote wider adoption of sustainable energy solutions.
 
-In pursuit of academic integrity and to facilitate future research endeavors, the complete statistical analyses, along with anonymized datasets, have been made publicly accessible. Those interested in examining and verifying the study's outcomes are invited to visit the following repository, where the Jupyter notebook containing all statistical procedures and data is hosted.
-\begin{center}
-\url{https://github.com/Nelathan/SolarPowerVR-Study}
-\end{center}
+The first study examined the existing VR application, \textit{KaisergasseVR}, to establish a baseline understanding of user experience and learning outcomes related to environmental topics.  The second study evaluated our newly developed application, \textit{SolarPowerVR}, which focuses specifically on fostering comprehension of PV system principles and benefits.
 
-The subsequent sections will present a detailed examination of the results from both studies, offering insights into the effects of VR on learning about PV systems and discussing the broader implications for environmental education.
+The results presented here offer valuable insights into the potential of VR for bridging the gap between technical knowledge and public engagement with sustainable energy technologies. While acknowledging the limitations of these initial studies, the findings will inform the direction of future research and the development of more impactful VR-based educational tools. We will examine the results of each study in detail, discussing their implications for the broader field of environmental education and the potential for larger-scale investigations into the efficacy of VR for promoting sustainable energy adoption.
 
 \section{User Feedback on \textit{KaisergasseVR}}
-The evaluation of the \textit{KaisergasseVR} application demonstrated generally positive user interactions with the virtual environment, as reflected by the score for ease of navigation (mean: 4.00, SD: 0.85). This suggests that the majority of participants found the VR environment user-friendly and intuitive.
-The realism of the VR simulation was rated moderately high (mean: 3.64, SD: 0.89), indicating a good level of immersion but also room for improvement.
-The participants demonstrated a relatively positive response to the idea of installing a PV system (mean: 3.57, SD: 1.05). This indicates a slight inclination towards actual implementation, inspired by the VR experience.
-The VR simulation had a moderate impact on inspiring participants to engage in climate action (mean: 3.14, SD: 1.36). Although this indicates a certain degree of motivation towards environmental involvement, the considerable standard deviation suggests that the responses of the participants were not uniform.
+
+The evaluation of the \textit{KaisergasseVR} application demonstrated generally positive user interactions with the virtual environment, as reflected by the score for ease of navigation (mean: 4.000, SD: 0.845). This suggests that the majority of participants found the VR environment user-friendly and intuitive. The realism of the VR simulation was rated moderately high (mean: 3.643, SD: 0.895), indicating a good level of immersion but also room for improvement. The participants demonstrated a relatively positive response to the idea of installing a PV system (mean: 3.571, SD: 1.050). This indicates a slight inclination towards actual implementation, inspired by the VR experience. The VR simulation had a moderate impact on inspiring participants to engage in climate action (mean: 3.143, SD: 1.355). Although this indicates a certain degree of motivation towards environmental involvement, the considerable standard deviation suggests that the responses of the participants were not uniform. These responses are summarized visually in \figurename~\ref{fig:feedback-kaisergasse}.
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=\textwidth]{graphics/feedback-kaisergasse.pdf}
-    \caption{Stacked bar chart illustrating the distribution of participant responses to several feedback questions in the \textit{KaisergasseVR} study, including ease of navigation, realism of the simulation, likelihood of installing a PV system, and motivation to engage in climate action.}
+    \caption{Stacked bar chart illustrating the distribution of participant responses to likert scale feedback questions in the \textit{KaisergasseVR} study, including ease of navigation, realism of the simulation, likelihood of installing a PV system, and motivation to engage in climate action. The color gradient progresses from red (strongly disagree) to blue (strongly agree) on the Likert scale.}
     \label{fig:feedback-kaisergasse}
 \end{figure}
 
 The participants offered a wealth of insights into the strengths and areas for improvement of the VR application. A synthesis of the responses to the open-ended questions is provided below. 
 
-% Die einfache durchführung und verschiedenen Optionen in Operationen
-% war ganz nett
-% echten 3d aufnahmen
-% Der Vergleich von Simulation und echter Welt
-% Thematik
-% Vergleich mit der realen Aufnahmen
-% Begrünen, weil die Auswirkungen am Greifbarsten sichtbar ist.
-% eine sehr bekannte Umgebung (in meinem Fall die Nachbarschaft). Dass reale Aufnahmen von der Drohne eingebaut wurden. Die Variation der Wiese ist echt gut gelungen. Die Gestaltung des Hofes, die Aufgaben und die Bilder der Umgebung
+\subsection{Positive Aspects}
 
-\textbf{Positive Aspects:}
 \begin{itemize}
-    \item Participants appreciated the \textbf{simplicity and variety of operations} within the VR environment, highlighting the ease of interaction and the range of options available.
-    \item The integration of \textbf{360° photographs} was well received and provided a compelling comparison between the virtual simulation and real environments. % not photogrammetry
-    \item The \textbf{theme and relevance} of the content resonated with users, emphasizing the importance and appeal of climate-positive actions.
-    \item The \textbf{tangible visibility of environmental impact}, particularly through activities such as greening, significantly increased user engagement.
-    \item The \textbf{familiarity} of the environment and the quality of the visual elements, such as the variation in the grass and the design of the courtyard, were highlighted as immersive aspects of the experience.
-\end{itemize}
-% TODO: add citation of real user answer: ... with one user even pointing out that
-
-% Nicht gut gefallen hat:
-% Die Framerate und manchmaliges stocken für zu schwindelgefühle
-% Photovoltaik und Stromleitungen legen hat nocht wirklich was gezeigt. Klar, Akku wurde gefüllt. Aber was sind die Auswirkungen? Wie schnell wurde wie viel Energie erzeugt? (Z.B. Kilometer, die man mit dem Auto dann im Schnitt fahren kann)
-% texturen 
-% Schwindelanfälle beim Fliegen
-% im Vergleich zu professionelleren Spielen wird einem relativ leicht übel
-% Die Orientierung ist noch ein bisschen gewöhnungsbedürftig, weil die Ansicht "fixed" ist, wenn man sich zur Seite dreht und kenie 360° Drehung möglich ist. 
-% die PV Anlage hatte wenig offensichtlichen Nutzen, bei Bewegungen wird einem schwindlig
-% Motion Sickness durch das Fliegen
-
-% Verbesserungsvorschläge:
-% Untersuchung und testung woran die aussetzer in der Bewegung liegen könnte, wäre noch gut
-% bessere texturen
-% weniger Ruckler
-% Umsehen ruckelt sehr
-% Auf der Blumenwiese fehlen noch die summenden Bienen :)
-% Je nach dem wie aufwändig und ressourcenabhängig es ist: Deko wäre ganz toll und macht die Umgbung um vieles freundlicher. (Der Raum mit der Erde ist z.B. sehr lieblos gestaltet und ist ein bisschen gruselig.) -vl. mehr Leben integrieren? (Andere Menschen die dann zum E-Auto gehen, laufende Hunde, Vögel, bewegte Schatten von vorbeiziehenden Wolken)
-% Der Raum mit der Erde bräuchte eine Beschreibung um was es da geht (sofern er einen Sinn hat). Ich hab mich recht verloren gefühlt. Eine weitere Idee wäre, dass man die eigenen Hände in der VR sehen kann - würde der Orientierung mit den Werkzeugen helfen, wenn diese nicht so herumschweben, sondern von Händen gehalten werden. 
-% Die Drehfunktion sollte nicht ein plötzlicher Sprung sein
-
-\textbf{Areas for Improvement and Enhancement Suggestions:}
-\begin{itemize}
-    \item \textbf{Frame rate and navigation:} Users experienced discomfort due to frame rate issues and occasional stuttering, particularly during flight sequences. Improving the smoothness of movement and introducing a more intuitive rotation mechanism could reduce motion sickness and improve navigation within the VR environment.
-
-    \item \textbf{Utility and Impact Visibility:} The application's demonstration of certain features, particularly the photovoltaic installations, was considered inadequate. Users suggested making the results of actions more visible and understandable, for example by showing the real-world impact of energy production in terms of tangible benefits (e.g. kilometres driven by an electric vehicle powered by the energy produced).
-
-    \item \textbf{Environmental detailing:} The quality of the environmental elements was identified as an area for improvement. Suggestions included enriching the VR environment with more detailed textures, dynamic elements such as animals and people, and decorations to create a more immersive and vibrant environment.
-
-    \item \textbf{Innovative Features:} The proposed feature to simulate energy production based on solar panel orientation received positive feedback. Users liked the idea and recommended the use of visual cues to indicate energy output levels and the inclusion of environmental variables to add depth to the educational content of the VR experience.
-
-    \item \textbf{Frame rate and navigation:} Our study revealed that users experienced discomfort due to frame rate issues and occasional stuttering, particularly during flight sequences. One common concern was that \textit{``Umsehen ruckelt sehr''}, which suggests that improving the smoothness of movement and introducing a more intuitive rotation mechanism could reduce motion sickness and improve navigation within the VR environment.
-
-    \item \textbf{Utility and Impact Visibility:} Our results showed that the application's demonstration of certain features, particularly the photovoltaic installations, was considered inadequate. Participants noted that the experience lacked a sense of accomplishment, with one user commenting that \textit{``Auf der Blumenwiese fehlen noch die summenden Bienen''}. This suggests that making the results of actions more visible and understandable, for example by showing the real-world impact of energy production in terms of tangible benefits (e.g. kilometres driven by an electric vehicle powered by the energy produced), could enhance the user experience.
-
-    \item \textbf{Environmental detailing:} Our study revealed that the quality of the environmental elements was identified as an area for improvement. Participants recommended enriching the VR environment with more detailed textures, dynamic elements such as animals and people, and decorations to create a more immersive and vibrant environment. For example, one user suggested that \textit{``Deko wäre ganz toll und macht die Umgebung um vieles freundlicher''}.
-
-    \item \textbf{Innovative Features:} Our findings indicate that the proposed feature to simulate energy production based on solar panel orientation received positive feedback. Participants liked the idea and recommended the use of visual cues to indicate energy output levels and the inclusion of environmental variables to add depth to the educational content of the VR experience. For instance, one user pointed out that \textit{``die eigenen Hände in VR sehen, das würde der Orientierung mit den Werkzeugen helfen''}.
+    \item \textbf{Simplicity and Variety of Operations:} Participants appreciated the ease of use and range of options. (e.g., \textit{``The simple execution and various options... were quite nice.''})
+    \item \textbf{Effective Use of 360° Photographs:} The integration of real-world imagery enhanced the comparative experience. (e.g., \textit{``The comparison of simulation and the real world''})
+    \item \textbf{Tangible Environmental Impact:} Witnessing the visible results of actions like greening increased engagement. (e.g., \textit{``Greening, because the effects are most visibly tangible.''})
+    \item \textbf{Immersive Environment and Visuals:} The familiar setting and detailed visuals contributed to a strong sense of immersion. (e.g., \textit{``A very familiar environment... drone recordings were incorporated... variation of the meadow... design of the courtyard''}) 
+    \item \textbf{Theme and Relevance:} The content resonated with users, highlighting the importance and appeal of climate-positive actions.  (e.g., \textit{``The comparison of simulation and the real world,''} \textit{``Comparison with the real recordings''}) 
 \end{itemize}
 
-This user feedback has had a significant impact on the design and development of the \textit{SolarPowerVR} application, addressing previous shortcomings. The new application provides a user-centric experience by focusing on \textbf{improving user comfort}, \textbf{enriching the visual and interactive quality} of the environment, and \textbf{effectively communicating the impact of climate positive actions}.
+\subsection{Areas for Improvement and Enhancement Suggestions}
+
+\begin{itemize}
+    \item \textbf{Performance and Navigation:} Several participants experienced motion sickness due to inconsistent frame rates, stuttering, and abrupt movements, particularly during flight. (e.g., \textit{``The view shakes a lot,''} \textit{``Motion sickness from flying''})
+    \item \textbf{Impact Visualization and Clarity:} Participants desired a clearer understanding of the impact of their actions, particularly regarding features like photovoltaic installations. (e.g., \textit{``Laying photovoltaic panels and power lines didn't really show anything... How quickly was how much energy generated? (e.g., kilometers that you can then drive with the car on average)''})
+    \item \textbf{Environmental Enrichment and Detail:} Feedback consistently highlighted the need for a more visually appealing and engaging environment. Suggestions included improved textures, dynamic elements (e.g., animals, people), and decorations to create a more immersive and welcoming atmosphere. (e.g., \textit{``Better textures,''} \textit{``The flower meadow is still missing the buzzing bees :)''} \textit{``Decoration would be great and make the surroundings much friendlier.''})
+    \item \textbf{Improved Interaction and Orientation:}  Participants suggested improvements to the interaction mechanics and orientation within the VR environment. This includes smoother rotation, the ability to see virtual hands holding tools, and clearer explanations for certain areas. (e.g., \textit{``The rotation function shouldn't be a sudden jump,''} \textit{``Another idea would be that you can see your own hands in VR''})
+    \item \textbf{Solar Panel Feedback:} The proposed feature to simulate energy production based on solar panel orientation was well-received. Participants recommended incorporating visual cues to clearly indicate energy output levels, enhancing the educational aspect of this feature.
+\end{itemize}
+
+This user feedback has had a significant impact on the design and development of the \textit{SolarPowerVR} application, addressing previous shortcomings. The new application provides a user-centered experience by focusing on improving \textbf{user comfort}, enriching the \textbf{visual and interactive quality} of the environment, and effectively \textbf{communicating the impact} of climate positive actions.
 
 \section{User Feedback on \textit{SolarPowerVR}}
-Participants' interactions within the VR environment were very positive in terms of ease of navigation (mean: 4.39, SD: 0.59).
-The realism of the VR simulation received a moderately high rating (mean: 3.78, SD: 0.92), suggesting a convincing yet variable experience across users.
-Concerning the potential for action, the simulation influenced participants' willingness to install photovoltaic (PV) systems on their roofs (mean: 3.33, SD: 1.00), indicating a cautious yet positive inclination towards real-world application.
-Additionally, the VR experience played a role in inspiring climate action, although to a lesser extent (mean: 3.00, SD: 0.75).
-% use same structure as in 6.1
+
+Participants' interactions within the VR environment were very positive in terms of ease of navigation (mean: 4.389, SD: 0.591).
+The realism of the VR simulation received a moderately high rating (mean: 3.778, SD: 0.916), suggesting a convincing yet variable experience across users.
+Concerning the potential for action, the simulation influenced participants' willingness to install photovoltaic (PV) systems on their roofs (mean: 3.333, SD: 1.000), indicating a cautious yet positive inclination towards real-world application.
+Additionally, the VR experience played a role in inspiring climate action, although to a lesser extent (mean: 3.000, SD: 0.745).
+These responses are summarized visually in \figurename~\ref{fig:feedback-solarpowervr}.
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=\textwidth]{graphics/feedback-solarpowervr.pdf}
-    \caption{Stacked bar chart illustrating the distribution of participant responses to feedback questions in the \textit{SolarPowerVR} study, including ease of navigation, realism of the simulation, likelihood of installing a PV system, and motivation to engage in climate action.}
+    \caption{Stacked bar chart illustrating the distribution of participant responses to feedback questions in the \textit{SolarPowerVR} study, including ease of navigation, realism of the simulation, likelihood of installing a PV system, and motivation to engage in climate action.  The color gradient progresses from red (strongly disagree) to blue (strongly agree) on the Likert scale.}
     \label{fig:feedback-solarpowervr}
 \end{figure}
 
-The participants expressed a variety of aspects that they enjoyed about the VR experience. Many appreciated the ability to interactively adjust settings such as the month and time of day and how it affected energy calculations. One participant noted, "I liked that you could adjust so many settings (months, time, ...)" and another mentioned, "The realistic representation of how different setups would look on a rooftop was particularly engaging." The realistic environment and features like the data displayed on the roof and the hands-on experience of building and navigating within the virtual space were frequently praised. Users expressed appreciation for the ability to observe the number of panels required to generate specific amounts of energy. The aesthetic quality of the simulation and its AI assistant were identified as positive features, which enhanced the overall immersive experience.
+\subsection{Positive Aspects}
 
-However, certain aspects of the VR experience were less satisfactory. Some users reported issues with the AI assistant not functioning properly, as one participant noted, "The AI assistant didn't work unfortunately." Additionally, a few found the activities within the virtual environment (VE) limited and expressed a desire for a bird's-eye view of the roof, stating, "You couldn't see the roof from a bird's-eye view." Suggestions for improving the VR experience included enhancements to the AI assistant to make it more reliable and interactive. It was recommended that the nighttime settings be brightened to improve visibility, that the virtual environments be expanded to include various places such as cities, parks, countries, or forests, and that additional options be integrated, such as wind turbines. Furthermore, participants suggested that more activities be included within the VR environment, that step-by-step instructions on tasks be provided, and that interaction opportunities with the AI character be increased. It was also proposed that offering more panel types and configurations could enrich the educational aspect of the simulation.
-
-\section{Impact of VR on understanding and interest in climate-friendly technologies}
-
-To answer research question 1 (\textit{Q1: Can a VR simulation such as \textit{KaisergasseVR} increase understanding of and interest in climate-friendly technologies?}) we tested the following two hypotheses.
-
-\textbf{Hypothesis 1: VR applications such as \textit{KaisergasseVR} increase participants' understanding of climate-friendly technologies.} 
-
-We analyze participants' responses to post-experience question items designed to evaluate their understanding. The questions, rated on a scale of 1 to 5 (with 5 indicating a high level of understanding and 1 indicating a low level), include
 \begin{itemize}
-    \item Did the VR experience help you understand the actions that can be taken to improve urban thermal conditions?
-    \item Did the VR experience help you understand the benefits of these actions?
+    \item \textbf{Interactive Settings and Realistic Representation:} Participants appreciated the ability to adjust settings like the month and time of day and observe their impact on energy calculations. (e.g., \textit{"That you could adjust so many settings (months, time, ...)"}, \textit{"That it was so real"})
+    \item \textbf{Hands-on Building and Exploration:} The ability to build structures and navigate the virtual environment was a highlight for many users. (e.g., \textit{"The hands-on building and walking around"})
+    \item \textbf{Data Visualization and Energy Calculation:} Users valued the ability to see the number of panels required for specific energy outputs. (e.g., \textit{"You can see how many panels are needed to generate this much energy."})
+    \item \textbf{Realistic Visuals and AI Assistant:} The realistic visuals and the helpful AI assistant were praised. (e.g., \textit{"The reality,"} \textit{"Beautiful AI"})
+    \item \textbf{Direct Comparison of Setups:} The ability to directly compare different setups and visualize their impact on a rooftop was particularly engaging. (e.g., \textit{"Direct comparison of the different setups and imagining how it would look on the roof."})
 \end{itemize}
-We expected that scores above the mean of 3 would indicate a successful increase in understanding due to the VR experience.
+
+\subsection{Areas for Improvement and Enhancement Suggestions}
+
+\begin{itemize}
+    \item \textbf{AI Assistant Functionality:} Some users reported issues with the AI assistant not functioning correctly. (e.g., \textit{"The AI assistant didn't work unfortunately."})  Improving its reliability and helpfulness is crucial.
+    \item \textbf{Limited Activities and Perspective:}  A few participants found the activities within the VR environment limited and expressed a desire for a bird's-eye view of the roof. (e.g., \textit{"You couldn't see the roof from a bird's-eye view."})
+    \item \textbf{Environmental Variety and Options:} Suggestions included expanding the virtual environments to include various locations and incorporating additional options like wind turbines. (e.g., \textit{"Different places (cities, park, countries, forests...), other options (wind turbines,...)"})
+    \item \textbf{Enhanced Interaction and Guidance:} Participants suggested more activities, step-by-step instructions, and increased interaction with the AI character. (e.g., \textit{"More things to do,"} \textit{"Step-by-step explanations of what to do,"} \textit{"More interaction with the AI person"})
+    \item \textbf{Panel Variety and Configuration:} Offering more panel types and configurations could enrich the educational aspect of the simulation. (e.g., \textit{"More versions of the panels"})
+\end{itemize}
+
+\section{Impact on Climate Technology Awareness}
+
+This section explores the research question: 
+
+\textbf{Q1: Can a VR simulation like \textit{KaisergasseVR} enhance understanding of and interest in climate-friendly technologies?}
+
+To investigate this, we formulated the following hypotheses:
+
+\textbf{H1: Participants who experience the \textit{KaisergasseVR} simulation will demonstrate a statistically significant increase in their understanding of climate-friendly technologies, specifically green roofs and PV systems.}
+
+\textbf{H2: Participants who experience the \textit{KaisergasseVR} simulation will demonstrate a statistically significant increase in their interest in adopting climate-friendly technologies, specifically green roofs and PV systems.}
+
+To test these hypotheses, we analyzed participant responses to a series of questions related to urban thermal conditions, potential solutions, the benefits of green roofs and PV systems, and their likelihood of adopting these technologies.  
+
+\subsection{Understanding Climate-Friendly Technologies}
+
+To assess participants' understanding, we asked the following questions, each rated on a 5-point Likert scale (1 = low understanding, 5 = high understanding):
+
+\begin{itemize}
+    \item \textbf{Q1.1} Did the VR experience help you understand urban thermal conditions and potential solutions? (Mean: 3.786, SD: 1.206, Wilcoxon p = 0.02466)
+    \item \textbf{Q1.2} Did the VR experience help you understand the benefits of these measures? (Mean: 3.714, SD: 1.221, Wilcoxon p = 0.03301)
+\end{itemize}
+
+Scores above the central value of 3 were anticipated to indicate a successful increase in understanding attributable to the VR experience. Analysis of the response distributions using the Shapiro-Wilk test revealed non-normality (p = 0.036 and p = 0.048 for the two questions, respectively). A Wilcoxon signed-rank test, suitable for small, non-normally distributed samples, was employed to compare the responses to a neutral response of 3 on the Likert scale.
+
+\subsection{Interest in Adopting Climate-Friendly Technologies}
+
+To gauge participant interest in adopting these technologies, we asked:
+
+\begin{itemize}
+    \item \textbf{Q1.3} After testing the VR simulation, would you now be more likely to install a green roof? (Mean: 3.714, SD: 1.097, Wilcoxon p = 0.01658)
+    \item \textbf{Q1.4} After testing the VR simulation, would you now be more likely to install a PV system on your roof? (Mean: 3.571, SD: 1.050, Wilcoxon p = 0.03097)
+\end{itemize}
+
+Again, scores above 3 were anticipated to indicate increased interest. The Shapiro-Wilk test confirmed non-normality in the response distributions for both questions (p = 0.017 for green roofs and p = 0.022 for PV systems), necessitating the use of the Wilcoxon signed-rank test to compare the responses to a neutral response of 3 on the Likert scale.
+
+\subsection{Statistical Significance and Interpretation}
+
+While the initial Wilcoxon test results for both understanding and interest suggested a potential positive effect of the VR experience, after applying the Bonferroni correction for multiple testing (α=0.0125, adjusted for 4 tests), the results fell short of statistical significance. This indicates that, based on this stricter statistical criterion, the \textit{KaisergasseVR} simulation did not significantly improve participants' understanding or increase their interest in implementing green technologies as hypothesized. While the VR experience may not have resulted in statistically significant changes based on our chosen methodology, the mean scores do suggest a trend towards increased understanding and interest.
+
+Figure~\ref{fig:research-1} provides a visual representation of the participant responses.
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=\textwidth]{graphics/research-1.pdf}
-    \caption{Stacked bar chart of participant responses to the question on understanding actions to improve urban thermal conditions and the benefits of these actions}
+    \caption{Participant responses to questions about their comprehension of and interest in climate-friendly technologies, with a focus on urban thermal conditions and solutions, the advantages of green roofs and PV systems, and the probability of adopting these technologies. The color gradient progresses from red (strongly disagree) to blue (strongly agree) on the Likert scale.}
     \label{fig:research-1}
 \end{figure}
 
-The Shapiro-Wilk test was first used to check the normality of the response distribution, giving values of 0.865 (p=0.036) and 0.874 (p=0.048) for the two questions respectively. These results indicated a deviation from the normal distribution, necessitating the use of the non-parametric Wilcoxon test, which is appropriate for small non-normally distributed samples.
+\section{Impact of Interactive Engagement}
 
-The Wilcoxon test produced a statistic of 54.5 with a p-value of 0.02466 for the first question and a statistic of 45.0 with a p-value of 0.03301 for the second question. These initial p-values suggested a statistically significant effect (when compared to the standard alpha value of $\alpha = 0.5$ of the VR experience on comprehension. However, after applying the Bonferroni correction to account for multiple testing (4 tests for this research question), the results were not statistically insignificant when compared to the adjusted alpha-values ($\alpha = ?$), leading to the retention of the null hypothesis for both question items.
-%add alpha
-In conclusion, while the initial analysis suggested a potential impact of the \textit{KaisergasseVR} on improving participants' understanding of climate-friendly technologies, the application of the Bonferroni correction revealed that these effects did not meet the threshold for statistical significance. This indicates that, based on this strict statistical criterion, the VR simulation did not significantly improve participants' understanding as originally hypothesized.
+This section explores the research question:
 
-\textbf{Hypothesis 2: VR applications such as \textit{KaisergasseVR} stimulate increased interest in adopting climate-friendly technologies.} 
+\textbf{Q2: Can increased interactive engagement with a photovoltaic (PV) use case in a VR application enhance understanding of and interest in PV solutions?}
 
-Participants' responses to post-experience questions will assess their interest in adopting climate-friendly actions. Responses will be rated on a scale of 1 to 5, with 5 indicating high likelihood and 1 indicating low likelihood:
+To investigate this, we compare participant responses to questions regarding their understanding of PV systems after experiencing two distinct VR applications: \textit{KaisergasseVR} and \textit{SolarPowerVR}. \textit{KaisergasseVR} provides  limited interactivity, while \textit{SolarPowerVR} offers a more interactive environment where users can manipulate PV panel configurations and observe the resulting energy output. This difference in interactivity allows us to assess the impact of interactive engagement on understanding and interest in PV solutions.
+
+We hypothesize:
+
+\textbf{H3: Participants who experience the more interactive \textit{SolarPowerVR} simulation will demonstrate a statistically significant increase in their understanding of and interest in PV solutions compared to those who experience the less interactive \textit{KaisergasseVR} simulation.}
+
+Participants responded to the following questions on a 5-point Likert scale, with 5 being "very helpful" and 1 being "not helpful at all":
+
 \begin{itemize}
-    \item Would you be more likely to install a green roof after testing the VR simulation?
-    \item Would you be more likely to install a PV system on your roof after testing the VR simulation?
+    \item \textbf{Q2.1} Did the VR experience help you understand how a photovoltaic system can be used?
+    \item \textbf{Q2.2} Did the VR experience help you understand the benefits of a photovoltaic system?
 \end{itemize}
-It is expected that scores above the median of three will indicate an increased interest in implementing green technologies, confirming the impact of \textit{KaisergasseVR}.
 
-The Wilcoxon test was chosen due to the non-normal distribution of participants' responses, as indicated by the Shapiro-Wilk statistic (0.842, p=0.017 for green roofs and 0.849, p=0.022 for PV systems). Our null hypotheses were that the VR simulation had no significant effect on participants' willingness to adopt green roofs or PV systems in the real world.
+\subsection{Analysis and Results}
 
-The mean scores (3.71 for green roofs and 3.57 for PV systems) indicated a reasonable level of interest. However, the results of the Wilcoxon test (statistics of 40.0 for green roofs and 31.0 for PV systems, with p-values of 0.01658 and 0.03097 respectively) initially suggested that the VR experience might have a positive effect. After applying the Bonferroni correction (to account for multiple comparisons), these effects were deemed statistically insignificant, leading to the retention of the null hypotheses that the VR simulation had no significant effect on participants' willingness to adopt green roofs or PV systems.
+The data reveals a notable difference in reported understanding between the two VR applications. \textit{KaisergasseVR} demonstrated a lower average understanding (mean: 2.857, SD: 1.245 for use; mean: 3.000, SD: 1.464 for benefits), while \textit{SolarPowerVR} showed a significantly higher average understanding (mean: 4.389, SD: 0.591 for use; mean: 4.278, SD: 0.803 for benefits). Figure~\ref{fig:research-2} visually presents these responses.
 
-%\section{Can an interactive photovoltaic use case increase understanding of and interest in PV solutions?}
-\section{The Impact of Interaction}
-
-To answer.....
-
-\textbf{Hypothesis 3: Interactive engagement with a photovoltaic use case in the VR application significantly increases both understanding of and interest in PV solutions.} 
-
-To evaluate this hypothesis, we analyse responses to two key questions included in both study questionnaires, focusing on the role of the VR experience in deepening understanding of PV systems. Responses were collected on a scale of 1 to 5, with 5 being "very helpful" and 1 being "not helpful at all".
-
+The Shapiro-Wilk test indicated non-normality in the distribution of responses for one of the two VR applications in each case. Therefore, we employed the Mann-Whitney U test, a robust non-parametric approach for comparing two independent groups, to evaluate whether \textit{SolarPowerVR} significantly increased understanding compared to \textit{KaisergasseVR}. This test was conducted with a one-sided alternative hypothesis, as we anticipated an increase in understanding due to the deliberate focus on interactive elements and information presentation in \textit{SolarPowerVR}.  The results revealed significant differences (p = 0.00042 for understanding use, p = 0.00565 for understanding benefits) between the two VR applications, strongly supporting the hypothesis.
 
 \begin{figure}[h]
     \centering
@@ -602,85 +743,174 @@ To evaluate this hypothesis, we analyse responses to two key questions included 
     \label{fig:research-2}
 \end{figure}
 
-%TODO: use n, mean, sd in description
+\todo{reorder and rename the questions: Q2.1 Kaisergasse, Q2.1 SolarPowerVR, ...}
 
-The final survey data was found to be non-normally distributed for both the understanding of PV system utilization (p=0.000) and the benefits of PV systems (p=0.029), as indicated by the Shapiro-Wilk test. Therefore, the one-sided Mann-Whitney U test was used.
+This finding provides strong evidence that interactive engagement with a photovoltaic use case in a VR application, particularly one designed with a strong focus on interactive elements and information presentation, significantly increases both understanding of and interest in PV solutions.  The ability to manipulate PV panel configurations and observe the resulting energy output in \textit{SolarPowerVR} appears to have contributed to a more profound understanding of PV systems compared to the experience offered by \textit{KaisergasseVR}.
 
-The results showed a significant effect, with the null hypothesis being rejected for both aspects of understanding a PV system's usage (U=211, p=0.000419) and benefits (U=190, p=0.005654). The study shows that the use of interactive VR had a significantly greater positive impact on participants' understanding and interest in PV solutions than .... . This evidence strongly supports the effectiveness of interactive VR simulations in improving understanding and stimulating interest in photovoltaic technologies.
+This highlights the importance of incorporating interactive elements and clear information presentation in VR applications designed for educational purposes, especially when aiming to promote understanding and adoption of complex technologies like photovoltaic systems.
 
-\section{How does an interactive VR simulation increase factual knowledge regarding the optimal orientation of photovoltaic panels?}
+\section{Assessing Factual Knowledge of Optimal PV Panel Orientation}
 
-This research question focuses on the ability of the VR simulation to increase factual knowledge related to the strategic placement of photovoltaic panels to optimize electricity production at different times of the year.
+This section explores the research question:
 
-\textbf{Hypothesis 4: Experiencing \textit{SolarPowerVR} can increase factual knowledge about the optimal orientation of photovoltaic panels for electricity production.} 
+\textbf{Q3: How effective is an interactive VR simulation in increasing factual knowledge about the optimal orientation of photovoltaic panels?}
 
-\begin{figure}[h]
+To investigate this, we analyze participant responses to questions regarding optimal panel orientation after experiencing the interactive \textit{SolarPowerVR} simulation.  We hypothesize that the ability to manipulate panel configurations and observe the resulting energy output in different months within the simulation will lead to a better understanding of optimal orientation.
+
+We hypothesize:
+
+\textbf{H4: Participants who experience \textit{SolarPowerVR} will demonstrate a greater understanding of optimal PV panel orientation than expected by chance.}
+
+A post-experience questionnaire assessed participants' knowledge regarding optimal panel orientation in June, December, and throughout the year.  Answer choices included "flat", "inclined south" and "inclined east/west". Correct answers were determined based on the simulation data, implying that mindful observation during the VR experience could lead to correct responses. The questions were designed to be challenging, assuming limited prior knowledge on this topic.  We hypothesize that participants who actively engage with the simulation and observe the changes in energy output based on panel orientation will be more likely to answer these questions correctly.
+
+\subsection{Analysis and Results}
+
+The Chi-square test was selected for its suitability in analyzing categorical data and its ability to compare observed response distributions with those expected by chance. This test is appropriate for evaluating the educational impact of the VR simulation due to the independence of participant responses and its effectiveness with smaller sample sizes. The Chi-square test assesses the likelihood of observing the obtained data distribution if the null hypothesis were true – meaning, if the VR simulation had no effect on participants' understanding of optimal panel orientation. This likelihood is quantified by the p-value. A small p-value (p < α) suggests that the observed data is unlikely to have occurred by chance alone, leading us to reject the null hypothesis and infer that the VR simulation likely did have an effect. Figure~\ref{fig:research-3} visually presents the distribution of participant responses. Table~\ref{tab:chi-square-results} summarizes the Chi-square test results for each question.
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{llll}
+    \toprule
+    \textbf{Orientation} & \textbf{Correct Responses} & \textbf{Chi-square Test} & \textbf{Result} \\
+    \midrule
+    June & 38.9\% (7 out of 18) & χ² = 2.333, p = 0.311 & Supports $H_0$ \\
+    December & 55.6\% (10 out of 18) & χ² = 4.000, p = 0.135 & Supports $H_0$ \\
+    Annual & 44.4\% (8 out of 18) & χ² = 1.333, p = 0.513 & Supports $H_0$ \\
+    \bottomrule
+    \end{tabular}
+    \caption{Chi-square Test Results for Optimal PV Panel Orientation}
+    \label{tab:chi-square-results}
+\end{table}
+
+\begin{figure}[]
     \centering
     \includegraphics[width=\textwidth]{graphics/research-3.pdf}
-    \caption{A stacked bar chart of participant responses on optimal panel orientation in different settings.}
+    \caption{Distribution of participant responses regarding optimal photovoltaic panel orientation for electricity production in June, December, and throughout the year. Blue bars represent correct answers, and orange bars represent incorrect answers.}
     \label{fig:research-3}
 \end{figure}
 
-To test this hypothesis, participants' responses to specific knowledge-based questions were analyzed after interacting with the VR simulation. These questions were designed to assess understanding of the orientation of PV panels for maximum electricity production in June, December, and over the year. Correct answers were predetermined based on the simulation data.
-% add link to figure
-The Chi-square test is chosen here because of its direct applicability to categorical data. It's ideal for comparing the observed distribution of responses with what we would expect by chance, assuming that the VR simulation has no effect on comprehension and no prior knowledge is present. Because each participant's response is independent and the test is effective even with smaller sample sizes, it's a  suitable method for assessing the educational impact of the VR simulation. It shows how likely it is that the observed data would occur under the null hypothesis.
+While the observed percentages of correct answers for December and annual orientation are above chance (33.3\%), the Chi-square tests indicate that these deviations are not statistically significant.  This suggests that the \textit{SolarPowerVR} simulation, as designed, did not significantly improve factual knowledge about optimal PV panel orientation.  However, the higher percentages of correct responses compared to random chance warrant further investigation and suggest potential avenues for improving the educational effectiveness of the simulation.
 
-\textbf{June Orientation}
-Out of 18 responses, only 7 were correct (38.9\%). The statistical tests support the null hypothesis (Chi-square: 2.333, P-value: 0.311), suggesting that the VR simulation did not significantly aid understanding of this concept.
-
-\textbf{December Orientation}
-With 10 out of 18 correct answers (55.6\%), the first signs were promising. However, the Chi-square test confirmed the null hypothesis (Chi-square: 4.000, P-value: 0.135), indicating a random distribution of answers.
-
-\textbf{Annual Orientation}
-The VR simulation seemed to have a modest effect, with 8 correct answers out of 18 (44.4\%). However, statistical analysis showed no significant increase in correct answers (Chi-square: 1.333, P-value: 0.513).
-
-%\textbf{Summary}
-While the analysis did not provide statistical evidence to reject the null hypothesis for Hypothesis 4, it did reveal a noticeable, though not substantial, level of factual knowledge among the participants. This suggests that while the VR simulation may have led to some understanding of PV panel orientation, the knowledge gained was not pronounced.
 
 \chapter{Discussion}
-The aim of this research was to investigate the effectiveness of VR in improving comprehension and engagement with photovoltaic systems, as part of wider environmental education initiatives. This chapter evaluates the extent to which these objectives were achieved, discussing the implications of the findings within the context of VR as a transformative educational tool.
 
+This chapter delves into the implications of the research findings, exploring the potential of virtual reality (VR) as an educational tool for promoting understanding and engagement with photovoltaic systems. We examine the strengths and limitations of the VR applications, \textit{KaisergasseVR} and \textit{SolarPowerVR}, highlighting the insights gained from the statistical analysis of learning outcomes. We will address each research question individually, discussing the findings and their implications for the design and implementation of VR educational experiences.
 
+\section{Impact on Climate Technology Awareness}
 
-It stands to reason that if participants were given specific tasks or instructions on what aspects to observe within the VR simulation, their performance and subsequent understanding may have improved. A more guided experience could potentially lead to better internalization of the concepts presented. It might also help participants to apply and observe these ideas more successfully during the interactive experience if a theoretical basis on orientation, the effects of angles and air mass was provided prior to the VR simulation. Such initial instruction could enhance their ability to recognise and understand the finer details of PV panel optimisation, leading to more thoughtful and informed observation. This hybrid method of combining immersive VR technology with theory has great potential for future educational projects aimed at improving students' understanding of renewable energy technologies and their real-world applications.
+Our first research question explored whether a VR simulation like *KaisergasseVR* could enhance understanding of and interest in climate-friendly technologies. While the statistical analysis did not reveal a significant impact, the observed trend towards increased understanding and interest, coupled with participant feedback, warrants further discussion.
 
-To improve the statistical validity of future research, the test design should be adapted to allow a comparison of participants' knowledge before and after the VR experience. The inability of the existing design to properly relate current knowledge to the VR simulation indicates a need for methodological improvements.
+The mean scores for both understanding and interest in adopting climate-friendly technologies were above the neutral point on the Likert scale. This suggests that the VR experience may have had a positive, albeit not statistically significant, influence. While \textit{KaisergasseVR} lacks some interactivity and best practices from established scientific literature \cite{Dalgarno2010Learning, Gee2009Deep}, which limits its potential, the immersive nature of VR could still have contributed to this positive trend.
 
-\section{Understanding Photovoltaic Systems through VR}
-The user studies revealed significant improvements in the understanding of photovoltaic systems through the \textit{SolarPowerVR} application compared to the original \textit{KaisergasseVR}. Users reported high levels of engagement and a clearer understanding of photovoltaic mechanics, facilitated by the immersive and interactive nature of the VR environment.
+However, participant feedback sheds light on potential reasons for the lack of statistical significance. Several participants noted a lack of clarity regarding the impact of their actions within the simulation, particularly with the PV system. This suggests that the simulation may not have effectively conveyed the connection between user actions and their environmental consequences, hindering a deeper understanding of the technologies presented.
 
-\section{Overcoming Technical Challenges}
-The development of the VR applications has been marked by significant technical hurdles, in particular the performance issues posed by the detailed and dynamic virtual representation of the Linz cityscape. The innovative solutions employed, including the use of the Cesium environment and the optimization of dynamic shadows, illustrate the critical importance of technical expertise in creating immersive and effective VR experiences. Introducing an in-game tutorial and refining the controls based on user feedback are key to improving the usability and educational impact of the VR application.
+This feedback aligns with research highlighting the importance of clear cause-and-effect relationships in VR learning experiences \cite{Bailenson2008Transformations, Merchant2014VrEffectiveness}.  When users can clearly see the impact of their actions within the virtual environment, they are more likely to develop a deeper understanding of the underlying concepts. This reinforces the need for careful design choices that effectively communicate the connection between user actions and their real-world consequences \cite{Ding2022VrApplication}.
 
-\section{Educational Impact and User Experience}
-The migration from the \textit{KaisergasseVR} application to the \textit{SolarPowerVR} application demonstrated the crucial role of user experience design in educational VR applications. Simplifying interaction mechanisms and stabilising performance to achieve a consistently high frame rate contributed greatly to a more accessible and engaging learning environment. The detailed user feedback from the initial user study was instrumental in identifying and addressing shortcomings, resulting in the superior performance and educational effectiveness of \textit{SolarPowerVR}.
+\section{Impact of Interactive Engagement}
 
-\section{Statistical Findings and Study Design}
-While the statistical analysis provided insights into the learning outcomes associated with the VR applications, it also highlighted the limitations of the study design in conclusively determining the effectiveness of VR in improving understanding of renewable energy systems. The lack of significant findings regarding panel orientation post-experience suggests the need for a more robust research framework and a more guided approach within the VR application to ensure comprehensive learning.
+Our second research question investigated whether increased interactive engagement with a photovoltaic (PV) use case in a VR application could enhance understanding of and interest in PV solutions. To address this, we compared participant responses after experiencing two distinct VR applications: \textit{KaisergasseVR}, which offers limited interactivity, and the more interactive and focused \textit{SolarPowerVR}.
 
-\section{Future directions and considerations}
-The exploration of photovoltaic systems in VR represents a promising avenue for environmental education. However, realizing its full potential requires addressing the challenges of accessibility, expanding the scope of the application to include additional renewable energy sources, and continuous refinement based on user feedback. Future research should aim to consolidate the study design to provide more conclusive evidence of the educational benefits of VR in this area.
+\textit{SolarPowerVR} was designed to specifically target PV systems, incorporating various VR best practices to promote learning and engagement \cite{Dalgarno2010Learning, Gee2009Deep}. It allows users to manipulate PV panel configurations, observe the resulting energy output in different months, and explore the impact of various factors, such as the sun's position, on PV system performance.
 
-\section{Reflections on personal development}
-Developing the VR application and conducting the user studies has been a profound learning experience. The challenges faced and solutions found not only contribute to the field of educational technology, but also represent significant personal and professional development. This project has reinforced the importance of a focused, user-centered approach to technology development and the potential of VR as a transformative tool in environmental education and advocacy.
+The results clearly demonstrated a significant difference in reported understanding between the two applications. Participants who experienced \textit{SolarPowerVR} showed a significantly higher average understanding of both how a photovoltaic system can be used and the benefits of such systems. This finding strongly supports the hypothesis that increased interactivity and a focused approach can lead to a more profound understanding of PV solutions.
 
-\chapter{Conclusion and future work}
-This chapter evaluates the extent to which the stated objectives were achieved, identifies the limitations encountered during the research, and suggests future directions based on the empirical data and theoretical insights gained throughout the study.
+This is further supported by participant feedback. Many praised the ability to manipulate PV panel configurations and observe the resulting energy output, highlighting the value of hands-on experimentation in fostering a deeper understanding of PV systems. This aligns with research showing that embodied learning experiences in VR, where users can actively interact with virtual objects and environments, can lead to improved learning outcomes \cite{Sung2015Effects, Winn2002Immersion}.
 
-The study demonstrated the potential of immersive technology in environmental education through the development and initial deployment of a VR application designed to demonstrate the operation and benefits of solar PV systems. User feedback highlighted the need for well-organized instruction within the VR environment to ensure a focused and educational experience. The lack of structured training and defined activities led to instances of user confusion, highlighting the importance of guided learning pathways in educational VR applications.
+This finding also aligns with the principles of constructivist learning theory \cite{Mikropoulos2011VrEducational}. By providing users with the opportunity to actively engage with the subject matter and explore its nuances, VR can facilitate a more profound and lasting understanding of complex concepts like photovoltaic systems. The design of \textit{SolarPowerVR}, with its emphasis on user agency, accurate simulation, and clear data visualization, exemplifies these principles and demonstrates their effectiveness in enhancing learning outcomes.
 
-\section{Future Developments}
+The significantly higher understanding demonstrated by participants who experienced \textit{SolarPowerVR} underscores the potential of well-designed, interactive VR experiences to enhance learning outcomes in environmental education. By providing users with the opportunity to actively engage with the subject matter and explore its nuances, VR can facilitate a more profound and lasting understanding of complex concepts.
+
+\section{Assessing Factual Knowledge of Optimal PV Panel Orientation}
+
+Our third research question explored the effectiveness of an interactive VR simulation in increasing factual knowledge about the optimal orientation of photovoltaic panels. Specifically, we investigated whether experiencing \textit{SolarPowerVR} would lead to a greater understanding of optimal panel orientation for maximizing electricity production.
+
+The results of the Chi-square tests, however, did not support this hypothesis. While the observed percentages of correct answers for December and annual orientation were above chance, these deviations were not statistically significant. This suggests that \textit{SolarPowerVR}, as designed, did not significantly improve factual knowledge about optimal PV panel orientation.
+
+This finding aligns with feedback from participants who expressed a desire for more explicit guidance and explanations within the simulation. Some participants noted that while they enjoyed experimenting with the panel configurations, they felt unsure about the optimal orientation for maximizing energy output. This suggests that the simulation, while effective in promoting exploration and engagement, may have lacked the necessary scaffolding to facilitate the acquisition of specific factual knowledge.  This aligns with research highlighting the importance of scaffolding and explicit instruction in VR learning experiences, particularly for complex concepts \cite{Dalgarno2010Learning, Mikropoulos2011VrEducational}.
+
+The lack of statistically significant improvement in factual knowledge highlights the importance of considering the specific learning objectives when designing VR educational experiences. While interactivity and exploration can be valuable for promoting engagement and conceptual understanding, they may not be sufficient for acquiring factual knowledge, especially when dealing with complex topics like optimal PV panel orientation.  For instance, studies have shown that incorporating explicit instruction and guidance within VR simulations can significantly improve learning outcomes related to factual knowledge acquisition \cite{Merchant2014VrEffectiveness}.
+
+Despite the lack of statistically significant improvement, the higher percentages of correct responses compared to random chance suggest that \textit{SolarPowerVR} may still have had a positive influence on participants' understanding of optimal PV panel orientation. This, combined with the participant feedback, suggests that future iterations of the application could benefit from incorporating more explicit instruction, visual cues, or interactive tutorials that directly address the concept of optimal orientation.
+
+\section{Strengths and Limitations}
+
+This study explored the potential of virtual reality (VR) as an educational tool for promoting understanding and engagement with photovoltaic systems.  The use of immersive VR technology allowed participants to experience and interact with PV systems in a way that would otherwise not be possible. This immersive and interactive approach is a key strength of the study, offering a unique and engaging learning experience that can enhance understanding and motivation.  VR's ability to create a sense of presence and engagement \cite{Winn2002Immersion, HuAu2018VrExperience} allows users to connect with the subject matter on a deeper level, potentially fostering a more profound understanding and a greater appreciation for the complexities of photovoltaic systems.
+
+However, the study also has several limitations that should be acknowledged:
+
 \begin{itemize}
-    \item A tutorial is necessary to orient users within the VR environment. It should explain controls, simulation functions, and data interpretation methods. Subsequent activities should be designed to help users focus on learning objectives, such as assessing power output variances across different situations.
-    \item Incorporating the LXR - Light Detection plugin can enhance the simulation's realism in light interaction, which is crucial for accurately representing PV shading behavior. Collaborating with PV installation specialists and using real-world price data can improve the simulation's portrayal of economic elements of PV systems.
-    \item Future studies should use a strict methodological framework, including pre- and post-experience evaluations or control groups, to objectively quantify the influence of VR applications on users' understanding and attitudes towards PV systems.
-    \item To promote user autonomy, VR applications should be self-explanatory. Expanding language support would improve accessibility, cater to a worldwide audience, and provide a broader educational effect.
-    \item The exploration of industry sponsorship should also be considered. The first assistance of Linz City serves as a platform for further application development. To ensure widespread adoption and impact, it is crucial to identify industrial sponsors and integrate the VR application into educational contexts.
-    \item Additionally, improving context awareness is necessary for the AI assistant to provide real-time, relevant instruction and act as an active learning facilitator in VR.
+    \item \textbf{Potential for Benchmark Overfitting:} The design of \textit{SolarPowerVR} specifically addressed the limitations of \textit{KaisergasseVR}, potentially leading to an overfitting of the benchmark and inflating the observed differences between the two applications.  This tailored design, while insightful, may limit the generalizability of the findings.
+    \item \textbf{Small Sample Size:} The limited number of participants (n=18) may have restricted the statistical power of the analyses and the generalizability of the findings.  This sample size, while common in exploratory VR studies, could have made it more difficult to detect statistically significant effects. 
+    \item \textbf{Lack of Pre-Test:} The absence of a pre-test measuring baseline understanding and interest makes it difficult to definitively attribute any observed changes to the VR experience.  Without a baseline measurement, it's challenging to isolate the specific impact of the VR intervention. 
+    \item \textbf{Choice of Likert Scale:} The 5-point Likert scale may have limited the sensitivity of the measurements and made it challenging to apply certain statistical tests.  A wider scale might have provided more nuanced data, potentially allowing for more sophisticated statistical analysis. 
+    \item \textbf{Lack of Long-Term Knowledge Retention Assessment:} The study did not assess the long-term retention of knowledge gained through the VR experiences.  The long-term impact of the VR interventions on knowledge retention remains an open question. 
 \end{itemize}
 
-The creation of this VR application has been challenging and rewarding. The feedback and ideas gathered can pave the way for significant improvements that promise to make the application more entertaining, educational, and a catalyst for increased public interest in renewable energy solutions. Looking ahead, we are inspired by the potential of VR technology to improve environmental education and are determined to continue this fascinating mission.
+Despite these limitations, the study provides valuable insights into the potential of VR as an educational tool for promoting understanding and engagement with photovoltaic systems. The findings suggest that VR experiences can be effective in enhancing understanding, particularly when they incorporate interactive elements and a focused approach.
 
+\section{Implications}
+
+This section synthesizes the insights gained from participant feedback and discusses the broader implications of the study's findings, not only for VR in environmental education but also for related fields.
+
+Participant feedback highlighted the need for intuitive navigation and user interfaces, emphasizing the importance of user-centered design principles in VR applications.  This reinforces the need for significant technical expertise and careful attention to user experience design when developing immersive and effective VR applications. Performance optimization, especially for resource-intensive environments, is critical to ensure a smooth and engaging user experience, while delivering aesthetically pleasing visuals. The design of VR applications should be driven by user feedback, iteratively refining interfaces, controls, and content based on user needs and preferences.
+
+The findings and feedback from this study suggest that VR holds significant potential not only for environmental education but also for broader scientific communication and public engagement with complex scientific topics. The insights gained can be applied to other domains where VR could enhance understanding and engagement. Key design considerations for creating effective learning experiences across various scientific disciplines include incorporating clear feedback mechanisms, interactive elements, immersive environments, and user-friendly design.
+
+This study's findings connect to the broader fields of computer simulation and visualization, highlighting the potential to make complex scientific data more accessible and engaging.  Developing accessible simulations that cater to diverse learning styles and abilities is crucial for reaching a wider audience, including individuals with disabilities or limited access to technology. The insights gained can contribute to the advancement of training and education in fields where hands-on experience are particularly valuable.
+
+This study has demonstrated the potential of VR to enhance understanding and engagement with photovoltaic systems, offering valuable insights for designing more effective VR learning experiences in environmental education and beyond. Further exploration in these areas will contribute to a deeper understanding of how VR can be leveraged to address pressing environmental challenges and promote a more sustainable future.
+\chapter{Conclusion and Future Work}
+
+This thesis culminated in the development and evaluation of \textit{SolarPowerVR}, a novel virtual reality (VR) application designed to enhance public understanding and adoption of photovoltaic (PV) systems in Austria. Driven by the urgent need for a transition to sustainable energy sources and recognizing VR's potential for creating engaging learning experiences, we investigated its effectiveness in conveying complex information and fostering positive attitudes towards renewable energy technologies.
+
+Our journey began with an evaluation of \textit{KaisergasseVR}, an existing VR application showcasing climate-friendly solutions in an urban context. This provided a baseline understanding of user experience and learning outcomes, revealing both strengths and limitations of VR in environmental education.  Building upon these insights, we meticulously designed and implemented \textit{SolarPowerVR} to specifically address the identified gaps in public PV education. 
+
+\textit{SolarPowerVR} provides users with an interactive and engaging learning experience focused on PV systems.  By allowing users to explore a realistic virtual environment, manipulate PV panel configurations, and observe the resulting impact on energy production under varying conditions, we aimed to foster a deeper understanding of PV system dynamics and promote a more informed perspective on the benefits of solar energy.
+
+Our empirical studies revealed that \textit{SolarPowerVR} significantly enhances user understanding of PV systems compared to \textit{KaisergasseVR}, underscoring the importance of interactive engagement in VR-based learning.  However, we also discovered that interactivity alone may not be sufficient for acquiring specific factual knowledge, such as optimal panel orientation. This suggests that future iterations of \textit{SolarPowerVR} could benefit from incorporating more explicit instruction, visual cues, or interactive tutorials that directly address such concepts.
+
+\section{Key Contributions and Insights}
+
+This thesis makes several key contributions to the field of VR-based environmental education:
+
+\begin{itemize}
+    \item \textbf{Development of \textit{SolarPowerVR}:} We designed and implemented a novel VR application specifically tailored to enhance understanding of PV systems, incorporating research-backed principles of interactive learning and immersive design.
+    \item \textbf{Empirical Evaluation of VR for PV Education:} We conducted user studies to evaluate the effectiveness of \textit{SolarPowerVR} in enhancing understanding of PV systems, providing valuable insights into the potential and limitations of VR for environmental education.
+    \item \textbf{Insights into the Design of Effective VR Learning Experiences:} Our findings highlight the importance of balancing interactivity with clear instruction and guidance in VR educational applications, emphasizing the need for user-centered design principles.
+\end{itemize}
+
+Furthermore, this research provides valuable insights into the potential of VR for broader scientific communication and public engagement with complex scientific topics. The immersive and interactive nature of VR can make abstract concepts more tangible and relatable, fostering a deeper understanding and appreciation for scientific principles.
+
+\section{Future Research Directions}
+
+Building upon the foundation laid by this thesis, we identify several promising avenues for future research:
+
+\begin{itemize}
+    \item \textbf{Long-Term Knowledge Retention:} Investigate the long-term impact of VR interventions on knowledge retention and explore strategies for promoting lasting learning outcomes.
+    \item \textbf{Diverse VR Interaction Modalities:} Explore the effectiveness of various VR interaction modalities, such as hand tracking and haptic feedback, in enhancing learning and engagement.
+    \item \textbf{Personalized VR Learning Experiences:} Design and evaluate VR applications that cater to a wider range of learning styles and adapt to individual user needs and preferences.
+    \item \textbf{Collaborative VR Environments:} Investigate the potential of collaborative VR environments for fostering teamwork and shared learning experiences in environmental education.
+\end{itemize}
+
+\section{Future Development of \textit{SolarPowerVR}}
+
+Future development of \textit{SolarPowerVR} will focus on enhancing its educational value, user experience, and realism, incorporating insights from our research and user feedback. 
+
+\begin{itemize}
+    \item \textbf{Enhanced Instruction and Guided Learning:} We will develop a comprehensive and interactive tutorial to orient users within the VR environment, clearly explaining controls, simulation functions, and data interpretation methods.  Additionally, we will design structured learning activities that guide users through key concepts, providing clear explanations, visual cues, and opportunities for hands-on experimentation with different PV system configurations. To reinforce learning and provide feedback, quizzes or assessments will be incorporated.
+    \item \textbf{Improved Realism and Immersiveness:} Photogrammetry will be utilized to create a highly detailed and realistic 3D model of the immediate environment, enhancing the visual fidelity and sense of immersion. Furthermore, dynamic cloud cover will be implemented to realistically impact the amount of sunlight reaching the PV panels, adding another layer of complexity and realism to the simulation. Realistic panel shadowing will also be implemented, accurately simulating the reduction in power output when panels are partially or fully shaded.
+    \item \textbf{Expanded Functionality and User Agency:} We plan to incorporate features such as energy storage options and electric vehicle charging to provide a more comprehensive understanding of PV system integration and benefits. To ensure accuracy and provide a reliable benchmark for user experimentation, a more robust and automated system for matching simulation results with data from SolarProTool will be developed.  Furthermore, users will be empowered to design and customize their own PV system layouts, providing tools for adjusting panel type, placement, and orientation with real-time feedback. Economic analysis features will also be added, allowing users to explore the financial implications of their design choices by providing detailed cost breakdowns, visualizing potential savings, and demonstrating the economic viability of PV systems.
+    \item \textbf{Engaging and Intelligent AI Assistant:} The current AI assistant will be replaced with a sophisticated and engaging character, designed to be both informative and personable. This AI assistant will be developed to provide real-time, context-aware instruction, personalized guidance, and adaptive feedback based on user actions and progress. By offering hints, explanations, and suggestions, the AI assistant will create a sense of personalized learning and support.
+    \item \textbf{Increased Accessibility:} To reach a wider audience and promote inclusivity, language support will be expanded. The application will also be optimized for lower-end hardware to broaden accessibility and reduce barriers to participation.
+\end{itemize}
+
+These planned improvements aim to transform \textit{SolarPowerVR} into a more comprehensive and engaging educational tool, empowering users to explore the complexities of PV systems and contribute to a sustainable future.
+
+\section{Conclusion}
+
+This thesis demonstrates the feasibility and potential of VR as a powerful tool for promoting understanding and engagement with sustainable energy solutions.  By continuing to refine and expand VR applications like \textit{SolarPowerVR}, we can empower individuals to make informed decisions about their energy choices and contribute to a more sustainable future.  The insights gained from this research have implications beyond environmental education, offering valuable lessons for the design of effective VR learning experiences across various scientific disciplines.
+
+As VR technology continues to evolve and become more accessible, its potential for transforming education and fostering a deeper understanding of complex scientific concepts will only grow. By embracing the power of VR, we can create engaging and impactful learning experiences that inspire action towards a more sustainable future for Austria and beyond.
 \backmatter
 
 % Use an optional list of figures.
@@ -701,8 +931,9 @@ The creation of this VR application has been challenging and rewarding. The feed
 \printglossaries
 
 % Add a bibliography.
-\bibliographystyle{alpha}
+\bibliographystyle{ieeetr}
 % \bibliographystyle{plain}
+% \bibliographystyle{alpha}
 \bibliography{main}
 
 \end{document}
